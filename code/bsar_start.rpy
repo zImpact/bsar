@@ -8,9 +8,7 @@ init python:
         pass
 
 label bsar_start:
-    # $ persistent.timeofday = "winter_day"
-    # $ persistent.sprite_time = "day"
-    $ bsar_set_time('day')
+    $ bsar_set_time('night')
     $ bsar_set_dynamic_cursor('main_menu')
     $ bsar_onload('lock')
     $ bsar_screens_save_act()

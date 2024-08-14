@@ -1,18 +1,17 @@
-label sotp_three_deaths:
+label bsar_sotp_three_deaths:
     stop music fadeout 3
     scene bg black with Dissolve(3)
     $ save_name = ("Три смерти.\nПролог.")
     $ renpy.block_rollback()
     $ sotp_onload("lock")
     $ persistent.timeofday = "bw"
-    $ renpy.pause(3.5, hard = True)
+    $ renpy.pause(3.5, hard=True)
     $ sotp_set_mode_nvl()
     scene bg sotp_prolog_bw
     show sotp_static_noise_anim
     with Dissolve(3)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     $ sotp_onload("unlock")
-    $ sotp_set_timeofday_cursor_var = True
     play music sotp_bensound_sadday fadein 3
     sotp_narrator "У всех в жизни бывает день, который переворачивает всё с ног на голову. "
     sotp_narrator "Для кого-то это день встречи своей будущей любви, для кого-то день смерти самого близкого человека, а для меня это день получения первой взятки."
@@ -37,9 +36,9 @@ label sotp_three_deaths:
     stop music fadeout 3
     scene bg black with Dissolve(3)
     $ save_name = ("Три смерти.\nАКТ 1. Как я жил.")
-    $ renpy.pause(2, hard = True)
-    $ sotp_show_centered_text("Три смерти. АКТ 1. Как я жил.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(2, hard=True)
+    $ sotp_show_centered_text("Три смерти. АКТ 1. Как я жил.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
     $ sotp_set_mode_adv()
     scene bg sotp_ext_winter_park
@@ -91,7 +90,7 @@ label sotp_three_deaths:
     stop music fadeout 3
     stop ambience fadeout 3
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_int_kitchen_bw 
     show sotp_sister
     show sotp_static_noise_anim
@@ -124,7 +123,7 @@ label sotp_three_deaths:
     sotp_narrator "Она задорно хохочет."
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_int_float
     show sotp_yana
     show sotp_static_noise_anim
@@ -143,11 +142,11 @@ label sotp_three_deaths:
     sotp_yana "Эх, а я то надеялась, что ты всё же разгадываешь тайну философского камня."
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     $ save_name = ("Три смерти.\nАКТ 2. Как я работал.")
-    $ renpy.pause(0.5, hard = True)
-    $ sotp_show_centered_text("Три смерти. АКТ 2. Как я работал.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
+    $ sotp_show_centered_text("Три смерти. АКТ 2. Как я работал.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
     scene bg sotp_prosecutor_office
     show sotp_snow_layer3_anim
@@ -182,7 +181,7 @@ label sotp_three_deaths:
     stop ambience fadeout 2
     stop music fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_int_od_cabinet
     show sotp_od
     show sotp_static_noise_anim
@@ -214,7 +213,7 @@ label sotp_three_deaths:
     sotp_narrator "Мы стараемся делать вид, что тут нет никакого принуждения. Пока получается неплохо, помимо подобных случаев с провалами или оплошностями. Тогда то он и дёргает крючок, намертво засевший в моей десне."
     stop music fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_prosecutor_office
     show sotp_snow_layer3_anim
     show sotp_snow_layer2_anim
@@ -254,7 +253,7 @@ label sotp_three_deaths:
     sotp_fox "Обижаешь!"
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_int_abandoned_workshop
     show sotp_int_hanged_man
     show sotp_lis
@@ -291,7 +290,7 @@ label sotp_three_deaths:
     sotp_protagonist "Когда они уже приедут?"
     stop music fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_int_float
     show sotp_yana
     show sotp_static_noise_anim
@@ -334,9 +333,9 @@ label sotp_three_deaths:
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
     $ save_name = ("Три смерти.\nАКТ 3. Так я и умер.")
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_show_centered_text("Три смерти. АКТ 3. Так я и умер.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
     scene bg sotp_ext_winter_street
     show sotp_snow_layer3_anim
@@ -369,7 +368,7 @@ label sotp_three_deaths:
     stop music fadeout 2
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_form
     show sotp_static_noise_anim
     with Dissolve(2)
@@ -395,7 +394,7 @@ label sotp_three_deaths:
     sotp_yana "Вот и здорово! Надеюсь, у тебя когда-нибудь получится отыскать свой «Совёнок»! А я... Я всегда смогу найти к тебе дорогу!"
     stop music fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_roof
     show sotp_snow_layer3_anim
     show sotp_snow_layer2_anim
@@ -444,7 +443,7 @@ label sotp_three_deaths:
     stop music fadeout 2
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_int_float_dream_catcher
     show sotp_static_noise_anim
     with Dissolve(2)
@@ -464,7 +463,7 @@ label sotp_three_deaths:
     sotp_yana "И я люблю тебя, дурак."
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_lane
     show sotp_lis
     show sotp_static_noise_anim
@@ -493,7 +492,7 @@ label sotp_three_deaths:
     sotp_protagonist "Вот бы быстрее всё это закончить."
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     $ sotp_set_mode_nvl()
     scene bg sotp_prolog_bw
     show sotp_static_noise_anim
@@ -513,7 +512,7 @@ label sotp_three_deaths:
     $ sotp_hide_centered_text(dspr)
     stop music fadeout 3
     scene bg black with Dissolve(3)
-    $ renpy.pause(3, hard = True)
+    $ renpy.pause(3, hard=True)
     $ sotp_set_mode_adv()
     scene bg sotp_int_protagonist_room_zoomed:
         xalign 0.5
@@ -565,14 +564,14 @@ label sotp_three_deaths:
     play sound sotp_handgun
     scene bg black
     stop music
-    $ renpy.pause(5, hard = True)
+    $ renpy.pause(5, hard=True)
     play sound sotp_heart_monitor
-    $ renpy.pause(5, hard = True)
+    $ renpy.pause(5, hard=True)
     sotp_fox "Какие у него шансы выйти из комы, Иван Степанович?"
     sotp_doctor "Огнестрельное в голову - это не шутки. Удивительно, что он вообще смог выжить."
     sotp_fox "Зачем ты так?"
     sotp_doctor "Ладно, милочка, вашему другу нужен покой. Пойдемте."
-    $ renpy.pause(3, hard = True)
+    $ renpy.pause(3, hard=True)
     $ renpy.block_rollback()
     $ persistent.timeofday = "winter_day"
     scene bg sotp_ext_road_winter_day with sotp_flash
@@ -589,31 +588,30 @@ label sotp_three_deaths:
     $ sotp_set_main_menu_cursor()
     return
 
-label sotp_shadows:
+label bsar_sotp_shadows:
     stop music fadeout 3
     scene bg black with Dissolve(3)
     $ save_name = ("Тени.\nАКТ 1. Авторитет.")
     $ renpy.block_rollback()
     $ sotp_onload("lock")
     $ persistent.timeofday = "bw"
-    $ renpy.pause(0.5, hard = True)
-    $ sotp_show_centered_text("Тени. АКТ 1. Авторитет.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
+    $ sotp_show_centered_text("Тени. АКТ 1. Авторитет.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
-    $ sotp_show_centered_text("18 декабря 1999 года.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
+    $ sotp_show_centered_text("18 декабря 1999 года.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
-    $ sotp_show_centered_text("Допрос обвиняемого по статье 105.1 УК РФ.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
+    $ sotp_show_centered_text("Допрос обвиняемого по статье 105.1 УК РФ.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     scene bg sotp_int_tish_interrogation
     show sotp_static_noise_anim
     with Dissolve(2)
     $ sotp_onload("unlock")
-    $ sotp_set_timeofday_cursor_var = True
     play music sotp_master_of_spirits_it_was_me fadein 2
     sotp_narrator "Следователь, Сказаев Павел Иванович, коренастый мужчина тридцати трёх лет, красный, как рак, смиренно опустив голову, сидел на косом табурете подле двери."
     sotp_narrator "Следователь был невысок, но внешне довольно привлекателен. О таких говорят: косая сажень в плечах."
@@ -663,23 +661,23 @@ label sotp_shadows:
     stop music fadeout 2
     scene bg black with Dissolve(2)
     $ save_name = ("Тени.\nАКТ 2. Чудо.")
-    $ renpy.pause(0.5, hard = True)
-    $ sotp_show_centered_text("Тени. АКТ 2. Чудо.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
+    $ sotp_show_centered_text("Тени. АКТ 2. Чудо.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_show_centered_text("{font=[sotp_laptev]}И снова я записываю дело в блокнот. Ничего не могу с собой поделать.\nКоллеги уже за глаза Сказочником называют, как будто это что-то плохое.{/font}")
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
-    $ sotp_show_centered_text("29 декабря 1999 года.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
+    $ sotp_show_centered_text("29 декабря 1999 года.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
-    $ sotp_show_centered_text("Сказаев Павел Иванович.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
+    $ sotp_show_centered_text("Сказаев Павел Иванович.", transition=dissolve)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_set_mode_nvl()
     scene bg sotp_int_alcotable
     show sotp_static_noise_anim
@@ -711,7 +709,7 @@ label sotp_shadows:
     nvl clear
     stop music fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_thermal_power_plant
     show sotp_static_noise_anim
     with Dissolve(2)
@@ -759,7 +757,7 @@ label sotp_shadows:
     nvl clear
     stop music fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     scene bg sotp_cammunal
     show sotp_static_noise_anim 
     with Dissolve(2)
@@ -808,14 +806,14 @@ label sotp_shadows:
     sotp_narrator "Но всё же интересно, сколько ещё пройдет через мои руки уголовных дел из-за алкоголя?"
     stop music fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(3, hard = True)
+    $ renpy.pause(3, hard=True)
     $ save_name = ("Тени.\nАКТ 3. Тайна.")
     $ sotp_set_mode_adv()
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_show_centered_text("Тени. АКТ 3. Тайна.", transition = dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     scene bg sotp_prosecutor_office
     show sotp_snow_layer3_anim
     show sotp_snow_layer2_anim
@@ -853,7 +851,7 @@ label sotp_shadows:
     sotp_narrator "Кадр этот больше смахивал на момент из какого-то второсортного зарубежного ужастика в гнусавой озвучке неизвестного переводчика, который когда-то давно крутили в местном киноклубе."
     sotp_narrator "Именно из-за настолько похожих событий того рокового случая он неосознанно с неподдельным интересом разрабатывал дело Тишкевичей? Или было что-то другое? «К чёрту всё это», - решил следователь." 
     $ sotp_show_centered_text("«К чёрту. Прошлое остается прошлым».", transition = dissolve)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     $ sotp_hide_centered_text(dissolve)
     sotp_narrator "После невеселых воспоминаний на мужчину накатила хандра."
     sotp_narrator "Он шёл по серым улочкам городка, словно по сумеречному лесу, а мерзкий запах окружающей его территории вперемешку с головной болью встал комом поперёк горла." 
@@ -861,10 +859,10 @@ label sotp_shadows:
     stop music fadeout 2
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
-    $ renpy.pause(1, hard = True)
+    $ renpy.pause(1, hard=True)
     $ sotp_show_centered_text("Тишкевич Антон Степанович в соответствии с частью первой, статьей 105 УК РФ, а также со статьей 23 УК РФ совершил убийство в состоянии алкогольного опьянения, что было рассмотрено как отягчающее обстоятельство. Мужчина был приговорен к восьми годам исправительной колонии общего режима. Смягчающим обстоятельством стало признание, которое в конечном итоге всё же удалось получить на одном из допросов.", transition = dissolve)
     $ renpy.pause()
     $ sotp_hide_centered_text(dissolve)
-    $ renpy.pause(0.5, hard = True)
+    $ renpy.pause(0.5, hard=True)
     $ sotp_set_main_menu_cursor()
     return

@@ -184,7 +184,7 @@ screen bsar_main_menu():
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.35
-            action [bsar_set_dynamic_cursor('null'), SetVariable("bsar_lock_quit_game_main_menu_var", False), Start("bsar_insomnia_day1")]
+            action [SetVariable("bsar_lock_quit_game_main_menu_var", False), Start("bsar_insomnia_day1")]
                 
         textbutton ["Загрузить"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
@@ -748,7 +748,7 @@ screen bsar_load():
         text_style "bsar_save_load_" + persistent.timeofday
         xalign 0.5
         yalign 0.97
-        action (BsarFunctionCallback(bsar_on_load_callback,selected_slot), FileLoad(selected_slot, confirm=False))
+        action (BsarFunctionCallback(bsar_on_load_callback, selected_slot), FileLoad(selected_slot, confirm=False))
     
     textbutton "[bsar_delete_text]":
         style "bsar_button_none"
@@ -951,7 +951,7 @@ screen bsar_game_menu_selector():
             text_style "bsar_quick_menu_style_" + persistent.timeofday
             xalign 0.5
             ypos 418
-            action [bsar_set_main_menu_cursor_curried(), MainMenu(confirm = False)]
+            action [Function(bsar_set_dynamic_cursor, 'main_menu'), MainMenu(confirm=False)]
             
         textbutton ["Сохранить"]:
             style "bsar_button_none"

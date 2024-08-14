@@ -180,7 +180,7 @@ init python:
 
     def bsar_set_dynamic_cursor(state):
         if bsar_set_timeofday_cursor in config.overlay_functions:
-            config.overlay_functions.remove(update_timeofday_cursor)
+            config.overlay_functions.remove(bsar_set_timeofday_cursor)
 
         if state == 'timeofday':
             config.overlay_functions.append(bsar_set_timeofday_cursor)
@@ -196,7 +196,7 @@ init python:
             sprite_time = timeofday
         
         renpy.block_rollback()
-        persistent.timeofday = 'winter_' + timeofday
+        persistent.timeofday = 'winter_' + timeofday if timeofday in ['day', 'night'] else timeofday
         persistent.sprite_time = sprite_time
 
     def bsar_onload(type):
@@ -260,179 +260,73 @@ init python:
         
         return anim.TransitionAnimation(*anim_args, **properties)
 
-    import random
-    random.seed()
-    def Snow(image, max_particles=50, speed=150, wind=100, xborder=(0,100), yborder=(50,400), **kwargs):
-        """
-        This creates the snow effect. You should use this function instead of instancing
-        the SnowFactory directly (we'll, doesn't matter actually, but it saves typing if you're
-        using the default values =D)
-        
-        @parm {image} image:
-            The image used as the snowflakes. This should always be a image file or an im object,
-            since we'll apply im transformations in it.
-        
-        @parm {int} max_particles:
-            The maximum number of particles at once in the screen.
-            
-        @parm {float} speed:
-            The base vertical speed of the particles. The higher the value, the faster particles will fall.
-            Values below 1 will be changed to 1
-            
-        @parm {float} wind:
-            The max wind force that'll be applyed to the particles.
-            
-        @parm {Tuple ({int} min, {int} max)} xborder:
-            The horizontal border range. A random value between those two will be applyed when creating particles.
-            
-        @parm {Tuple ({int} min, {int} max)} yborder:
-            The vertical border range. A random value between those two will be applyed when creating particles.
-            The higher the values, the fartest from the screen they will be created.
-        """
-        return Particles(SnowFactory(image, max_particles, speed, wind, xborder, yborder, **kwargs))
+    def BsarSnow(image, max_particles=50, speed=150, wind=100, xborder=(0,100), yborder=(50,400), **kwargs):
+        return Particles(BsarSnowFactory(image, max_particles, speed, wind, xborder, yborder, **kwargs))
     
-    # ---------------------------------------------------------------
-    class SnowFactory(object):
-        """
-        The factory that creates the particles we use in the snow effect.
-        """
+    class BsarSnowFactory(object):
         def __init__(self, image, max_particles, speed, wind, xborder, yborder, **kwargs):
-            """
-            Initialize the factory. Parameters are the same as the Snow function.
-            """            
-            # the maximum number of particles we can have on screen at once
             self.max_particles = max_particles
-            
-            # the particle's speed
             self.speed = speed
-            
-            # the wind's speed
             self.wind = wind
-            
-            # the horizontal/vertical range to create particles
             self.xborder = xborder
             self.yborder = yborder
-            
-            # the maximum depth of the screen. Higher values lead to more varying particles size,
-            # but it also uses more memory. Default value is 10 and it should be okay for most
-            # games, since particles sizes are calculated as percentage of this value.
             self.depth = kwargs.get("depth", 10)
-            
-            # initialize the images
             self.image = self.image_init(image)
-            
 
         def create(self, particles, st):
-            """
-            This is internally called every frame by the Particles object to create new particles.
-            We'll just create new particles if the number of particles on the screen is
-            lower than the max number of particles we can have.
-            """
-            # if we can create a new particle...
             if particles is None or len(particles) < self.max_particles:
-                
-                # generate a random depth for the particle
                 depth = random.randint(1, self.depth)
+                depth_speed = 1.5 - depth / (self.depth + 0.0)
                 
-                # We expect that particles falling far from the screen will move slowly than those
-                # that are falling near the screen. So we change the speed of particles based on
-                # its depth =D
-                depth_speed = 1.5-depth/(self.depth+0.0)
-                
-                return [ SnowParticle(self.image[depth-1],      # the image used by the particle 
-                                      random.uniform(-self.wind, self.wind)*depth_speed,  # wind's force
-                                      self.speed*depth_speed,  # the vertical speed of the particle
-                                      random.randint(self.xborder[0], self.xborder[1]), # horizontal border
-                                      random.randint(self.yborder[0], self.yborder[1]), # vertical border
-                                      ) ]
-        
+                return [BsarSnowParticle(self.image[depth - 1], 
+                        random.uniform(-self.wind, self.wind) * depth_speed,
+                        self.speed * depth_speed,
+                        random.randint(self.xborder[0], self.xborder[1]),
+                        random.randint(self.yborder[0], self.yborder[1])) 
+                        ]
         
         def image_init(self, image):
-            """
-            This is called internally to initialize the images.
-            will create a list of images with different sizes, so we
-            can predict them all and use the cached versions to make it more memory efficient.            
-            """
             rv = [ ]
             
-            # generate the array of images for each possible depth value.
             for depth in range(self.depth):
-                # Resize and adjust the alpha value based on the depth of the image
-                p = 1.1 - depth/(self.depth+0.0)
+                p = 1.1 - depth / (self.depth + 0.0)
+
                 if p > 1:
                     p = 1.0
                 
-                rv.append( im.FactorScale( im.Alpha(image, p), p ) )
+                rv.append(im.FactorScale(im.Alpha(image, p), p))
 
             return rv
         
-        
         def predict(self):
-            """
-            This is called internally by the Particles object to predict the images the particles
-            are using. It's expected to return a list of images to predict.
-            """ 
             return self.image
             
-    # ---------------------------------------------------------------
-    class SnowParticle(object):
-        """
-        Represents every particle in the screen.
-        """
+    class BsarSnowParticle(object):
         def __init__(self, image, wind, speed, xborder, yborder):
-            """
-            Initializes the snow particle. This is called automatically when the object is created.
-            """
-            
-            # The image used by this particle
             self.image = image
             
-            # For safety (and since we don't have snow going from the floor to the sky o.o)
-            # if the vertical speed of the particle is lower than 1, we use 1.
-            # This prevents the particles of being stuck in the screen forever and not falling at all.
             if speed <= 0:
                 speed = 1
                 
-            # wind's speed
             self.wind = wind
-            
-            # particle's speed
             self.speed = speed
-
-            # The last time when this particle was updated (used to calculate the unexpected delay
-            # between updates, aka lag)
-            self.oldst = None
-            
-            # the horizontal/vertical positions of this particle            
-            self.xpos = random.uniform(0-xborder, renpy.config.screen_width+xborder)
+            self.oldst = None         
+            self.xpos = random.uniform(0 - xborder, renpy.config.screen_width + xborder)
             self.ypos = -yborder
             
-            
         def update(self, st):
-            """
-            Called internally in every frame to update the particle.
-            """
-            
-            # calculate lag
             if self.oldst is None:
                 self.oldst = st
             
             lag = st - self.oldst
             self.oldst = st
-            
-            # update the position
             self.xpos += lag * self.wind
             self.ypos += lag * self.speed
                
-            # verify if the particle went out of the screen so we can destroy it.
             if self.ypos > renpy.config.screen_height or\
-               (self.wind< 0 and self.xpos < 0) or (self.wind > 0 and self.xpos > renpy.config.screen_width):
-                ##  print "Dead"
+                (self.wind< 0 and self.xpos < 0) or (self.wind > 0 and self.xpos > renpy.config.screen_width):
                 return None
-                
-            # returns the particle as a Tuple (xpos, ypos, time, image)
-            # since it expects horizontal and vertical positions to be integers, we have to convert
-            # it (internal positions use float for smooth movements =D)
+
             return int(self.xpos), int(self.ypos), st, self.image
 
     class bsar_disp_text_style():
@@ -705,7 +599,7 @@ init python:
     def bsar_show_achievement(achievement_name):
         renpy.play(sfx_achievement)
         renpy.show(achievement_name, [bsar_achievement_transform])
-        renpy.pause(4, hard = True)
+        renpy.pause(4, hard=True)
         renpy.hide(achievement_name)
 
 init:
@@ -717,25 +611,25 @@ init:
     $ bsar_day2_amnesia_scene = ["Мог ли я быть знаком с Ульяной? ", "Чем занимаются родители?", "Где учусь?", "???"]
 
     $ bsar_heart_monitor_phrases = {
-        "bsar_military_service": ["Служба в армии", 1179],
-        "bsar_composure": ["Хладнокровие", 1149],
-        "bsar_institute": ["Институт", 1089],
-        "bsar_meeting_with_her": ["Встреча с ней", 1155],
-        "bsar_love": ["Пветёа4", 1069],
-        "bsar_police_work": ["Работа в полиции", 1215],
-        "bsar_0apv4": ["0 АПВ 4", 978],
-        "bsar_fox": ["Лис", 1038],
-        "bsar_friendship": ["Дружба", 1061],
-        "bsar_rest": ["Покой", 975],
-        "bsar_easy_money": ["Лёгкие деньги", 1163],
-        "bsar_protection": ["12-18-29-26-6-3-1-15-10-6", 1373],
-        "bsar_drug_trafficking": ["15-1-18-12-16-16-2-16-18-16-20", 1516],
-        "bsar_sisters_death": ["Шулчщг шлшщчв7", 946],
-        "bsar_nightmares": ["Кошмары", 1059],
-        "bsar_doubts": ["Сомнения", 976],
-        "bsar_new_deal": ["15-16-3-1-33 19-5-6-13-12-1", 1404],
-        "bsar_her_death": ["Её смерть", 1086],
-        "bsar_sleep_that_knows_no_breaking": ["Сон", 1038]
+        "military_service": ["Служба в армии", 1179],
+        "composure": ["Хладнокровие", 1149],
+        "institute": ["Институт", 1089],
+        "meeting_with_her": ["Встреча с ней", 1155],
+        "love": ["Пветёа4", 1069],
+        "police_work": ["Работа в полиции", 1215],
+        "0apv4": ["0 АПВ 4", 978],
+        "fox": ["Лис", 1038],
+        "friendship": ["Дружба", 1061],
+        "rest": ["Покой", 975],
+        "easy_money": ["Лёгкие деньги", 1163],
+        "protection": ["12-18-29-26-6-3-1-15-10-6", 1373],
+        "drug_trafficking": ["15-1-18-12-16-16-2-16-18-16-20", 1516],
+        "sisters_death": ["Шулчщг шлшщчв7", 946],
+        "nightmares": ["Кошмары", 1059],
+        "doubts": ["Сомнения", 976],
+        "new_deal": ["15-16-3-1-33 19-5-6-13-12-1", 1404],
+        "her_death": ["Её смерть", 1086],
+        "sleep_that_knows_no_breaking": ["Сон", 1038]
     }
 
     $ bsar_heart_monitor_transition = ImageDissolve("bsar/images/gui/misc/heart_monitor/bsar_hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
@@ -777,30 +671,16 @@ Anna Monster
 
     image bsar_titles_final = ParameterizedText(style="bsar_titles_style", size=40, xalign=0.5)
 
-    image bsar_heavy_snow_day = Snow(bsar_gui_path + "bsar_snow_particle_day.png", max_particles = 500)
-    image bsar_normal_snow_day = Snow(bsar_gui_path + "bsar_snow_particle_day.png")
+    image bsar_heavy_snow_day = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_day.png", max_particles=500)
+    image bsar_normal_snow_day = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_day.png")
 
-    image bsar_heavy_snow_night = Snow(bsar_gui_path + "bsar_snow_particle_night.png", max_particles = 500)
-    image bsar_normal_snow_night = Snow(bsar_gui_path + "bsar_snow_particle_night.png")
+    image bsar_heavy_snow_night = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_night.png", max_particles=500)
+    image bsar_normal_snow_night = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_night.png")
 
     $ bsar_main_menu_var = True
-    #$ bsar_set_timeofday_cursor_var = False
     $ bsar_lock_quit = False
     $ bsar_lock_quick_menu = False
     $ bsar_lock_quit_game_main_menu_var = True
-
-    # $ bsar_screens_list = [
-    #     "bsar_main_menu", "bsar_preferences_main_menu", "bsar_load_main_menu", "bsar_achievements", "bsar_quit_main_menu", "bsar_preferences", 
-    #     "bsar_save", "bsar_load", "bsar_say", "bsar_nvl", "bsar_game_menu_selector", "bsar_quit", "bsar_yesno_prompt", "bsar_text_history", "bsar_choice", "bsar_help"
-    # ]
-
-    # $ bsar_folders_list = ["bsar/images/bg*.*", "bsar/images/sprites*.*"]
-
-    # image bsar_name_header = Text("Бессонница", size = 170, font = bsar_diamond_girl_skinny)
-    # image bsar_loading_text = Text("Загрузка", size = 110, font = bsar_diamond_girl_skinny)
-    # image bsar_first_dot_image = Text(".", size = 110, font = bsar_diamond_girl_skinny)
-    # image bsar_second_dot_image = Text(".", size = 110, font = bsar_diamond_girl_skinny)
-    # image bsar_third_dot_image = Text(".", size = 110, font = bsar_diamond_girl_skinny)
 
     image bsar_static_noise_anim = bsar_frame_animation("bsar/images/bg/bsar_static_noise_anim/bsar_static_noise", 5, 0.2, True, Dissolve(0.2))
 
@@ -808,7 +688,7 @@ Anna Monster
 
     image bsar_words_move_style = ParameterizedText(style="settings_link", size = 100, color = "fff")
 
-    image bsar_she_night = im.MatrixColor("bsar/images/sprites/she/bsar_she.png", im.matrix.tint(0.63, 0.78, 0.82))
+    image bsar_she_night = im.MatrixColor("bsar/images/sprites/she/bsar_she normal.png", im.matrix.tint(0.63, 0.78, 0.82))
 
     image bg bsar_int_house_of_mt_day_blurred = im.Blur("images/bg/int_house_of_mt_day.jpg", 1.5)
 
