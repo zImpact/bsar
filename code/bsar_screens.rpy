@@ -193,14 +193,14 @@ screen bsar_main_menu():
             yalign 0.475
             action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_load_main_menu")]
             
-        textbutton "[bsar_preferences_text]" at bsar_buttons_atl():
+        textbutton ["Настройки"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.6
             action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_preferences_main_menu")]
 
-        textbutton "[bsar_extra_text]" at bsar_buttons_atl():
+        textbutton ["Дополнительно"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
             text_style "bsar_main_menu_text_style"
             xalign 0.5
@@ -228,7 +228,7 @@ screen bsar_preferences_main_menu():
         action NullAction()
     
     if not bsar_main_menu_var:        
-        text "[bsar_preferences_text]":
+        text ["Настройки"]:
             font bsar_diamond_girl_skinny
             size 150
             xalign 0.5
@@ -236,7 +236,7 @@ screen bsar_preferences_main_menu():
             antialias True
             kerning 2
 
-        text "[bsar_display_preferences_text]":
+        text ["Режим экрана"]:
             font bsar_diamond_girl_skinny
             size 70
             xalign 0.5
@@ -338,7 +338,7 @@ screen bsar_preferences_main_menu():
             xmaximum 400
             ymaximum 85
 
-        textbutton "[bsar_return_text]" at bsar_buttons_atl():
+        textbutton ["Назад"] at bsar_buttons_atl():
             style "bsar_button_none" 
             text_style "bsar_main_menu_text_style" 
             xalign 0.5
@@ -359,7 +359,7 @@ screen bsar_load_main_menu():
             antialias True
             kerning 2
 
-        textbutton "[bsar_return_text]" at bsar_buttons_atl():
+        textbutton ["Назад"] at bsar_buttons_atl():
             style "bsar_button_none" 
             text_style "bsar_main_menu_text_style" 
             xalign 0.1
@@ -373,7 +373,7 @@ screen bsar_load_main_menu():
             ypos 970
             action (BsarFunctionCallback(bsar_on_load_callback, selected_slot), FileLoad(selected_slot, confirm=False))
                  
-        textbutton "[bsar_delete_text]" at bsar_buttons_atl():
+        textbutton ["Удалить"] at bsar_buttons_atl():
             style "bsar_button_none" 
             text_style "bsar_main_menu_text_style" 
             xalign 0.9
@@ -446,7 +446,7 @@ screen bsar_extra():
             ypos 677
             action [Hide("bsar_extra"), ShowMenu("bsar_achievements")]
 
-        textbutton "[bsar_return_text]" at bsar_buttons_atl():
+        textbutton ["Назад"] at bsar_buttons_atl():
             style "bsar_button_none" 
             text_style "bsar_main_menu_text_style" 
             xalign 0.5
@@ -483,7 +483,7 @@ screen bsar_achievements:
         else:
             add "bsar_paradise" xalign 0.5 ypos 745
 
-        textbutton "[bsar_return_text]" at bsar_buttons_atl():
+        textbutton ["Назад"] at bsar_buttons_atl():
             style "bsar_button_none" 
             text_style "bsar_main_menu_text_style" 
             xalign 0.5
@@ -505,7 +505,7 @@ screen bsar_background_gallery():
             antialias True
             kerning 2
 
-        textbutton "[bsar_return_text]" at bsar_buttons_atl():
+        textbutton ["Назад"] at bsar_buttons_atl():
             style "bsar_button_none" 
             text_style "bsar_main_menu_text_style" 
             xalign 0.5
@@ -684,7 +684,7 @@ screen bsar_save():
         antialias True
         kerning 2
 
-    textbutton "[bsar_return_text]": 
+    textbutton ["Назад"]: 
         style "bsar_button_none"
         text_style "bsar_save_load_" + persistent.timeofday
         xalign 0.12 
@@ -698,7 +698,7 @@ screen bsar_save():
         yalign 0.97
         action (BsarFunctionCallback(bsar_on_save_callback,selected_slot), FileSave(selected_slot))
 
-    textbutton "[bsar_delete_text]": 
+    textbutton ["Удалить"]: 
         style "bsar_button_none"
         text_style "bsar_save_load_" + persistent.timeofday
         xalign 0.88
@@ -736,7 +736,7 @@ screen bsar_load():
         antialias True
         kerning 2
 
-    textbutton "[bsar_return_text]":
+    textbutton ["Назад"]:
         style "bsar_button_none"
         text_style "bsar_save_load_" + persistent.timeofday
         xalign 0.12 
@@ -750,7 +750,7 @@ screen bsar_load():
         yalign 0.97
         action (BsarFunctionCallback(bsar_on_load_callback, selected_slot), FileLoad(selected_slot, confirm=False))
     
-    textbutton "[bsar_delete_text]":
+    textbutton ["Удалить"]:
         style "bsar_button_none"
         text_style "bsar_save_load_" + persistent.timeofday
         xalign 0.88
@@ -1003,14 +1003,14 @@ screen bsar_quit():
             kerning 2
             font bsar_diamond_girl_skinny
             
-        textbutton "[bsar_yes_text]":
+        textbutton ["Да"]:
             style "bsar_button_none"
             text_style "bsar_text_" + persistent.timeofday
             xalign 0.3
             ypos 650
             action [(Function(bsar_screens_diact)), ShowMenu("main_menu")]
             
-        textbutton "[bsar_no_text]":
+        textbutton ["Нет"]:
             style "bsar_button_none"
             text_style "bsar_text_" + persistent.timeofday
             xalign 0.7
@@ -1036,14 +1036,14 @@ screen bsar_yesno_prompt(yes_action, message, no_action):
         font bsar_diamond_girl_skinny 
         size 100
 
-    textbutton "[bsar_yes_text]": 
+    textbutton ["Да"]: 
         style "bsar_button_none"
         text_style "bsar_text_" + persistent.timeofday
         yalign 0.68 
         xalign 0.3 
         action yes_action
 
-    textbutton "[bsar_no_text]": 
+    textbutton ["Нет"]: 
         style "bsar_button_none"
         text_style "bsar_text_" + persistent.timeofday
         yalign 0.68 
@@ -1190,7 +1190,7 @@ screen bsar_help():
 
     add "bsar_logowhite_hover" xpos 1520 ypos 880
 
-    textbutton "[bsar_return_text]":
+    textbutton ["Назад"]:
         style "bsar_button_none"
         text_style "bsar_text_" + persistent.timeofday
         xalign 0.5 

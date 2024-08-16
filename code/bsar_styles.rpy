@@ -34,14 +34,8 @@ init -1 python:
     bsar_flow_ext = bsar_gui_path + "fonts/flow_ext.otf"
     bsar_diamond_girl_skinny = bsar_gui_path + "fonts/diamond_girl_skinny.otf"
     bsar_electronical = bsar_gui_path + "fonts/electronical.otf"
-
-    bsar_preferences_text = "Настройки"
-    bsar_extra_text = "Дополнительно"
-    bsar_return_text = "Назад"
-    bsar_delete_text = "Удалить"
-    bsar_display_preferences_text = "Режим экрана"
-    bsar_yes_text = "Да"
-    bsar_no_text = "Нет"
+    bsar_yanone_kaffeesatz_light = bsar_gui_path + "fonts/yanone_kaffeesatz_light.ttf"
+    bsar_laptev = bsar_gui_path + "fonts/Laptev_Brush.otf"
 
     style.bsar_titles_style = Style(style.default)
     style.bsar_titles_style.font = bsar_flow_ext
@@ -84,11 +78,18 @@ init -1 python:
     style.bsar_preferences_main_menu_text_style_inverse.selected_color = "#ffffff"
     style.bsar_preferences_main_menu_text_style_inverse.size = 60
 
-    style.bsar_centered_text_style = Style(style.default)
-    style.bsar_centered_text_style.color = "#ffffff"
-    style.bsar_centered_text_style.drop_shadow = (2, 2)
-    style.bsar_centered_text_style.drop_shadow_color = "#000"
-    style.bsar_centered_text_style.size = 80
+    style.bsar_insomnia_centered_text_style = Style(style.default)
+    style.bsar_insomnia_centered_text_style.color = "#ffffff"
+    style.bsar_insomnia_centered_text_style.drop_shadow = (2, 2)
+    style.bsar_insomnia_centered_text_style.drop_shadow_color = "#000"
+    style.bsar_insomnia_centered_text_style.size = 80
+
+    style.bsar_sotp_centered_text_style = Style(style.default)
+    style.bsar_sotp_centered_text_style.font = bsar_yanone_kaffeesatz_light
+    style.bsar_sotp_centered_text_style.color = "#ffffff"
+    style.bsar_sotp_centered_text_style.drop_shadow = (2, 2)
+    style.bsar_sotp_centered_text_style.drop_shadow_color = "#000"
+    style.bsar_sotp_centered_text_style.size = 60
 
     style.bsar_centered_text_style_heart_monitor = Style(style.default)
     style.bsar_centered_text_style_heart_monitor.font = bsar_electronical

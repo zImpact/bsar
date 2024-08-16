@@ -54,6 +54,10 @@ init python:
     bsar_names["bsar_she_red"] = "Она"
     store.bsar_names_list.append("bsar_she_red")
 
+    bsar_colors["bsar_yana"] = {"speaker_color": "#ff3200"}
+    bsar_names["bsar_yana"] = "Яна"
+    store.bsar_names_list.append("bsar_yana")
+
     bsar_colors["bsar_dv"] = {"speaker_color": "#ffaa00"}
     bsar_names["bsar_dv"] = "Алиса"
     store.bsar_names_list.append("bsar_dv")
@@ -74,6 +78,10 @@ init python:
     bsar_names["bsar_sister"] = "Сестра"
     store.bsar_names_list.append("bsar_sister")
 
+    bsar_colors["bsar_sister_yellow"] = {"speaker_color": "#ffd200"}
+    bsar_names["bsar_sister_yellow"] = "Сестра"
+    store.bsar_names_list.append("bsar_sister_yellow")
+
     bsar_colors["bsar_mz"] = {"speaker_color": "#4a86ff"}
     bsar_names["bsar_mz"] = "Женя"
     store.bsar_names_list.append("bsar_mz")
@@ -89,6 +97,22 @@ init python:
     bsar_colors["bsar_doctor"] = {"speaker_color": "#ffffff"}
     bsar_names["bsar_doctor"] = "Доктор"
     store.bsar_names_list.append("bsar_doctor")
+
+    bsar_colors["bsar_od"] = {"speaker_color": "#00ea32"}
+    bsar_names["bsar_od"] = "ОД"
+    store.bsar_names_list.append("bsar_od")
+
+    bsar_colors["bsar_phone"] = {"speaker_color": "#6e0808"}
+    bsar_names["bsar_phone"] = "Телефон"
+    store.bsar_names_list.append("bsar_phone")
+
+    bsar_colors["bsar_skaz"] = {"speaker_color": "#cccc7b"}
+    bsar_names["bsar_skaz"] = "Сказаев"
+    store.bsar_names_list.append("bsar_skaz")
+
+    bsar_colors["bsar_tish"] = {"speaker_color": "#6b0202"}
+    bsar_names["bsar_tish"] = "Тишкевич"
+    store.bsar_names_list.append("bsar_tish")
 
     bsar_colors["bsar_voice"] = {"speaker_color": "#ffffff"}
     bsar_names["bsar_voice"] = "Голос"
@@ -223,7 +247,7 @@ init python:
             randow_word = random.choice(list)
             renpy.show("bsar_words_move_style randow_word", at_list=[bsar_words_move(random.uniform(0.1, 0.5), random.random(), random.random())], tag="text_" + str(i))
 
-    def bsar_show_centered_text(text, transition=None, pause=True, style=style.bsar_centered_text_style):
+    def bsar_show_centered_text(text, style, transition=None, pause=True):
         renpy.show("text", what=Text(text, slow=True, style=style, xalign=0.5, yalign=0.5))
         renpy.with_statement(transition)
 
@@ -234,17 +258,17 @@ init python:
         renpy.hide("text")
         renpy.with_statement(transition)
 
-    def bsar_heart_monitor_phrases_f(phrase):
+    def bsar_show_heart_monitor_phrases(phrase):
         renpy.play(bsar_heart_monitor_sound, "sound")
-        renpy.show(phrase + "_left", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(0)])
+        renpy.show('bsar_' + phrase + "_left", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(0)])
         renpy.with_statement(bsar_heart_monitor_transition)
         bsar_show_centered_text(bsar_heart_monitor_phrases[phrase][0], transition=bsar_heart_monitor_transition, pause=False, style=style.bsar_centered_text_style_heart_monitor)
-        renpy.show(phrase + "_right", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(bsar_heart_monitor_phrases[phrase][1])])
+        renpy.show('bsar_' + phrase + "_right", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(bsar_heart_monitor_phrases[phrase][1])])
         renpy.with_statement(bsar_heart_monitor_transition)
         renpy.pause()
-        renpy.hide(phrase + "_left")
+        renpy.hide('bsar_' + phrase + "_left")
         renpy.hide("text")
-        renpy.hide(phrase + "_right")
+        renpy.hide('bsar_' + phrase + "_right")
         renpy.with_statement(bsar_heart_monitor_transition)
         renpy.pause(0.5, hard=True)
 
@@ -260,7 +284,45 @@ init python:
         
         return anim.TransitionAnimation(*anim_args, **properties)
 
-    def BsarSnow(image, max_particles=50, speed=150, wind=100, xborder=(0,100), yborder=(50,400), **kwargs):
+    def bsar_new_chapter(story_name, part, phrases=[]):
+        global save_name
+
+        insomnia_days = {
+            'День первый.': 1,
+            'День второй.': 2,
+            'День третий.': 3
+        }
+
+        renpy.block_rollback()
+        bsar_set_dynamic_cursor('null')
+        bsar_onload("lock")
+        save_name = story_name + '\n' + part
+        renpy.pause(2, hard=True)
+
+        if story_name == 'Бессонница.':
+            insomnia_day_number = insomnia_days.get(part)
+            renpy.movie_cutscene(bsar_gui_path + "days_transitions/bsar_insomnia_day{}.ogv".format(insomnia_day_number))
+            renpy.pause(0.5, hard=True)
+
+        elif story_name in ['Три смерти.', 'Тени.']:
+            bsar_show_centered_text(story_name + ' ' + part, style=style.bsar_sotp_centered_text_style, transition=dissolve)
+            renpy.pause(0.5, hard=True)
+            bsar_hide_centered_text(dissolve)
+            renpy.pause(0.5, hard=True)
+
+            if story_name == 'Тени.':
+                for phrase in phrases:
+                    bsar_show_centered_text(phrase, style=style.bsar_sotp_centered_text_style, transition=dissolve)
+                    renpy.pause(0.5, hard=True)
+                    bsar_hide_centered_text(dissolve)
+                    renpy.pause(0.5, hard=True)
+
+        bsar_set_dynamic_cursor('timeofday')
+        renpy.pause(2, hard=True)
+        bsar_onload("unlock")
+        renpy.block_rollback()
+
+    def bsar_snow(image, max_particles=50, speed=150, wind=100, xborder=(0, 100), yborder=(50, 400), **kwargs):
         return Particles(BsarSnowFactory(image, max_particles, speed, wind, xborder, yborder, **kwargs))
     
     class BsarSnowFactory(object):
@@ -329,7 +391,7 @@ init python:
 
             return int(self.xpos), int(self.ypos), st, self.image
 
-    class bsar_disp_text_style():
+    class BsarDispTextStyle():
         def __init__(self):
             self.alpha = None
             self.font = None
@@ -540,12 +602,10 @@ init python:
 
             return new_string
 
-    class bsar_scare_text(renpy.Displayable):
+    class BsarScareText(renpy.Displayable):
         def __init__(self, child, square = 2, **kwargs):
-            super(bsar_scare_text, self).__init__(**kwargs)
-
+            super(BsarScareText, self).__init__(**kwargs)
             self.child = child
-
             self.square = square
 
         def render(self, width, height, st, at):
@@ -569,13 +629,13 @@ init python:
         if argument == "":
             argument = 5
 
-        scare_style = bsar_disp_text_style()
+        scare_style = BsarDispTextStyle()
 
         for kind,text in contents:
             if kind == renpy.TEXT_TEXT:
                 for char in text:
                     char_text = Text(scare_style.bsar_apply_style(char))
-                    char_disp = bsar_scare_text(char_text, argument)
+                    char_disp = BsarScareText(char_text, argument)
                     new_list.append((renpy.TEXT_DISPLAYABLE, char_disp))
 
             elif kind == renpy.TEXT_TAG:
@@ -587,7 +647,7 @@ init python:
 
         return new_list    
 
-    config.custom_text_tags["isc"] = bsar_scare_tag
+    config.custom_text_tags["bsar_scare"] = bsar_scare_tag
 
     if persistent.bsar_achievements == None:
         persistent.bsar_achievements = {
@@ -632,7 +692,7 @@ init:
         "sleep_that_knows_no_breaking": ["Сон", 1038]
     }
 
-    $ bsar_heart_monitor_transition = ImageDissolve("bsar/images/gui/misc/heart_monitor/bsar_hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
+    $ bsar_heart_monitor_transition = ImageDissolve("bsar/images/gui/effects/heart_monitor/bsar_hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
     $ bsar_flash = Fade(0.45, 1.0, 0.45, color="#ffff")
 
     $ bsar_titles_text = '''Спасибо за прочтение! Вот уже прошло практически два года как мы начали делать модификации и именно этот проект является важной вехой нашей деятельности, ибо с него всё и начиналось.
@@ -671,11 +731,11 @@ Anna Monster
 
     image bsar_titles_final = ParameterizedText(style="bsar_titles_style", size=40, xalign=0.5)
 
-    image bsar_heavy_snow_day = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_day.png", max_particles=500)
-    image bsar_normal_snow_day = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_day.png")
+    image bsar_heavy_snow_day = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_day.png", max_particles=500)
+    image bsar_normal_snow_day = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_day.png")
 
-    image bsar_heavy_snow_night = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_night.png", max_particles=500)
-    image bsar_normal_snow_night = BsarSnow(bsar_gui_path + "effects/bsar_snow_particle_night.png")
+    image bsar_heavy_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png", max_particles=500)
+    image bsar_normal_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png")
 
     $ bsar_main_menu_var = True
     $ bsar_lock_quit = False

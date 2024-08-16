@@ -1,19 +1,11 @@
 label bsar_insomnia_day1:
-    $ bsar_set_dynamic_cursor('null')
-    stop music fadeout 3
-    $ save_name = ("День первый.")
-    $ renpy.block_rollback()
-    $ bsar_onload("lock")
-    $ renpy.pause(4, hard=True)
     $ bsar_set_time('night')
-    $ renpy.movie_cutscene(bsar_gui_path + "days_transitions/bsar_insomnia_day1.ogv")
-    scene bg black
-    $ renpy.pause(3.5, hard=True)
-    $ bsar_set_mode_nvl() 
+    stop music fadeout 3
+    scene bg black with Dissolve(3)
+    $ bsar_new_chapter('Бессонница.', 'День первый.')
+    $ bsar_set_mode_nvl()
     scene bg bsar_prolog_blue with Dissolve(3)
     $ renpy.pause(1, hard=True)
-    $ bsar_onload("unlock")
-    $ bsar_set_dynamic_cursor('timeofday')
     play music bsar_domitori_taranofu_slow_pulse fadein 3
     bsar_narrator "{i}В этом мире есть множество вещей, которые нельзя объяснить. {w}Их невозможно понять, невозможно увидеть и доказать, но тем не менее они существуют.{/i}"
     bsar_narrator "{i}Сон - одна из этих вещей.{/i}"
@@ -289,7 +281,7 @@ label bsar_insomnia_day1:
     with Dissolve(1)
     play ambience bsar_winter_wind fadein 2
     bsar_mt "Пионер!"
-    show bsar_mt rage behind insomnia_normal_snow_day with dissolve
+    show bsar_mt rage behind bsar_normal_snow_day with dissolve
     bsar_protagonist "Да? Что? Где?"
     bsar_narrator "Довольно резко прозвучавший рядом голос Ольги Дмитриевны выбил меня из колеи, спутав ход мыслей."
     bsar_mt "Я знаю, что ты сегодня не пришёл на завтрак и, по всей видимости, поздно проснулся! Я надеюсь, ты понимаешь, что такое поведение не подобает настоящему пионеру?"
@@ -299,7 +291,7 @@ label bsar_insomnia_day1:
     bsar_protagonist "Да, извините, больше не повторится."
     bsar_mt "Отлично! Осознание проблемы - половина её решения!"
     bsar_protagonist "Да, конечно."
-    show bsar_mt angry behind insomnia_normal_snow_day with dspr
+    show bsar_mt angry behind bsar_normal_snow_day with dspr
     bsar_mt "Раз ты сейчас ничем не занят, то..."
     bsar_narrator "В раздумьях она играет локоном своих волос, пытаясь придумать мне поручение."
     bsar_protagonist "Пионер понял, что ему нужно найти социально полезное занятие!"
@@ -318,13 +310,13 @@ label bsar_insomnia_day1:
     menu: 
         "Пойти на прогулку": 
             $ bsar_day1_stroll = True 
-            jump insomnia_day1_stroll 
+            jump bsar_insomnia_day1_stroll
 
         "Убраться в домике": 
             $ bsar_paradise_ending_v += 1 
-            jump insomnia_day1_cleaning 
+            jump bsar_insomnia_day1_cleaning
 
-label insomnia_day1_cleaning: 
+label bsar_insomnia_day1_cleaning: 
     $ renpy.block_rollback()
     $ persistent.sprite_time = "day"
     bsar_narrator "Так! Я обещал, что сделаю, значит сделаю!"
@@ -409,9 +401,9 @@ label insomnia_day1_cleaning:
     bsar_narrator "На меня и вправду накатила сильная усталость и, как только голова коснулась подушки, я моментально заснул." 
     stop ambience fadeout 2
     $ renpy.pause(3, hard=True) 
-    jump insomnia_day2 
+    jump bsar_insomnia_day2
 
-label insomnia_day1_stroll: 
+label bsar_insomnia_day1_stroll: 
     $ renpy.block_rollback()
     bsar_narrator "Ай! Да и чёрт с ним. Не думаю, что она вообще вспомнит об этом. Мне явно стоит проветриться."
     play sound sfx_open_door_1
@@ -423,13 +415,13 @@ label insomnia_day1_stroll:
     with dissolve
     play ambience bsar_winter_wind fadein 2
     $ renpy.pause(1.5, hard=True)
-    show bg bsar_ext_houses_winter_night behind insomnia_heavy_snow_night with dissolve
+    show bg bsar_ext_houses_winter_night behind bsar_heavy_snow_night with dissolve
     $ renpy.pause(1.5, hard=True)
-    show bg bsar_ext_square_winter_night behind insomnia_heavy_snow_night with dissolve
+    show bg bsar_ext_square_winter_night behind bsar_heavy_snow_night with dissolve
     $ renpy.pause(1.5, hard=True)
-    show bg bsar_ext_clubs_winter_night behind insomnia_heavy_snow_night with dissolve
+    show bg bsar_ext_clubs_winter_night behind bsar_heavy_snow_night with dissolve
     $ renpy.pause(1.5, hard=True)
-    show bg bsar_ext_camp_entrance_winter_night behind insomnia_heavy_snow_night with dissolve
+    show bg bsar_ext_camp_entrance_winter_night behind bsar_heavy_snow_night with dissolve
     $ renpy.pause(1.5, hard=True)
     bsar_narrator "Ворота."
     bsar_narrator "Как бы я не пытался не думать об этих странных видениях, они, подобно мерзким осьминогам, тянутся своими отвратительными склизкими щупальцами к моему сознанию, чтобы..."
@@ -442,9 +434,9 @@ label insomnia_day1_stroll:
     call screen bsar_qte(["↓"], 2, 3)
     call screen bsar_qte(["→"], 2, 3)
     call screen bsar_qte(["↑"], 2, 3)
-    jump insomnia_day1_stroll_completed
+    jump bsar_insomnia_day1_stroll_completed
 
-label insomnia_day1_stroll_failed: 
+label bsar_insomnia_day1_stroll_failed: 
     $ renpy.block_rollback()
     hide bsar_heavy_snow_night
     hide bsar_normal_snow_night
@@ -521,30 +513,30 @@ label insomnia_day1_stroll_failed:
     #$ insomnia_set_main_menu_cursor()
     #return     
 
-label insomnia_day1_stroll_completed: 
+label bsar_insomnia_day1_stroll_completed: 
     $ renpy.block_rollback() 
     $ persistent.sprite_time = "night" 
     bsar_narrator "Я резко отскакиваю в сторону, и запущенный в меня снежок пролетает мимо." 
     bsar_dv "Блин! Я надеялась, что попаду." 
-    show bsar_dv normal2 behind insomnia_normal_snow_night with dissolve 
+    show bsar_dv normal2 behind bsar_normal_snow_night with dissolve 
     bsar_narrator "С нескрываемой досадой в голосе выдала Алиса, выходя из-за статуи пионера." 
     bsar_protagonist "Добрая ты девочка, Алиса. Что ты тут вообще забыла?" 
     bsar_dv "А это уже не твоё дело, {i}дорогуша.{/i}" 
     bsar_narrator "Что-то подозрительное промелькнуло в нотках её голоса..."
     bsar_narrator "До того, как я успеваю среагировать, Ульяна молниеносно засыпает мне за воротник снег и также быстро отскакивает к Алисе."
-    show bsar_dv smile behind insomnia_normal_snow_night:
+    show bsar_dv smile behind bsar_normal_snow_night:
         linear 1.0 xalign 0.25
     $ renpy.pause(1.0, hard=True)
-    show bsar_us smile at right behind insomnia_normal_snow_night with dissolve
+    show bsar_us smile at right behind bsar_normal_snow_night with dissolve
     bsar_narrator "Наблюдая за моей агонией, рыжие в унисон заливаются звонким смехом."
     bsar_protagonist "УЛЬЯНА! Чтоб тебя!" 
     bsar_us "Как будто что-то плохое!" 
     bsar_protagonist "Я ж тебя..." 
-    show bsar_us sad behind insomnia_normal_snow_night:
+    show bsar_us sad behind bsar_normal_snow_night:
         linear 1.0 xalign 0.4
     $ renpy.pause(1.0, hard=True)
-    show bsar_dv sad behind insomnia_normal_snow_night 
-    show bsar_mt rage behind insomnia_normal_snow_night at right 
+    show bsar_dv sad behind bsar_normal_snow_night 
+    show bsar_mt rage behind bsar_normal_snow_night at right 
     with dspr
     bsar_narrator "Но неожиданное появление Ольги Дмитриевны застаёт меня врасплох, и я замираю."
     bsar_narrator "Сказать, что она злая, значит не сказать ничего. Кажется, вот-вот у неё вздуется вена на лбу." 
@@ -583,20 +575,13 @@ label insomnia_day1_stroll_completed:
     stop music fadeout 2
     scene bg black with bsar_flash
     $ renpy.pause(3, hard=True) 
-    jump insomnia_day2    
+    jump bsar_insomnia_day2    
 
-label insomnia_day2:
-    $ save_name = ("День второй.")
-    $ renpy.block_rollback()
-    #$ insomnia_set_null_cursor()
-    $ bsar_onload("lock")
-    $ persistent.timeofday = "winter_day"
-    $ persistent.sprite_time = "day" 
-    $ renpy.movie_cutscene(bsar_gui_path + "days_transitions/bsar_insomnia_day2.ogv")
-    $ renpy.pause(2, hard=True) 
+label bsar_insomnia_day2:
+    $ bsar_set_time('day')
+    $ bsar_new_chapter('Бессонница.', 'День второй.')
     scene bg black
     show blink
-    $ bsar_onload("unlock")
     bsar_narrator "Нос заложен. Горло дерёт, словно связки сорваны от бессмысленного и громкого крика в пустоту. Глаза слезятся. Я плакал во сне. Почему? Не помню." 
     bsar_narrator "Нахлынувшие после пробуждения мысли, подобно волнам во время прилива, смыли остатки сна из моей памяти, оставив только две мокрые дорожки на щеках." 
     scene bg bsar_int_dining_hall_winter behind blink
@@ -644,10 +629,10 @@ label insomnia_day2:
     bsar_mz "Ну? Чего ты тут стоишь, не заходишь?" 
     bsar_narrator "Она что, у окна дежурит? Как она вообще узнала, что я тут?"
     bsar_narrator "Несколько секунд я еще стоял неподвижно, осторожно подбирая слова."
-    show bsar_mz normal2 behind insomnia_normal_snow_day with dissolve
+    show bsar_mz normal2 behind bsar_normal_snow_day with dissolve
     bsar_narrator "А потом с милой улыбкой повернулся к молодой любительнице книг."
     bsar_protagonist "Женя! А я как раз к тебе шел!"
-    show bsar_mz angry behind insomnia_normal_snow_day with dspr
+    show bsar_mz angry behind bsar_normal_snow_day with dspr
     bsar_mz "Ага, спиной вперед?"
     bsar_protagonist "А я это... {w}Повернулся посмотреть на... {w}То есть, мне послышалось... {w}Да! Послышалось, что Славя меня звала!" 
     bsar_mz "Славя уже давно у меня в библиотеке сидит, умник. Если хочешь помогать, то заходи, а нет, то иди лесом."
@@ -836,7 +821,7 @@ label insomnia_day2:
     bsar_narrator "Чёрт! У меня очень стойкое чувство дежавю, словно события из ведений, которые я толком не могу вспомнить, уже и в правду происходили."  
     bsar_narrator "Нет. Это не могут быть мои воспоминания! {w}Похоже, что мне светит путёвка в жёлтый дом." 
     bsar_protagonist "Карету мне, карету! Сюда я больше не ездок..."
-    show bsar_us normal behind insomnia_normal_snow_day with dissolve
+    show bsar_us normal behind bsar_normal_snow_day with dissolve
     bsar_us "Физкульт-привет!" 
     bsar_protagonist "Привет, Ульяна." 
     bsar_us "Чего это ты тут стоишь? Да ещё и бледный какой-то. Может, Виолетту позвать? Укольчик сделает!" 
@@ -875,7 +860,7 @@ label insomnia_day2:
     $ renpy.pause(1.1, hard=True)
     $ bsar_show_random_words(bsar_day2_amnesia_scene, k=70)
     $ renpy.pause(1, hard=True)
-    $ bsar_show_centered_text("У МЕНЯ АМНЕЗИЯ?")
+    $ bsar_show_centered_text("У МЕНЯ АМНЕЗИЯ?", style=style.bsar_insomnia_centered_text_style)
     stop ambience fadeout 2 
     $ renpy.block_rollback()
     $ persistent.timeofday = "bw" 
@@ -1032,15 +1017,9 @@ label insomnia_day2:
     $ renpy.pause(4, hard=True)      
     $ renpy.block_rollback() 
 
-label insomnia_day3:
-    $ save_name = ("День третий.")
-    $ renpy.block_rollback()
-    #$ insomnia_set_null_cursor()
-    $ bsar_onload("lock")
-    $ renpy.movie_cutscene(bsar_gui_path + "days_transitions/bsar_insomnia_day3.ogv")
-    $ persistent.sprite_time = "day" 
-    $ persistent.timeofday = "bw"
-    $ renpy.pause(2, hard=True)
+label bsar_insomnia_day3:
+    $ bsar_set_time('bw', 'day')
+    $ bsar_new_chapter('Бессонница.', 'День третий.')
     scene bg bsar_lane
     show bsar_lis normal
     show bsar_static_noise_anim
@@ -1048,7 +1027,6 @@ label insomnia_day3:
     play ambience ambience_cold_wind_loop fadein 2
     play sound_loop bsar_hum fadein 2
     play music bsar_hoyts_office fadein 2
-    $ bsar_onload("unlock")
     bsar_narrator "Тёмные переулки, руки в карманах, ладонь поглаживает холодную рукоять ПМа. Первый лёд хрустит под ногами. Луна за тучами спряталась, не показывается." 
     bsar_protagonist "Лис, наш выход только после того, как клиент клюнет. Не раньше."
     bsar_fox_orange "Да поняла я. Не учи учёного."
@@ -1081,11 +1059,11 @@ label insomnia_day3:
     bsar_narrator "Нет, физической боли не было. {w}Было ощущение, что само моё естество разрывают, кромсают, сжигают изнутри."
     bsar_narrator "Ещё чуть-чуть и я просто... {w}просто исчезну. Испарюсь, словно меня никогда и не было."
     bsar_narrator "Лоб покрылся холодным липким потом, а по спине пробежали мурашки."
-    $ bsar_show_centered_text("Почему мне так тревожно и одиноко?")
-    $ bsar_show_centered_text("Почему возникло чувство вины?")
+    $ bsar_show_centered_text("Почему мне так тревожно и одиноко?", style=style.bsar_insomnia_centered_text_style)
+    $ bsar_show_centered_text("Почему возникло чувство вины?", style=style.bsar_insomnia_centered_text_style)
     $ bsar_hide_centered_text(dspr)
     bsar_narrator "В окно робко заглянула луна, освещая домик и даруя предметам более смазанные и кривые очертания."
-    $ bsar_show_centered_text("Я всё ещё сплю или уже нет?")
+    $ bsar_show_centered_text("Я всё ещё сплю или уже нет?", style=style.bsar_insomnia_centered_text_style)
     $ bsar_hide_centered_text(dspr)
     bsar_narrator "В голову лез всякий вздор."
     bsar_narrator "Попытался встать, но не смог. {w}Тело не слушалось. {w}Попытался снова. {w}Получилось. Собственные движения немного успокоили." 
@@ -1138,7 +1116,7 @@ label insomnia_day3:
     bsar_narrator "Пару дней каких-то кошмаров, а уже раскис, как маленькая девочка, потерявшая плюшевого мишку." 
     bsar_narrator "Линейка уже кончилась. Странно, что Слави сегодня на утреннем построении не было. Может, у неё какие-то проблемы?"
     bsar_narrator "Наверное, всё же это не моё дело." 
-    show bsar_us smile behind insomnia_normal_snow_day with dissolve
+    show bsar_us smile behind bsar_normal_snow_day with dissolve
     bsar_us "А-у-у. Есть кто дома? Чего встал, как столб посреди площади? Линейка давным-давно закончилась." 
     bsar_protagonist "Ах да. Извини." 
     bsar_us "За что?" 
@@ -1158,15 +1136,15 @@ label insomnia_day3:
     bsar_us "Очень заметно! Мешки под глазами уже больше, чем сами глаза. Ходишь как живой мертвец из того фильма..." 
     bsar_narrator "Её правда. Мой внешний вид оставляет желать лучшего. Я похож на узника концлагеря, а не на счастливого пионера." 
     bsar_us "Слу-у-ушай, а хочешь я тебе ловец снов дам? У меня сестра увлекается этой, как её..."
-    show bsar_us dontlike behind insomnia_normal_snow_day with dspr
+    show bsar_us dontlike behind bsar_normal_snow_day with dspr
     bsar_narrator "Девушка замирает, сводит брови и начинает бегать глазами по площади, словно ища подсказку."
-    show bsar_us normal behind insomnia_normal_snow_day with dspr
+    show bsar_us normal behind bsar_normal_snow_day with dspr
     bsar_us "Вспомнила! Мистикой она увлекается!" 
     bsar_us "Короче, она мне сделала ловец снов. Амулет какой-то индейский. Говорит, что помогает с кошмарами." 
     bsar_protagonist "А ты уверена, что он поможет?" 
     bsar_us "Не нравится мне твой скепти-чтоб-его-цизм."
     bsar_protagonist "Извини. Я с радостью возьму этот ловец снов."
-    show bsar_us smile behind insomnia_normal_snow_day with dspr
+    show bsar_us smile behind bsar_normal_snow_day with dspr
     bsar_us "Отличненько! Увидимся на завтраке, там я тебе его и отдам." 
     hide bsar_us with dissolve 
     bsar_narrator "Ульянка на прощание махнула мне рукой и быстро убежала в сторону домиков. Ловец снов значит? Почему бы, собственно, и нет."
@@ -1291,7 +1269,7 @@ label insomnia_day3:
         bsar_protagonist "Думай, что хочешь." 
         hide bsar_dv with dissolve 
         bsar_narrator "Махнув рукой, я развернулся и пошёл прочь с площади. Алиса крикнула мне вслед то ли «дурак», то ли «дубина». Не имеет значения." 
-        jump insomnia_day3_after_dv  
+        jump bsar_insomnia_day3_after_dv  
 
     else:
         bsar_narrator "Пионерка улыбнулась, немного опустив брови." 
@@ -1320,9 +1298,9 @@ label insomnia_day3:
         bsar_dv "Ладно. Я пойду." 
         bsar_protagonist "Ага." 
         hide bsar_dv with dissolve 
-        jump insomnia_day3_after_dv 
+        jump bsar_insomnia_day3_after_dv 
 
-label insomnia_day3_after_dv:
+label bsar_insomnia_day3_after_dv:
     stop music fadeout 2
     $ renpy.block_rollback()
     bsar_narrator "А что, если Алиса права?" 
@@ -1402,20 +1380,20 @@ label insomnia_day3_after_dv:
     bsar_she_red "Прости..." 
     bsar_protagonist "За что?"
     bsar_she_red "Я... я не смогла тебе помочь. Время вышло. Придётся смириться с неотвратимым."
-    $ bsar_show_centered_text("Свобода.")
-    $ bsar_show_centered_text("Свобода от оков.")
+    $ bsar_show_centered_text("Свобода.", style=style.bsar_insomnia_centered_text_style)
+    $ bsar_show_centered_text("Свобода от оков.", style=style.bsar_insomnia_centered_text_style)
     $ bsar_hide_centered_text(dspr)
     bsar_narrator "Снова {i}та{/i} лёгкость и безмятежность. Чувствую себя... живым." 
-    $ bsar_show_centered_text("Да, ЖИВЫМ!")
+    $ bsar_show_centered_text("Да, ЖИВЫМ!", style=style.bsar_insomnia_centered_text_style)
     $ bsar_hide_centered_text(dspr)
     bsar_she_red "Нам пора встретиться. Кажется..."
     $ renpy.pause(1, hard=True)
 
     if persistent.font_size == "large":
-        bsar_she_red "{isc}{=bsar_scared_text_red_large}Кажется, я умираю.{/=bsar_scared_text_red_large}{/isc}"
+        bsar_she_red "{bsar_scare}{=bsar_scared_text_red_large}Кажется, я умираю.{/=bsar_scared_text_red_large}{/bsar_scare}"
 
     elif persistent.font_size == "small":
-        bsar_she_red "{isc}{=bsar_scared_text_red_small}Кажется, я умираю.{/=bsar_scared_text_red_small}{/isc}"
+        bsar_she_red "{bsar_scare}{=bsar_scared_text_red_small}Кажется, я умираю.{/=bsar_scared_text_red_small}{/bsar_scare}"
 
     bsar_she_red "Но что-то дало мне силы на последний рывок." 
     bsar_protagonist "Как ты можешь умереть?" 
@@ -1429,7 +1407,7 @@ label insomnia_day3_after_dv:
     bsar_narrator "Ужасный кашель обжигает и раздирает горло. Я падаю на землю, пытаясь откашляться." 
     $ renpy.pause(1, hard=True) 
     bsar_narrator "Спустя какое-то время мне становится лучше."
-    $ bsar_show_centered_text("Где я?")
+    $ bsar_show_centered_text("Где я?", style=style.bsar_insomnia_centered_text_style)
     $ bsar_hide_centered_text(dspr)
     bsar_narrator "Кругом мертвенная тишина, которую нарушает только гулкий стук моего сердца." 
     bsar_narrator "Всё застилала густая молочная мгла. Не могу толком ничего разглядеть дальше одного ярда." 
@@ -1442,16 +1420,16 @@ label insomnia_day3_after_dv:
     bsar_narrator "Кажется, я вышел на площадь, когда споткнулся и ударился о что-то металлическое."
 
     if persistent.font_size == "large":
-        bsar_narrator "{isc}{=bsar_scared_text_style_large}Дыхание участилось, а руки пробил тремор.{/=bsar_scared_text_style_large}{/isc}"
+        bsar_narrator "{bsar_scare}{=bsar_scared_text_style_large}Дыхание участилось, а руки пробил тремор.{/=bsar_scared_text_style_large}{/bsar_scare}"
 
     elif persistent.font_size == "small":
-        bsar_narrator "{isc}{=bsar_scared_text_style_small}Дыхание участилось, а руки пробил тремор.{/=bsar_scared_text_style_small}{/isc}"
+        bsar_narrator "{bsar_scare}{=bsar_scared_text_style_small}Дыхание участилось, а руки пробил тремор.{/=bsar_scared_text_style_small}{/bsar_scare}"
 
     bsar_narrator "Лавочка. {w}Просто лавочка. {w}Нужно идти дальше." 
     scene bg bsar_ext_path2_fog with dissolve 
     bsar_narrator "Что происходит?" 
     bsar_narrator "Я уже сошёл с ума? Куда я вообще иду? Не знаю!"
-    $ bsar_show_centered_text("Я НЕ ЗНАЮ, ЧЁРТ ПОБЕРИ!")
+    $ bsar_show_centered_text("Я НЕ ЗНАЮ, ЧЁРТ ПОБЕРИ!", style=style.bsar_insomnia_centered_text_style)
     $ bsar_hide_centered_text(dspr)
     bsar_narrator "Нет, нет, нет. {w}Нельзя терять самообладание. {w}Нужно идти."
     bsar_narrator "Идти..."
@@ -1520,7 +1498,7 @@ label insomnia_day3_after_dv:
             play sound_loop bsar_hum fadein 2
             $ renpy.pause(1.5, hard=True)
             scene bg white with bsar_flash
-            play sound insomnia_handgun
+            play sound bsar_handgun
             $ renpy.pause(1, hard=True)
             show blink
             $ renpy.pause(2, hard=True)
@@ -1539,8 +1517,8 @@ label insomnia_day3_after_dv:
             show bsar_she_night
             with bsar_flash
             bsar_she_red "И вот мы здесь." 
-            $ bsar_show_centered_text("{isc}{=bsar_scared_text_centered}Время пришло.{/=bsar_scared_text_centered}{/isc}")
-            $ bsar_show_centered_text("{isc}{=bsar_scared_text_centered}Прости.{/=bsar_scared_text_centered}{/isc}")
+            $ bsar_show_centered_text("{bsar_scare}{=bsar_scared_text_centered}Время пришло.{/=bsar_scared_text_centered}{/bsar_scare}", style=style.bsar_insomnia_centered_text_style)
+            $ bsar_show_centered_text("{bsar_scare}{=bsar_scared_text_centered}Прости.{/=bsar_scared_text_centered}{/bsar_scare}", style=style.bsar_insomnia_centered_text_style)
 
         "Кто ты?":
             $ bsar_paradise_ending_v += 1 
@@ -1576,35 +1554,35 @@ label insomnia_day3_after_dv:
     with bsar_flash
     play sound_loop bsar_hum
     $ renpy.pause(1, hard=True)
-    $ bsar_heart_monitor_phrases_f("military_service")
-    $ bsar_heart_monitor_phrases_f("composure")
-    $ bsar_heart_monitor_phrases_f("institute")
-    $ bsar_heart_monitor_phrases_f("meeting_with_her")
-    $ bsar_heart_monitor_phrases_f("love")
-    $ bsar_heart_monitor_phrases_f("police_work")
-    $ bsar_heart_monitor_phrases_f("fox")
-    $ bsar_heart_monitor_phrases_f("friendship")
-    $ bsar_heart_monitor_phrases_f("rest")
-    $ bsar_heart_monitor_phrases_f("easy_money")
-    $ bsar_heart_monitor_phrases_f("protection")
-    $ bsar_heart_monitor_phrases_f("drug_trafficking")
-    $ bsar_heart_monitor_phrases_f("sisters_death")
-    $ bsar_heart_monitor_phrases_f("nightmares")
-    $ bsar_heart_monitor_phrases_f("doubts")
-    $ bsar_heart_monitor_phrases_f("new_deal")
-    $ bsar_heart_monitor_phrases_f("her_death")
+    $ bsar_show_heart_monitor_phrases("military_service")
+    $ bsar_show_heart_monitor_phrases("composure")
+    $ bsar_show_heart_monitor_phrases("institute")
+    $ bsar_show_heart_monitor_phrases("meeting_with_her")
+    $ bsar_show_heart_monitor_phrases("love")
+    $ bsar_show_heart_monitor_phrases("police_work")
+    $ bsar_show_heart_monitor_phrases("fox")
+    $ bsar_show_heart_monitor_phrases("friendship")
+    $ bsar_show_heart_monitor_phrases("rest")
+    $ bsar_show_heart_monitor_phrases("easy_money")
+    $ bsar_show_heart_monitor_phrases("protection")
+    $ bsar_show_heart_monitor_phrases("drug_trafficking")
+    $ bsar_show_heart_monitor_phrases("sisters_death")
+    $ bsar_show_heart_monitor_phrases("nightmares")
+    $ bsar_show_heart_monitor_phrases("doubts")
+    $ bsar_show_heart_monitor_phrases("new_deal")
+    $ bsar_show_heart_monitor_phrases("her_death")
     stop sound_loop fadeout 2
     stop music fadeout 2
 
     if bsar_paradise_ending_v == 3:
-        jump insomnia_paradise_ending
+        jump bsar_insomnia_paradise_ending
 
     else:
-        jump insomnia_awakening_ending
+        jump bsar_insomnia_awakening_ending
 
-label insomnia_awakening_ending:
+label bsar_insomnia_awakening_ending:
     scene bg black with bsar_flash
-    play sound insomnia_heart_stopped
+    play sound bsar_heart_stopped
     $ renpy.pause(6, hard=True)
     scene bg white with bsar_flash
     $ renpy.pause(1, hard=True)
@@ -1620,10 +1598,10 @@ label insomnia_awakening_ending:
     $ insomnia_set_main_menu_cursor()
     return
 
-label insomnia_paradise_ending:
-    $ bsar_heart_monitor_phrases_f("sleep_that_knows_no_breaking")
+label bsar_insomnia_paradise_ending:
+    $ bsar_show_heart_monitor_phrases("sleep_that_knows_no_breaking")
     scene bg white with bsar_flash
-    play sound insomnia_heart_stopped
+    play sound bsar_heart_stopped
     $ renpy.pause(6, hard=True)
     $ renpy.block_rollback()
     $ persistent.timeofday = "winter_day"
@@ -1654,5 +1632,5 @@ label insomnia_paradise_ending:
     stop music fadeout 2
     stop ambience fadeout 2
     $ renpy.pause(1, hard=True)
-    $ insomnia_set_main_menu_cursor()
-    return
+    #$ insomnia_set_main_menu_cursor()
+    #return
