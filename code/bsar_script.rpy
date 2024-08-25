@@ -1,6 +1,6 @@
 init python:
     class BsarFunctionCallback(Action):
-        def __init__(self,function, *arguments):
+        def __init__(self, function, *arguments):
             self.function = function
             self.arguments = arguments
 
@@ -27,7 +27,10 @@ init python:
         persistent.bsar_on_save_timeofday[slot] = (persistent.timeofday, persistent.sprite_time, persistent.font_size, _preferences.volumes["music"], _preferences.volumes["sfx"], _preferences.volumes["voice"])
     
     def bsar_screen_save():
-        for screen_name in ["main_menu", "quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
+        main_menu_screen = 'insomnia_main_menu' if persistent.bsar_current_story == 'insomnia' else 'sotp_main_menu'
+        renpy.display.screen.screens[('bsar_old_' + main_menu_screen, None)] = renpy.display.screen.screens[('main_menu', None)]
+
+        for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[("bsar_old_" + screen_name, None)] = renpy.display.screen.screens[(screen_name, None)]
     
     def bsar_screen_act():
@@ -35,12 +38,14 @@ init python:
         config.name = "BetweenSleepAndReality"
         config.version = "1.0"
 
-        for screen_name in ["main_menu", "quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
+        main_menu_screen = 'insomnia_main_menu' if persistent.bsar_current_story == 'insomnia' else 'sotp_main_menu'
+        renpy.display.screen.screens[('main_menu', None)] = renpy.display.screen.screens[('bsar_' + main_menu_screen, None)]
+
+        for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[(screen_name, None)] = renpy.display.screen.screens[("bsar_" + screen_name, None)]
 
         layout.LOADING = "Потерять несохраненые данные?"
         renpy.free_memory()
-        config.main_menu_music = bsar_domitori_taranofu_lullaby
         config.linear_saves_page_size = None
         persistent._file_page = "bsar_FilePage_1"  
 
@@ -49,7 +54,10 @@ init python:
         config.name = "Everlasting_Summer"
         config.version = "1.2"
 
-        for screen_name in ["main_menu", "quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
+        main_menu_screen = 'insomnia_main_menu' if persistent.bsar_current_story == 'insomnia' else 'sotp_main_menu'
+        renpy.display.screen.screens[('main_menu', None)] = renpy.display.screen.screens[('bsar_old_' + main_menu_screen), None]
+
+        for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[(screen_name, None)] = renpy.display.screen.screens[("bsar_old_" + screen_name, None)]
 
         layout.LOADING = "Загрузка приведёт к потере несохранённых данных.\nВы уверены, что хотите сделать это?"
@@ -63,7 +71,7 @@ init python:
         renpy.music.stop("music")
         renpy.music.stop("sound")
         renpy.music.stop("sound_loop")
-        renpy.play(music_list["blow_with_the_fires"], channel = "music")
+        renpy.play(music_list["blow_with_the_fires"], channel="music")
 
     def bsar_screens_save_act():
         bsar_screen_save()

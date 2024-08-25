@@ -649,12 +649,21 @@ init python:
 
     config.custom_text_tags["bsar_scare"] = bsar_scare_tag
 
-    if persistent.bsar_achievements == None:
-        persistent.bsar_achievements = {
-            "bsar_paradise": False,
-            "bsar_awakening": False,
-            "bsar_murderous_snowball": False
-            }
+    if persistent.bsar_insomnia_achievements == None:
+        persistent.bsar_insomnia_achievements = {}
+
+    persistent.bsar_insomnia_achievements.setdefault('bsar_insomnia_paradise', False)
+    persistent.bsar_insomnia_achievements.setdefault('bsar_insomnia_awakening', False)
+    persistent.bsar_insomnia_achievements.setdefault('bsar_insomnia_murderous_snowball', False)
+
+    if persistent.bsar_sotp_achievements == None:
+        persistent.bsar_sotp_achievements = {}
+
+    persistent.bsar_sotp_achievements.setdefault('bsar_sotp_begining_and_end', False)
+    persistent.bsar_sotp_achievements.setdefault('bsar_sotp_better', False)
+
+    if persistent.bsar_current_story == None:
+        persistent.bsar_current_story = 'insomnia'
 
     def bsar_show_achievement(achievement_name):
         renpy.play(sfx_achievement)
@@ -663,12 +672,11 @@ init python:
         renpy.hide(achievement_name)
 
 init:
-    $ bsar_paradise_ending_v = 0
-    $ bsar_day1_stroll = False
-    $ bsar_day2_intervene = False
-    $ bsar_day2_after_qte = False
+    $ bsar_insomnia_paradise_ending_v = 0
+    $ bsar_insomnia_day1_stroll = False
+    $ bsar_insomnia_day2_intervene = False
 
-    $ bsar_day2_amnesia_scene = ["Мог ли я быть знаком с Ульяной? ", "Чем занимаются родители?", "Где учусь?", "???"]
+    $ bsar_insomnia_day2_amnesia_scene = ["Мог ли я быть знаком с Ульяной? ", "Чем занимаются родители?", "Где учусь?", "???"]
 
     $ bsar_heart_monitor_phrases = {
         "military_service": ["Служба в армии", 1179],
@@ -692,7 +700,7 @@ init:
         "sleep_that_knows_no_breaking": ["Сон", 1038]
     }
 
-    $ bsar_heart_monitor_transition = ImageDissolve("bsar/images/gui/effects/heart_monitor/bsar_hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
+    $ bsar_heart_monitor_transition = ImageDissolve(bsar_gui_path + "effects/heart_monitor/bsar_hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
     $ bsar_flash = Fade(0.45, 1.0, 0.45, color="#ffff")
 
     $ bsar_titles_text = '''Спасибо за прочтение! Вот уже прошло практически два года как мы начали делать модификации и именно этот проект является важной вехой нашей деятельности, ибо с него всё и начиналось.
@@ -774,19 +782,19 @@ Anna Monster
     image bsar_snow_layer1_anim:
         contains:
             "bsar_snow_layer1_img"
-            bsar_snow_move(10, 0.0, 0.05, pause_time = 0.5)
+            bsar_snow_move(10, 0.0, 0.05, pause_time=0.5)
 
         contains:
             "bsar_snow_layer1_img"
-            bsar_snow_move(10, 0.25, 0.05, pause_time = 0.5)
+            bsar_snow_move(10, 0.25, 0.05, pause_time=0.5)
 
         contains:
             "bsar_snow_layer1_img"
-            bsar_snow_move(10, 0.5, 0.05, pause_time = 0.5)
+            bsar_snow_move(10, 0.5, 0.05, pause_time=0.5)
 
         contains:
             "bsar_snow_layer1_img"
-            bsar_snow_move(10, 0.75, 0.05, pause_time = 0.5)
+            bsar_snow_move(10, 0.75, 0.05, pause_time=0.5)
 
 
     image bsar_snow_layer2_anim:
@@ -796,15 +804,15 @@ Anna Monster
 
         contains:
             "bsar_snow_layer2_img"
-            bsar_snow_move(15, 0.25, -0.05, pause_time = 1.0)
+            bsar_snow_move(15, 0.25, -0.05, pause_time=1.0)
 
         contains:
             "bsar_snow_layer2_img"
-            bsar_snow_move(15, 0.5, -0.05, pause_time = 1.0)
+            bsar_snow_move(15, 0.5, -0.05, pause_time=1.0)
 
         contains:
             "bsar_snow_layer2_img"
-            bsar_snow_move(15, 0.75, -0.05, pause_time = 1.0)
+            bsar_snow_move(15, 0.75, -0.05, pause_time=1.0)
 
     image bsar_snow_layer3_anim:
         contains:
@@ -1015,6 +1023,12 @@ Anna Monster
         xalign 0.5
         ypos 1.1
         linear 38 ypos -2.0
+
+    transform bsar_dream_catcher_anim():
+        ease 0.4 xoffset -5 rotate -0.4
+        ease 0.4 xoffset 5 rotate 0
+        ease 0.4 xoffset 0 rotate 0.4
+        repeat
 
     transform bsar_skip_pos():
         xalign 0.5

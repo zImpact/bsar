@@ -555,8 +555,7 @@ label bsar_sotp_three_deaths:
     bsar_fox_orange "Зачем ты так?"
     bsar_doctor "Ладно, милочка, вашему другу нужен покой. Пойдемте."
     $ renpy.pause(3, hard=True)
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day"
+    $ bsar_set_time('day')
     scene bg bsar_ext_road_winter_day with bsar_flash
     play ambience bsar_winter_wind fadein 2
     play music bsar_nightwish_nemo_piano_cover fadein 2

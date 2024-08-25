@@ -85,9 +85,9 @@ screen bsar_qte_time_bar(time):
         ymaximum 300 
         ysize 300
 
-        value AnimatedValue(old_value = 1.0, value = 0.0, range = 1.0, delay = time)
+        value AnimatedValue(old_value=1.0, value=0.0, range=1.0, delay=time)
 
-    timer time action Jump("bsar_day1_stroll_failed")
+    timer time action Jump("bsar_insomnia_day1_stroll_failed")
 
 screen bsar_qte(button, count, time):
     tag game
@@ -156,7 +156,7 @@ screen bsar_qte(button, count, time):
         $ bsar_qte_clear()
         timer .01 action Return(True)
 
-screen bsar_main_menu():
+screen bsar_insomnia_main_menu():
     tag menu 
     modal True
 
@@ -167,6 +167,8 @@ screen bsar_main_menu():
         action NullAction()
 
     add "bsar_insomnia_main_menu_bg"
+
+    on 'show' action Play('music', bsar_domitori_taranofu_lullaby, if_changed=True)
     
     if bsar_main_menu_var:
         add "bsar_main_menu_frame" xalign 0.5 ypos 290
@@ -220,6 +222,109 @@ screen bsar_main_menu():
             xpos 1520
             ypos 800
             action OpenURL("https://vk.com/public176281709")
+
+screen bsar_sotp_main_menu():
+    tag menu 
+    modal True
+
+    key "game_menu":
+        action NullAction()
+        
+    key "K_F1":
+        action NullAction()
+
+    add "bsar_makarov_pistol"
+
+    on 'show' action Play('music', bsar_master_of_spirits_shadows_main_theme, if_changed=True)
+    
+    if bsar_main_menu_var:
+        add "bsar_main_menu_frame" xalign 0.5 ypos 290
+
+        text "{font=[bsar_diamond_girl_skinny]}Тени прошлого{/font}":
+            size 170
+            text_align 0.5
+            xalign 0.5
+            ypos 40
+            antialias True
+            kerning 2
+            
+        textbutton ["Начать игру"] at bsar_buttons_atl():
+            style "bsar_main_menu_text_style"
+            text_style "bsar_main_menu_text_style"
+            xalign 0.5
+            yalign 0.35
+            #action [SetVariable("bsar_lock_quit_game_main_menu_var", False), Start("bsar_insomnia_day1")]
+            action ShowMenu('bsar_sotp_choose_story')
+                
+        textbutton ["Загрузить"] at bsar_buttons_atl():
+            style "bsar_main_menu_text_style"
+            text_style "bsar_main_menu_text_style"
+            xalign 0.5
+            yalign 0.475
+            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_load_main_menu")]
+            
+        textbutton ["Настройки"] at bsar_buttons_atl():
+            style "bsar_main_menu_text_style"
+            text_style "bsar_main_menu_text_style"
+            xalign 0.5
+            yalign 0.6
+            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_preferences_main_menu")]
+
+        textbutton ["Дополнительно"] at bsar_buttons_atl():
+            style "bsar_main_menu_text_style"
+            text_style "bsar_main_menu_text_style"
+            xalign 0.5
+            yalign 0.725
+            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_extra")]
+                
+        textbutton ["Выход"] at bsar_buttons_atl():
+            style "bsar_main_menu_text_style"
+            text_style "bsar_main_menu_text_style"
+            xalign 0.5
+            yalign 0.85
+            action [SetVariable("bsar_main_menu_var", False), Hide("bsar_main_menu"), (Function(bsar_screens_diact)), ShowMenu("main_menu")]
+            
+        imagebutton:
+            idle "bsar_logowhite_idle"
+            hover "bsar_logowhite_hover"
+            xpos 1520
+            ypos 800
+            action OpenURL("https://vk.com/public176281709")
+
+screen bsar_sotp_choose_story():
+    tag menu 
+    modal True
+
+    key "game_menu":
+        action NullAction()
+        
+    key "K_F1":
+        action NullAction()
+
+    add "bsar_sotp_main_menu_choice_stories"
+    add "bsar_sotp_main_menu_choice_stories_desc_substrate" ypos 499
+    add "bsar_sotp_three_deaths_desc" xpos 47 ypos 525
+    add "bsar_sotp_shadows_desc" xpos 1206 ypos 525
+
+    # textbutton ["Три смерти"]:
+    #     style "sotp_button_none"
+    #     text_style "sotp_choose_story_text_style"
+    #     xpos 271
+    #     yalign 0.35
+    #     action [SetVariable("sotp_lock_quit_game_main_menu_var", False), Start("bsar_sotp_three_deaths")]
+
+    # textbutton ["Тени"]:
+    #     style "sotp_button_none"
+    #     text_style "sotp_choose_story_text_style"
+    #     xpos 1376
+    #     yalign 0.35
+    #     action [SetVariable("sotp_lock_quit_game_main_menu_var", False), Start("bsar_sotp_shadows")]
+
+    imagebutton:
+        auto "bsar_sotp_back_%s"
+        xpos 80
+        ypos 980
+        action [Hide("bsar_sotp_choose_story"), ShowMenu("bsar_sotp_main_menu")]
         
 screen bsar_preferences_main_menu():
     modal True

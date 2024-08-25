@@ -124,8 +124,7 @@ label bsar_insomnia_day1:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw"
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_ext_winter_park
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -148,9 +147,7 @@ label bsar_insomnia_day1:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day" 
-    $ persistent.sprite_time = "day"
+    $ bsar_set_time('day')
     scene bg bsar_ext_square_winter_day
     show bsar_us sad at center
     with bsar_flash
@@ -246,8 +243,7 @@ label bsar_insomnia_day1:
     bsar_narrator "Наверное, мне тоже стоит идти, иначе просижу в столовой до ужина..."
     stop music fadeout 1
     stop ambience fadeout 1
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw"
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_ext_winter_street
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -267,8 +263,7 @@ label bsar_insomnia_day1:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day"
+    $ bsar_set_time('day')
     scene bg bsar_int_dining_hall_winter with bsar_flash
     play ambience ambience_dining_hall_empty fadein 2
     bsar_narrator "Ничего не понимаю. Что со мной происходит? Уже второй раз перед глазами всплывают образы, которые пропадают так же быстро, как и появляются." 
@@ -298,9 +293,7 @@ label bsar_insomnia_day1:
     bsar_narrator "Прервал я её размышления, пока она не придумала мне что-то тяжёлое и энергозатратное."
     stop ambience fadeout 2
     scene bg black with Dissolve(1)
-    $ renpy.block_rollback()
-    $ renpy.pause(1, hard=True)
-    $ persistent.timeofday = "winter_night"
+    $ bsar_set_time('night')
     scene bg int_house_of_mt_night with Dissolve(1)
     play ambience ambience_medstation_inside_night fadein 2
     play music bsar_domitori_taranofu_trouble fadein 2
@@ -309,11 +302,11 @@ label bsar_insomnia_day1:
 
     menu: 
         "Пойти на прогулку": 
-            $ bsar_day1_stroll = True 
+            $ bsar_insomnia_day1_stroll = True 
             jump bsar_insomnia_day1_stroll
 
         "Убраться в домике": 
-            $ bsar_paradise_ending_v += 1 
+            $ bsar_insomnia_paradise_ending_v += 1 
             jump bsar_insomnia_day1_cleaning
 
 label bsar_insomnia_day1_cleaning: 
@@ -345,8 +338,7 @@ label bsar_insomnia_day1_cleaning:
     $ renpy.pause(2, hard=True)
     scene bg black
     hide blink
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw"
+    $ bsar_set_time('bw', 'day')
     stop ambience fadeout 2
     stop music fadeout 2
     scene bg bsar_roof behind blink
@@ -372,8 +364,7 @@ label bsar_insomnia_day1_cleaning:
     stop music fadeout 2
     stop ambience fadeout 2
     stop sound_loop fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_night"
+    $ bsar_set_time('night')
     scene bg int_house_of_mt_night
     show bsar_mt grin at center
     with bsar_flash
@@ -472,8 +463,7 @@ label bsar_insomnia_day1_stroll_failed:
     bsar_narrator "{i}Кажется что?..{/i}"
     stop sound_loop fadeout 2
     stop ambience fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw" 
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_roof
     show bsar_snow_layer3_anim_quick
     show bsar_snow_layer2_anim_quick
@@ -556,8 +546,7 @@ label bsar_insomnia_day1_stroll_completed:
     bsar_narrator "Мне совершенно не хотелось выслушивать нравоучения непонятно из-за чего разъяренной Ольги." 
     bsar_narrator "К тому же накатила непонятно откуда взявшаяся усталость, и как только голова коснулась подушки я моментально заснул." 
     stop ambience fadeout 2 
-    $ persistent.timeofday = "bw"
-    $ persistent.sprite_time = "day"
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_int_kitchen_bw
     show bsar_she normal
     show bsar_static_noise_anim
@@ -708,8 +697,7 @@ label bsar_insomnia_day2:
     bsar_protagonist "Ну, я живу в Москве с роди..."
     stop ambience fadeout 2 
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw"
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_ext_winter_street
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -726,8 +714,7 @@ label bsar_insomnia_day2:
     bsar_she "Извини. Мне очень жаль твою сестру. Не хотела об этом напоминать." 
     bsar_he "Эй! Ничего страшного. Не стоит сильно расстраиваться."
     bsar_he "Я понимаю, что такое... {w}такое порой случается. И с этим просто нужно смириться."
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day"
+    $ bsar_set_time('day')
     stop music fadeout 2
     stop ambience fadeout 2
     stop sound_loop fadeout 2
@@ -788,8 +775,7 @@ label bsar_insomnia_day2:
     bsar_narrator "Больше всего я удивляюсь тому факту, что позволяю себе пасовать перед этой девчонкой. {w}Боже, эта Алиса..." 
     stop ambience fadeout 2
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw" 
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -811,8 +797,7 @@ label bsar_insomnia_day2:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day"
+    $ bsar_set_time('day')
     scene bg bsar_ext_square_winter_day
     show bsar_heavy_snow_day
     show bsar_normal_snow_day
@@ -827,7 +812,7 @@ label bsar_insomnia_day2:
     bsar_us "Чего это ты тут стоишь? Да ещё и бледный какой-то. Может, Виолетту позвать? Укольчик сделает!" 
     bsar_protagonist "Нет, нет. Спасибо."    
 
-    if bsar_day1_stroll: 
+    if bsar_insomnia_day1_stroll: 
         bsar_protagonist "Вам вчера сильно от Ольги досталось?" 
         bsar_us "Да. Она всё-таки узнала про те конфеты!" 
         bsar_protagonist "Про какие конфеты?" 
@@ -841,7 +826,7 @@ label bsar_insomnia_day2:
     bsar_narrator "Ульяна тепло улыбнулась и подмигнула мне, а затем побежала в библиотеку. Странно видеть эту шестнадцатилетнюю егозу такой милой."  
     bsar_narrator "Раньше она постоянно пыталась меня подколоть, а сейчас тишь да гладь." 
 
-    if bsar_day1_stroll: 
+    if bsar_insomnia_day1_stroll: 
         bsar_narrator "Не считая снежков, конечно." 
 
     play sound sfx_dinner_horn_processed fadein 2 
@@ -858,12 +843,11 @@ label bsar_insomnia_day2:
     bsar_narrator "Голова начала гудеть, а мысли кровавыми сгустками выскальзывать из черепа."
     scene bg bsar_int_house_of_mt_day_vingete_blurred with Dissolve(1.1)
     $ renpy.pause(1.1, hard=True)
-    $ bsar_show_random_words(bsar_day2_amnesia_scene, k=70)
+    $ bsar_show_random_words(bsar_insomnia_day2_amnesia_scene, k=70)
     $ renpy.pause(1, hard=True)
     $ bsar_show_centered_text("У МЕНЯ АМНЕЗИЯ?", style=style.bsar_insomnia_centered_text_style)
     stop ambience fadeout 2 
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw" 
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_prolog_bw
     show bsar_static_noise_anim
     with bsar_flash
@@ -872,16 +856,14 @@ label bsar_insomnia_day2:
     bsar_narrator "Я с отличием закончил десятый класс в Московской гимназии номер четырнадцать и за это был отправлен в этот лагерь, {i}потому что давно хотел сюда попасть.{/i}"  
     bsar_narrator "{i}Ведь так?{/i}"
     stop ambience fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day" 
+    $ bsar_set_time('day')
     scene bg int_house_of_mt_day with bsar_flash 
     play ambience ambience_medstation_inside_night fadein 2 
     bsar_protagonist "И что мне делать?" 
     bsar_narrator "Задал я вопрос пустой комнате, которая ответила мне абсолютно ничем."
     show blink
     $ renpy.pause(2, hard=True)
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw" 
+    $ bsar_set_time('bw', 'day')
     stop ambience fadeout 2 
     scene bg bsar_prolog_bw
     show bsar_static_noise_anim
@@ -901,8 +883,7 @@ label bsar_insomnia_day2:
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_night"
+    $ bsar_set_time('night')
     scene bg int_house_of_mt_night behind blink 
     show unblink 
     $ renpy.pause(2, hard=True)
@@ -955,7 +936,7 @@ label bsar_insomnia_day2:
 
     menu: 
         "Вмешаться": 
-            $ bsar_day2_intervene = True 
+            $ bsar_insomnia_day2_intervene = True 
             bsar_narrator "И чего я встал как истукан? Нужно вмешаться, пока Ульяне не досталось. Я быстро перескакиваю порог и встречаюсь взглядом с Алисой."
             scene bg int_clubs_male2_night_nolight
             show bsar_dv sad at left 
@@ -979,7 +960,7 @@ label bsar_insomnia_day2:
             bsar_narrator "Умею же я портить то, что, как казалось изначально, ещё больше испортить нельзя." 
 
         "Не вмешиваться": 
-            $ bsar_paradise_ending_v +=1 
+            $ bsar_insomnia_paradise_ending_v +=1 
             bsar_narrator "Я почему-то ошеломленно замираю, не в силах сделать даже шаг, а девушки продолжают свой разговор на повышенных тонах."
             bsar_us "Алиса, чтоб тебя! Перестань истерить! Я понимаю, насколько важен тебе этот дневник."
             bsar_us "Мы подруги, и я бы никогда не навредила тебе!"
@@ -1048,8 +1029,7 @@ label bsar_insomnia_day3:
     bsar_protagonist "А разве я сплю?"
     bsar_narrator "Спросил. {w}И проснулся."
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_night"
+    $ bsar_set_time('night')
     scene bg int_house_of_mt_night2 with bsar_flash
     play ambience ambience_medstation_inside_night fadein 2
     play music bsar_domitori_taranofu_planet_of_colds fadein 2
@@ -1090,8 +1070,7 @@ label bsar_insomnia_day3:
     stop ambience fadeout 2 
     stop music fadeout 2
     stop sound_loop fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day"
+    $ bsar_set_time('day')
     scene bg black with Dissolve(1)
     $ renpy.pause(2, hard=True)
     scene bg bsar_ext_square_winter_day
@@ -1148,8 +1127,7 @@ label bsar_insomnia_day3:
     bsar_us "Отличненько! Увидимся на завтраке, там я тебе его и отдам." 
     hide bsar_us with dissolve 
     bsar_narrator "Ульянка на прощание махнула мне рукой и быстро убежала в сторону домиков. Ловец снов значит? Почему бы, собственно, и нет."
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw"
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_int_kitchen_bw
     show bsar_she normal
     show bsar_static_noise_anim
@@ -1167,8 +1145,7 @@ label bsar_insomnia_day3:
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     stop music fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day"
+    $ bsar_set_time('day')
     scene bg black with bsar_flash
     $ renpy.pause(0.5, hard=True)
     scene bg bsar_int_dining_hall_winter with Dissolve(1)
@@ -1192,21 +1169,19 @@ label bsar_insomnia_day3:
     show bsar_us normal with dissolve 
     bsar_us "Вот, принесла, как и обещала." 
     bsar_narrator "Она протянула мне амулет." 
-    show bsar_dream_catcher with dissolve:
-        xcenter 0.50 ycenter 1.80 zoom 0.8 rotate -90  
-        ease 2 ypos 0.50 rotate 0 zoom 1.07
-    $ renpy.pause(2, hard=True)
+    show bsar_dream_catcher at bsar_dream_catcher_anim:
+        xcenter 0.69 ycenter 2.10 zoom 0.1 rotate -90  
+        ease 2 ypos 0.50 zoom 0.7 rotate 3
+        ease 1 zoom 0.6 xcenter 0.50 rotate 0
+    $ renpy.pause(3, hard=True)
     bsar_narrator "Красивый."
     bsar_narrator "Не помню, где я это слышал, но всё же."
     bsar_narrator "По древним преданиям плохие сны запутываются в паутине из ниток, а хорошие проскальзывают сквозь отверстие посередине." 
     bsar_protagonist "Спасибо большое, Уль. Это многое для меня значит."
-    show bsar_dream_catcher:
-        xcenter 0.50 ycenter 0.50 rotate 0 zoom 1.07   
-        ease 2 ycenter 1.80 zoom 0.8 rotate -90
-    hide bsar_dream_catched with dissolve
-    # hide bsar_dream_catcher with dissolve:
-    #     xcenter 0.50 ycenter 0.50 rotate 0 zoom 1.07   
-    #     ease 2 ycenter 1.80 zoom 0.8 rotate -90
+    show bsar_dream_catcher at bsar_dream_catcher_anim:
+        ease 1 xcenter 0.6 zoom 0.6 rotate 3
+        ease 2 xcenter 0.73 ycenter 2.10 zoom 0.5 rotate -90
+    $ renpy.pause(3, hard=True)
     bsar_us "Ну что ты. Слушай, а возьми, пожалуйста, ещё это..." 
     bsar_narrator "Девушка протягивает мне сложенный вчетверо тетрадный листок." 
     bsar_narrator "Я уже собирался его развернуть, как Ульяна меня остановила." 
@@ -1260,7 +1235,7 @@ label bsar_insomnia_day3:
     bsar_dv "Что смешного?"
     bsar_protagonist "Ничего. Как ты?"
 
-    if bsar_day2_intervene: 
+    if bsar_insomnia_day2_intervene: 
         bsar_narrator "Алиса едва заметно сморщила нос и сжала губы, сделав небольшой шаг в сторону." 
         bsar_dv "Не твоё дело, подслушиватель!" 
         bsar_protagonist "Это случайно получилось!" 
@@ -1307,9 +1282,7 @@ label bsar_insomnia_day3_after_dv:
     bsar_narrator "Ладно. Спешить некуда. Вечером узнаю." 
     scene bg black with Dissolve(1)
     $ renpy.pause(2, hard=True)
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_night"
-    $ persistent.sprite_time = "night"
+    $ bsar_set_time('night', 'day')
     scene bg bsar_ext_square_winter_night_tree with Dissolve(1) 
     play music bsar_domitori_taranofu_winter_night fadein 2 
     bsar_narrator "Новый год подбирался всё ближе и ближе, скрываясь за предпоследним листом календаря. " 
@@ -1369,8 +1342,7 @@ label bsar_insomnia_day3_after_dv:
     bsar_narrator "Если я скажу, что у меня нет чувств к Ульяне, я буду полным лжецом."  
     bsar_narrator "Мне захотелось поговорить с ней до назначенного времени, но усталость напомнила о себе." 
     bsar_narrator "Я зевнул так, что чуть не свело челюсть, а глаза начали слипаться. Ладно. {w}Потом. {w}Всё потом. Времени у меня ещё много..."
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw"
+    $ bsar_set_time('bw', 'day')
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     scene bg bsar_prolog_bw
@@ -1399,9 +1371,7 @@ label bsar_insomnia_day3_after_dv:
     bsar_protagonist "Как ты можешь умереть?" 
     bsar_she_red "С того момента, как я сюда попала, силы стремительно покидают меня. {w}Я не смогла. {w}Ты не вспомнил."
     bsar_she_red "Позволь дать тебе ответы перед..."
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "fog"
-    $ persistent.sprite_time = "day" 
+    $ bsar_set_time('fog', 'day')
     scene bg bsar_ext_house_of_mt_fog with bsar_flash
     play music bsar_dark_shades fadein 5
     bsar_narrator "Ужасный кашель обжигает и раздирает горло. Я падаю на землю, пытаясь откашляться." 
@@ -1441,8 +1411,7 @@ label bsar_insomnia_day3_after_dv:
     scene bg bsar_int_old_building_night_edited with dissolve 
     bsar_protagonist "Что даль..." 
     stop ambience fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw" 
+    $ bsar_set_time('bw', 'day')
     scene bg bsar_form 
     show bsar_static_noise_anim
     with bsar_flash
@@ -1460,20 +1429,17 @@ label bsar_insomnia_day3_after_dv:
     bsar_protagonist "Взял бы, конечно! Это бы были прекрасные воспоминания!" 
     bsar_protagonist "{i}Воспоминания на всю жизнь!{/i}" 
     stop ambience fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "fog"
+    $ bsar_set_time('fog', 'day')
     scene bg bsar_int_old_building_night_edited 
     show bsar_she_night
     with bsar_flash
     play ambience bsar_hum fadein 2
     bsar_she_red "Дальше я дам тебе ответы, какие смогу, но времени у нас мало и то, что ты увидишь, может повлиять на исход всего." 
-    #$ renpy.start_predict("insomnia/images/gui/misc/heart_monitor*.*")
 
     menu:
         "Где я?":
             bsar_she_red "Как ты мог понять по пробившимся к тебе фрагментам памяти, случились две трагедии. Сначала в аварии скончалась твоя сестра. Затем погибла... {w}Я."
-            $ renpy.block_rollback()
-            $ persistent.timeofday = "bw"  
+            $ bsar_set_time('bw', 'day') 
             scene bg bsar_medical_room_celling 
             show bsar_static_noise_anim
             with bsar_flash
@@ -1483,15 +1449,13 @@ label bsar_insomnia_day3_after_dv:
             bsar_doctor "Но... Вам не нужно время, чтобы...."  
             bsar_protagonist "Она умерла. С этим просто нужно смириться. Когда я смогу забрать тело?"
             stop sound_loop fadeout 2
-            $ renpy.block_rollback()
-            $ persistent.timeofday = "fog" 
+            $ bsar_set_time('fog', 'day')
             scene bg bsar_int_old_building_night_edited
             show bsar_she_night
             with bsar_flash 
             bsar_she_red "Это было для тебя страшным ударом. {w}Ты просто не выдержал. Пара недель беспробудного пьянства, безрезультатные попытки сослуживцев достучаться до тебя." 
             bsar_she_red "В конце концов, ты сделал неправильный выбор."
-            $ renpy.block_rollback()
-            $ persistent.timeofday = "bw" 
+            $ bsar_set_time('bw', 'day')
             scene bg bsar_makarov_pistol
             show bsar_static_noise_anim
             with bsar_flash
@@ -1511,8 +1475,7 @@ label bsar_insomnia_day3_after_dv:
             bsar_fox_orange "Зачем ты так?" 
             bsar_doctor "Ладно, милочка, вашему другу нужен покой. Пойдемте."
             stop sound_loop fadeout 2
-            $ renpy.block_rollback()
-            $ persistent.timeofday = "fog" 
+            $ bsar_set_time('fog', 'day')
             scene bg bsar_int_old_building_night_edited
             show bsar_she_night
             with bsar_flash
@@ -1521,10 +1484,9 @@ label bsar_insomnia_day3_after_dv:
             $ bsar_show_centered_text("{bsar_scare}{=bsar_scared_text_centered}Прости.{/=bsar_scared_text_centered}{/bsar_scare}", style=style.bsar_insomnia_centered_text_style)
 
         "Кто ты?":
-            $ bsar_paradise_ending_v += 1 
+            $ bsar_insomnia_paradise_ending_v += 1 
             stop ambience fadeout 2
-            $ renpy.block_rollback()
-            $ persistent.timeofday = "bw"
+            $ bsar_set_time('bw', 'day')
             scene bg bsar_roof
             play ambience bsar_winter_wind fadein 2
             show bsar_snow_layer3_anim_quick
@@ -1546,8 +1508,7 @@ label bsar_insomnia_day3_after_dv:
             bsar_she_red "Именно!"
 
     stop ambience fadeout 2
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "bw"
+    $ bsar_set_time('bw', 'day')
     $ renpy.pause(1, hard=True)
     scene bg bsar_heart_monitor 
     show bsar_heart_monitor_frame
@@ -1574,7 +1535,7 @@ label bsar_insomnia_day3_after_dv:
     stop sound_loop fadeout 2
     stop music fadeout 2
 
-    if bsar_paradise_ending_v == 3:
+    if bsar_insomnia_paradise_ending_v == 3:
         jump bsar_insomnia_paradise_ending
 
     else:
@@ -1603,8 +1564,7 @@ label bsar_insomnia_paradise_ending:
     scene bg white with bsar_flash
     play sound bsar_heart_stopped
     $ renpy.pause(6, hard=True)
-    $ renpy.block_rollback()
-    $ persistent.timeofday = "winter_day"
+    $ bsar_set_time('day')
     $ renpy.pause(1, hard=True)
     scene bg bsar_ext_road_winter_day with bsar_flash
     play ambience bsar_winter_wind fadein 2
