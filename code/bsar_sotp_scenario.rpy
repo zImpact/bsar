@@ -1,8 +1,8 @@
 label bsar_sotp_three_deaths:
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     stop music fadeout 3
     scene bg black with Dissolve(3)
-    $ bsar_new_chapter('Три смерти.', 'Пролог.')
+    $ bsar_new_chapter("Три смерти.", "Пролог.")
     $ bsar_set_mode_nvl()
     scene bg bsar_prolog_bw
     show bsar_static_noise_anim
@@ -31,7 +31,7 @@ label bsar_sotp_three_deaths:
     bsar_narrator "Ладно. Речь не об том."
     stop music fadeout 3
     scene bg black with Dissolve(3)
-    $ bsar_new_chapter('Три смерти.', 'АКТ 1. Как я жил.')
+    $ bsar_new_chapter("Три смерти.", "АКТ 1. Как я жил.")
     $ bsar_set_mode_adv()
     scene bg bsar_ext_winter_park
     show bsar_snow_layer3_anim
@@ -134,7 +134,7 @@ label bsar_sotp_three_deaths:
     bsar_yana "Эх, а я то надеялась, что ты всё же разгадываешь тайну философского камня."
     stop ambience fadeout 3
     scene bg black with Dissolve(3)
-    $ bsar_new_chapter('Три смерти.', 'АКТ 2. Как я работал.')
+    $ bsar_new_chapter("Три смерти.", "АКТ 2. Как я работал.")
     scene bg bsar_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -319,7 +319,7 @@ label bsar_sotp_three_deaths:
     stop music fadeout 3
     stop ambience fadeout 3
     scene bg black with Dissolve(3)
-    $ bsar_new_chapter('Три смерти.', 'АКТ 3. Так я и умер.')
+    $ bsar_new_chapter("Три смерти.", "АКТ 3. Так я и умер.")
     scene bg bsar_ext_winter_street
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -555,7 +555,7 @@ label bsar_sotp_three_deaths:
     bsar_fox_orange "Зачем ты так?"
     bsar_doctor "Ладно, милочка, вашему другу нужен покой. Пойдемте."
     $ renpy.pause(3, hard=True)
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     scene bg bsar_ext_road_winter_day with bsar_flash
     play ambience bsar_winter_wind fadein 2
     play music bsar_nightwish_nemo_piano_cover fadein 2
@@ -571,10 +571,10 @@ label bsar_sotp_three_deaths:
     #return
 
 label bsar_sotp_shadows:
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     stop music fadeout 3
     scene bg black with Dissolve(3)
-    $ bsar_new_chapter('Тени.', 'АКТ 1. Авторитет.', ['18 декабря 1999 года.', 'Допрос обвиняемого по статье 105.1 УК РФ.'])
+    $ bsar_new_chapter("Тени.", "АКТ 1. Авторитет.", ["18 декабря 1999 года.", "Допрос обвиняемого по статье 105.1 УК РФ."])
     $ bsar_set_mode_adv()
     scene bg bsar_int_tish_interrogation
     show bsar_static_noise_anim
@@ -628,7 +628,7 @@ label bsar_sotp_shadows:
     stop music fadeout 3
     scene bg black with Dissolve(3)
     $ bsar_set_mode_nvl()
-    $ bsar_new_chapter('Тени.', 'АКТ 2. Чудо.', ['{font=[bsar_laptev]}И снова я записываю дело в блокнот. Ничего не могу с собой поделать.\nКоллеги уже за глаза Сказочником называют, как будто это что-то плохое.{/font}', '29 декабря 1999 года.', 'Сказаев Павел Иванович.'])
+    $ bsar_new_chapter("Тени.", "АКТ 2. Чудо.", ["{font=[bsar_laptev]}И снова я записываю дело в блокнот. Ничего не могу с собой поделать.\nКоллеги уже за глаза Сказочником называют, как будто это что-то плохое.{/font}", "29 декабря 1999 года.", "Сказаев Павел Иванович."])
     scene bg bsar_int_alcotable
     show bsar_static_noise_anim
     with Dissolve(3)
@@ -757,7 +757,7 @@ label bsar_sotp_shadows:
     stop music fadeout 3
     scene bg black with Dissolve(3)
     $ bsar_set_mode_adv()
-    $ bsar_new_chapter('Тени.', 'АКТ 3. Тайна.')
+    $ bsar_new_chapter("Тени.", "АКТ 3. Тайна.")
     scene bg bsar_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim

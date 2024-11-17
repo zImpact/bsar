@@ -1,8 +1,8 @@
 label bsar_insomnia_day1:
-    $ bsar_set_time('night')
+    $ bsar_set_time("night")
     stop music fadeout 3
     scene bg black with Dissolve(3)
-    $ bsar_new_chapter('Бессонница.', 'День первый.')
+    $ bsar_new_chapter("Бессонница.", "День первый.")
     $ bsar_set_mode_nvl()
     scene bg bsar_prolog_blue with Dissolve(3)
     $ renpy.pause(1, hard=True)
@@ -12,7 +12,7 @@ label bsar_insomnia_day1:
     bsar_narrator "{i}Ещё наши предки считали, что во время сна душа может покидать физическое тело и, пересекая тонкую, невидимую человеческому глазу грань, путешествовать в другие миры.{/i}" 
     bsar_narrator "{i}Поэтому, никто не может гарантировать Тебе, что вся Твоя жизнь - это не сон. {w}Сон, в котором пленённое тело переживает подобные друг другу дни снова и снова. Бесчисленное число раз...{/i}" 
     $ renpy.pause(1, hard=True)
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_prolog_bw
     show bsar_she normal
     show bsar_static_noise_anim
@@ -27,7 +27,7 @@ label bsar_insomnia_day1:
     stop music fadeout 2
     stop ambience fadeout 2
     scene bg black with bsar_flash
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     nvl clear
     play ambience ambience_int_cabin_day fadein 2
     play sound_loop bsar_alarm_clock fadein 2 
@@ -124,7 +124,7 @@ label bsar_insomnia_day1:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_ext_winter_park
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -147,7 +147,7 @@ label bsar_insomnia_day1:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     scene bg bsar_ext_square_winter_day
     show bsar_us sad at center
     with bsar_flash
@@ -243,7 +243,7 @@ label bsar_insomnia_day1:
     bsar_narrator "Наверное, мне тоже стоит идти, иначе просижу в столовой до ужина..."
     stop music fadeout 1
     stop ambience fadeout 1
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_ext_winter_street
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -263,7 +263,7 @@ label bsar_insomnia_day1:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     scene bg bsar_int_dining_hall_winter with bsar_flash
     play ambience ambience_dining_hall_empty fadein 2
     bsar_narrator "Ничего не понимаю. Что со мной происходит? Уже второй раз перед глазами всплывают образы, которые пропадают так же быстро, как и появляются." 
@@ -293,7 +293,7 @@ label bsar_insomnia_day1:
     bsar_narrator "Прервал я её размышления, пока она не придумала мне что-то тяжёлое и энергозатратное."
     stop ambience fadeout 2
     scene bg black with Dissolve(1)
-    $ bsar_set_time('night')
+    $ bsar_set_time("night")
     scene bg int_house_of_mt_night with Dissolve(1)
     play ambience ambience_medstation_inside_night fadein 2
     play music bsar_domitori_taranofu_trouble fadein 2
@@ -338,7 +338,7 @@ label bsar_insomnia_day1_cleaning:
     $ renpy.pause(2, hard=True)
     scene bg black
     hide blink
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     stop ambience fadeout 2
     stop music fadeout 2
     scene bg bsar_roof behind blink
@@ -364,7 +364,7 @@ label bsar_insomnia_day1_cleaning:
     stop music fadeout 2
     stop ambience fadeout 2
     stop sound_loop fadeout 2
-    $ bsar_set_time('night')
+    $ bsar_set_time("night")
     scene bg int_house_of_mt_night
     show bsar_mt grin at center
     with bsar_flash
@@ -463,7 +463,7 @@ label bsar_insomnia_day1_stroll_failed:
     bsar_narrator "{i}Кажется что?..{/i}"
     stop sound_loop fadeout 2
     stop ambience fadeout 2
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_roof
     show bsar_snow_layer3_anim_quick
     show bsar_snow_layer2_anim_quick
@@ -546,7 +546,7 @@ label bsar_insomnia_day1_stroll_completed:
     bsar_narrator "Мне совершенно не хотелось выслушивать нравоучения непонятно из-за чего разъяренной Ольги." 
     bsar_narrator "К тому же накатила непонятно откуда взявшаяся усталость, и как только голова коснулась подушки я моментально заснул." 
     stop ambience fadeout 2 
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_int_kitchen_bw
     show bsar_she normal
     show bsar_static_noise_anim
@@ -567,8 +567,8 @@ label bsar_insomnia_day1_stroll_completed:
     jump bsar_insomnia_day2    
 
 label bsar_insomnia_day2:
-    $ bsar_set_time('day')
-    $ bsar_new_chapter('Бессонница.', 'День второй.')
+    $ bsar_set_time("day")
+    $ bsar_new_chapter("Бессонница.", "День второй.")
     scene bg black
     show blink
     bsar_narrator "Нос заложен. Горло дерёт, словно связки сорваны от бессмысленного и громкого крика в пустоту. Глаза слезятся. Я плакал во сне. Почему? Не помню." 
@@ -697,7 +697,7 @@ label bsar_insomnia_day2:
     bsar_protagonist "Ну, я живу в Москве с роди..."
     stop ambience fadeout 2 
     stop music fadeout 2
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_ext_winter_street
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -714,7 +714,7 @@ label bsar_insomnia_day2:
     bsar_she "Извини. Мне очень жаль твою сестру. Не хотела об этом напоминать." 
     bsar_he "Эй! Ничего страшного. Не стоит сильно расстраиваться."
     bsar_he "Я понимаю, что такое... {w}такое порой случается. И с этим просто нужно смириться."
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     stop music fadeout 2
     stop ambience fadeout 2
     stop sound_loop fadeout 2
@@ -775,7 +775,7 @@ label bsar_insomnia_day2:
     bsar_narrator "Больше всего я удивляюсь тому факту, что позволяю себе пасовать перед этой девчонкой. {w}Боже, эта Алиса..." 
     stop ambience fadeout 2
     stop music fadeout 2
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
@@ -797,7 +797,7 @@ label bsar_insomnia_day2:
     stop ambience fadeout 2
     stop sound_loop fadeout 2
     stop music fadeout 2
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     scene bg bsar_ext_square_winter_day
     show bsar_heavy_snow_day
     show bsar_normal_snow_day
@@ -847,7 +847,7 @@ label bsar_insomnia_day2:
     $ renpy.pause(1, hard=True)
     $ bsar_show_centered_text("У МЕНЯ АМНЕЗИЯ?", style=style.bsar_insomnia_centered_text_style)
     stop ambience fadeout 2 
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_prolog_bw
     show bsar_static_noise_anim
     with bsar_flash
@@ -856,14 +856,14 @@ label bsar_insomnia_day2:
     bsar_narrator "Я с отличием закончил десятый класс в Московской гимназии номер четырнадцать и за это был отправлен в этот лагерь, {i}потому что давно хотел сюда попасть.{/i}"  
     bsar_narrator "{i}Ведь так?{/i}"
     stop ambience fadeout 2
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     scene bg int_house_of_mt_day with bsar_flash 
     play ambience ambience_medstation_inside_night fadein 2 
     bsar_protagonist "И что мне делать?" 
     bsar_narrator "Задал я вопрос пустой комнате, которая ответила мне абсолютно ничем."
     show blink
     $ renpy.pause(2, hard=True)
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     stop ambience fadeout 2 
     scene bg bsar_prolog_bw
     show bsar_static_noise_anim
@@ -883,7 +883,7 @@ label bsar_insomnia_day2:
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     stop music fadeout 2
-    $ bsar_set_time('night')
+    $ bsar_set_time("night")
     scene bg int_house_of_mt_night behind blink 
     show unblink 
     $ renpy.pause(2, hard=True)
@@ -999,8 +999,8 @@ label bsar_insomnia_day2:
     $ renpy.block_rollback() 
 
 label bsar_insomnia_day3:
-    $ bsar_set_time('bw', 'day')
-    $ bsar_new_chapter('Бессонница.', 'День третий.')
+    $ bsar_set_time("bw", "day")
+    $ bsar_new_chapter("Бессонница.", "День третий.")
     scene bg bsar_lane
     show bsar_lis normal
     show bsar_static_noise_anim
@@ -1029,7 +1029,7 @@ label bsar_insomnia_day3:
     bsar_protagonist "А разве я сплю?"
     bsar_narrator "Спросил. {w}И проснулся."
     stop music fadeout 2
-    $ bsar_set_time('night')
+    $ bsar_set_time("night")
     scene bg int_house_of_mt_night2 with bsar_flash
     play ambience ambience_medstation_inside_night fadein 2
     play music bsar_domitori_taranofu_planet_of_colds fadein 2
@@ -1070,7 +1070,7 @@ label bsar_insomnia_day3:
     stop ambience fadeout 2 
     stop music fadeout 2
     stop sound_loop fadeout 2
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     scene bg black with Dissolve(1)
     $ renpy.pause(2, hard=True)
     scene bg bsar_ext_square_winter_day
@@ -1127,7 +1127,7 @@ label bsar_insomnia_day3:
     bsar_us "Отличненько! Увидимся на завтраке, там я тебе его и отдам." 
     hide bsar_us with dissolve 
     bsar_narrator "Ульянка на прощание махнула мне рукой и быстро убежала в сторону домиков. Ловец снов значит? Почему бы, собственно, и нет."
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_int_kitchen_bw
     show bsar_she normal
     show bsar_static_noise_anim
@@ -1145,7 +1145,7 @@ label bsar_insomnia_day3:
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     stop music fadeout 2
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     scene bg black with bsar_flash
     $ renpy.pause(0.5, hard=True)
     scene bg bsar_int_dining_hall_winter with Dissolve(1)
@@ -1282,7 +1282,7 @@ label bsar_insomnia_day3_after_dv:
     bsar_narrator "Ладно. Спешить некуда. Вечером узнаю." 
     scene bg black with Dissolve(1)
     $ renpy.pause(2, hard=True)
-    $ bsar_set_time('night', 'day')
+    $ bsar_set_time("night", "day")
     scene bg bsar_ext_square_winter_night_tree with Dissolve(1) 
     play music bsar_domitori_taranofu_winter_night fadein 2 
     bsar_narrator "Новый год подбирался всё ближе и ближе, скрываясь за предпоследним листом календаря. " 
@@ -1342,7 +1342,7 @@ label bsar_insomnia_day3_after_dv:
     bsar_narrator "Если я скажу, что у меня нет чувств к Ульяне, я буду полным лжецом."  
     bsar_narrator "Мне захотелось поговорить с ней до назначенного времени, но усталость напомнила о себе." 
     bsar_narrator "Я зевнул так, что чуть не свело челюсть, а глаза начали слипаться. Ладно. {w}Потом. {w}Всё потом. Времени у меня ещё много..."
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     scene bg bsar_prolog_bw
@@ -1371,7 +1371,7 @@ label bsar_insomnia_day3_after_dv:
     bsar_protagonist "Как ты можешь умереть?" 
     bsar_she_red "С того момента, как я сюда попала, силы стремительно покидают меня. {w}Я не смогла. {w}Ты не вспомнил."
     bsar_she_red "Позволь дать тебе ответы перед..."
-    $ bsar_set_time('fog', 'day')
+    $ bsar_set_time("fog", "day")
     scene bg bsar_ext_house_of_mt_fog with bsar_flash
     play music bsar_dark_shades fadein 5
     bsar_narrator "Ужасный кашель обжигает и раздирает горло. Я падаю на землю, пытаясь откашляться." 
@@ -1411,7 +1411,7 @@ label bsar_insomnia_day3_after_dv:
     scene bg bsar_int_old_building_night_edited with dissolve 
     bsar_protagonist "Что даль..." 
     stop ambience fadeout 2
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     scene bg bsar_form 
     show bsar_static_noise_anim
     with bsar_flash
@@ -1429,7 +1429,7 @@ label bsar_insomnia_day3_after_dv:
     bsar_protagonist "Взял бы, конечно! Это бы были прекрасные воспоминания!" 
     bsar_protagonist "{i}Воспоминания на всю жизнь!{/i}" 
     stop ambience fadeout 2
-    $ bsar_set_time('fog', 'day')
+    $ bsar_set_time("fog", "day")
     scene bg bsar_int_old_building_night_edited 
     show bsar_she_night
     with bsar_flash
@@ -1439,7 +1439,7 @@ label bsar_insomnia_day3_after_dv:
     menu:
         "Где я?":
             bsar_she_red "Как ты мог понять по пробившимся к тебе фрагментам памяти, случились две трагедии. Сначала в аварии скончалась твоя сестра. Затем погибла... {w}Я."
-            $ bsar_set_time('bw', 'day') 
+            $ bsar_set_time("bw", "day") 
             scene bg bsar_medical_room_celling 
             show bsar_static_noise_anim
             with bsar_flash
@@ -1449,13 +1449,13 @@ label bsar_insomnia_day3_after_dv:
             bsar_doctor "Но... Вам не нужно время, чтобы...."  
             bsar_protagonist "Она умерла. С этим просто нужно смириться. Когда я смогу забрать тело?"
             stop sound_loop fadeout 2
-            $ bsar_set_time('fog', 'day')
+            $ bsar_set_time("fog", "day")
             scene bg bsar_int_old_building_night_edited
             show bsar_she_night
             with bsar_flash 
             bsar_she_red "Это было для тебя страшным ударом. {w}Ты просто не выдержал. Пара недель беспробудного пьянства, безрезультатные попытки сослуживцев достучаться до тебя." 
             bsar_she_red "В конце концов, ты сделал неправильный выбор."
-            $ bsar_set_time('bw', 'day')
+            $ bsar_set_time("bw", "day")
             scene bg bsar_makarov_pistol
             show bsar_static_noise_anim
             with bsar_flash
@@ -1475,7 +1475,7 @@ label bsar_insomnia_day3_after_dv:
             bsar_fox_orange "Зачем ты так?" 
             bsar_doctor "Ладно, милочка, вашему другу нужен покой. Пойдемте."
             stop sound_loop fadeout 2
-            $ bsar_set_time('fog', 'day')
+            $ bsar_set_time("fog", "day")
             scene bg bsar_int_old_building_night_edited
             show bsar_she_night
             with bsar_flash
@@ -1486,7 +1486,7 @@ label bsar_insomnia_day3_after_dv:
         "Кто ты?":
             $ bsar_insomnia_paradise_ending_v += 1 
             stop ambience fadeout 2
-            $ bsar_set_time('bw', 'day')
+            $ bsar_set_time("bw", "day")
             scene bg bsar_roof
             play ambience bsar_winter_wind fadein 2
             show bsar_snow_layer3_anim_quick
@@ -1508,7 +1508,7 @@ label bsar_insomnia_day3_after_dv:
             bsar_she_red "Именно!"
 
     stop ambience fadeout 2
-    $ bsar_set_time('bw', 'day')
+    $ bsar_set_time("bw", "day")
     $ renpy.pause(1, hard=True)
     scene bg bsar_heart_monitor 
     show bsar_heart_monitor_frame
@@ -1564,7 +1564,7 @@ label bsar_insomnia_paradise_ending:
     scene bg white with bsar_flash
     play sound bsar_heart_stopped
     $ renpy.pause(6, hard=True)
-    $ bsar_set_time('day')
+    $ bsar_set_time("day")
     $ renpy.pause(1, hard=True)
     scene bg bsar_ext_road_winter_day with bsar_flash
     play ambience bsar_winter_wind fadein 2

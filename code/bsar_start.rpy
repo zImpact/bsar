@@ -8,9 +8,9 @@ init python:
         pass
 
 label bsar_start:
-    $ bsar_set_time('night')
-    $ bsar_set_dynamic_cursor('main_menu')
-    $ bsar_onload('lock')
+    $ bsar_set_time("night")
+    $ bsar_set_dynamic_cursor("main_menu")
+    $ bsar_onload("lock")
     $ bsar_screens_save_act()
     $ renpy.pause(3, hard=True)
     show bsar_insomnia_intro_logo

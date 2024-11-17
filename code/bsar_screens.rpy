@@ -168,7 +168,7 @@ screen bsar_insomnia_main_menu():
 
     add "bsar_insomnia_main_menu_bg"
 
-    on 'show' action Play('music', bsar_domitori_taranofu_lullaby, if_changed=True)
+    on "show" action Play("music", bsar_domitori_taranofu_lullaby, if_changed=True)
     
     if bsar_main_menu_var:
         add "bsar_main_menu_frame" xalign 0.5 ypos 290
@@ -233,9 +233,9 @@ screen bsar_sotp_main_menu():
     key "K_F1":
         action NullAction()
 
-    add "bsar_makarov_pistol"
+    # add "bsar_makarov_pistol"
 
-    on 'show' action Play('music', bsar_master_of_spirits_shadows_main_theme, if_changed=True)
+    on "show" action Play("music", bsar_master_of_spirits_shadows_main_theme, if_changed=True)
     
     if bsar_main_menu_var:
         add "bsar_main_menu_frame" xalign 0.5 ypos 290
@@ -254,7 +254,7 @@ screen bsar_sotp_main_menu():
             xalign 0.5
             yalign 0.35
             #action [SetVariable("bsar_lock_quit_game_main_menu_var", False), Start("bsar_insomnia_day1")]
-            action ShowMenu('bsar_sotp_choose_story')
+            action ShowMenu("bsar_sotp_choose_story")
                 
         textbutton ["Загрузить"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
@@ -1056,7 +1056,7 @@ screen bsar_game_menu_selector():
             text_style "bsar_quick_menu_style_" + persistent.timeofday
             xalign 0.5
             ypos 418
-            action [Function(bsar_set_dynamic_cursor, 'main_menu'), MainMenu(confirm=False)]
+            action [Function(bsar_set_dynamic_cursor, "main_menu"), MainMenu(confirm=False)]
             
         textbutton ["Сохранить"]:
             style "bsar_button_none"

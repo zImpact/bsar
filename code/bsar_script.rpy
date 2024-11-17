@@ -16,6 +16,7 @@ init python:
                 _preferences.volumes["music"] = persistent.bsar_on_save_timeofday[slot][3]
                 _preferences.volumes["sfx"] = persistent.bsar_on_save_timeofday[slot][4]
                 _preferences.volumes["voice"] = persistent.bsar_on_save_timeofday[slot][5]
+                bsar_set_dynamic_cursor("timeofday")
     
         except:
             pass
@@ -27,8 +28,8 @@ init python:
         persistent.bsar_on_save_timeofday[slot] = (persistent.timeofday, persistent.sprite_time, persistent.font_size, _preferences.volumes["music"], _preferences.volumes["sfx"], _preferences.volumes["voice"])
     
     def bsar_screen_save():
-        main_menu_screen = 'insomnia_main_menu' if persistent.bsar_current_story == 'insomnia' else 'sotp_main_menu'
-        renpy.display.screen.screens[('bsar_old_' + main_menu_screen, None)] = renpy.display.screen.screens[('main_menu', None)]
+        main_menu_screen = "insomnia_main_menu" if persistent.bsar_current_story == "insomnia" else "sotp_main_menu"
+        renpy.display.screen.screens[("bsar_old_" + main_menu_screen, None)] = renpy.display.screen.screens[("main_menu", None)]
 
         for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[("bsar_old_" + screen_name, None)] = renpy.display.screen.screens[(screen_name, None)]
@@ -38,8 +39,8 @@ init python:
         config.name = "BetweenSleepAndReality"
         config.version = "1.0"
 
-        main_menu_screen = 'insomnia_main_menu' if persistent.bsar_current_story == 'insomnia' else 'sotp_main_menu'
-        renpy.display.screen.screens[('main_menu', None)] = renpy.display.screen.screens[('bsar_' + main_menu_screen, None)]
+        main_menu_screen = "insomnia_main_menu" if persistent.bsar_current_story == "insomnia" else "sotp_main_menu"
+        renpy.display.screen.screens[("main_menu", None)] = renpy.display.screen.screens[("bsar_" + main_menu_screen, None)]
 
         for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[(screen_name, None)] = renpy.display.screen.screens[("bsar_" + screen_name, None)]
@@ -54,8 +55,8 @@ init python:
         config.name = "Everlasting_Summer"
         config.version = "1.2"
 
-        main_menu_screen = 'insomnia_main_menu' if persistent.bsar_current_story == 'insomnia' else 'sotp_main_menu'
-        renpy.display.screen.screens[('main_menu', None)] = renpy.display.screen.screens[('bsar_old_' + main_menu_screen), None]
+        main_menu_screen = "insomnia_main_menu" if persistent.bsar_current_story == "insomnia" else "sotp_main_menu"
+        renpy.display.screen.screens[("main_menu", None)] = renpy.display.screen.screens[("bsar_old_" + main_menu_screen), None]
 
         for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[(screen_name, None)] = renpy.display.screen.screens[("bsar_old_" + screen_name, None)]
@@ -63,14 +64,14 @@ init python:
         layout.LOADING = "Загрузка приведёт к потере несохранённых данных.\nВы уверены, что хотите сделать это?"
         renpy.free_memory()
         persistent.timeofday = "day"
-        config.mouse_displayable = MouseDisplayable('images/misc/mouse/1.png', 0, 0)
+        config.mouse_displayable = MouseDisplayable("images/misc/mouse/1.png", 0, 0)
         config.main_menu_music = "sound/music/blow_with_the_fires.ogg"
 
         persistent._file_page = 1
-        renpy.music.stop("ambience")
-        renpy.music.stop("music")
-        renpy.music.stop("sound")
-        renpy.music.stop("sound_loop")
+
+        for channel in ["ambience", "music", "sound", "sound_loop"]:
+            renpy.music.stop(channel)
+            
         renpy.play(music_list["blow_with_the_fires"], channel="music")
 
     def bsar_screens_save_act():

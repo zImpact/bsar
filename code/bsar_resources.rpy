@@ -200,19 +200,19 @@ init python:
         renpy.with_statement(transition)
 
     def bsar_set_timeofday_cursor():
-        config.mouse_displayable = MouseDisplayable(bsar_gui_path + 'cursors/' + persistent.timeofday + '/cursor.png', 0, 0)
+        config.mouse_displayable = MouseDisplayable(bsar_gui_path + "cursors/" + persistent.timeofday + "/cursor.png", 0, 0)
 
     def bsar_set_dynamic_cursor(state):
         if bsar_set_timeofday_cursor in config.overlay_functions:
             config.overlay_functions.remove(bsar_set_timeofday_cursor)
 
-        if state == 'timeofday':
+        if state == "timeofday":
             config.overlay_functions.append(bsar_set_timeofday_cursor)
 
-        elif state == 'main_menu':
+        elif state == "main_menu":
             config.mouse_displayable = MouseDisplayable(bsar_gui_path + "cursors/main_menu/cursor.png", 0, 0)
 
-        elif state == 'null':
+        elif state == "null":
             config.mouse_displayable = MouseDisplayable(Null(0, 0), 0, 0)
 
     def bsar_set_time(timeofday, sprite_time=None):
@@ -220,7 +220,7 @@ init python:
             sprite_time = timeofday
         
         renpy.block_rollback()
-        persistent.timeofday = 'winter_' + timeofday if timeofday in ['day', 'night'] else timeofday
+        persistent.timeofday = "winter_" + timeofday if timeofday in ["day", "night"] else timeofday
         persistent.sprite_time = sprite_time
 
     def bsar_onload(type):
@@ -260,15 +260,15 @@ init python:
 
     def bsar_show_heart_monitor_phrases(phrase):
         renpy.play(bsar_heart_monitor_sound, "sound")
-        renpy.show('bsar_' + phrase + "_left", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(0)])
+        renpy.show("bsar_" + phrase + "_left", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(0)])
         renpy.with_statement(bsar_heart_monitor_transition)
         bsar_show_centered_text(bsar_heart_monitor_phrases[phrase][0], transition=bsar_heart_monitor_transition, pause=False, style=style.bsar_centered_text_style_heart_monitor)
-        renpy.show('bsar_' + phrase + "_right", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(bsar_heart_monitor_phrases[phrase][1])])
+        renpy.show("bsar_" + phrase + "_right", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(bsar_heart_monitor_phrases[phrase][1])])
         renpy.with_statement(bsar_heart_monitor_transition)
         renpy.pause()
-        renpy.hide('bsar_' + phrase + "_left")
+        renpy.hide("bsar_" + phrase + "_left")
         renpy.hide("text")
-        renpy.hide('bsar_' + phrase + "_right")
+        renpy.hide("bsar_" + phrase + "_right")
         renpy.with_statement(bsar_heart_monitor_transition)
         renpy.pause(0.5, hard=True)
 
@@ -288,36 +288,36 @@ init python:
         global save_name
 
         insomnia_days = {
-            'День первый.': 1,
-            'День второй.': 2,
-            'День третий.': 3
+            "День первый.": 1,
+            "День второй.": 2,
+            "День третий.": 3
         }
 
         renpy.block_rollback()
-        bsar_set_dynamic_cursor('null')
+        bsar_set_dynamic_cursor("null")
         bsar_onload("lock")
-        save_name = story_name + '\n' + part
+        save_name = story_name + "\n" + part
         renpy.pause(2, hard=True)
 
-        if story_name == 'Бессонница.':
+        if story_name == "Бессонница.":
             insomnia_day_number = insomnia_days.get(part)
             renpy.movie_cutscene(bsar_gui_path + "days_transitions/bsar_insomnia_day{}.ogv".format(insomnia_day_number))
             renpy.pause(0.5, hard=True)
 
-        elif story_name in ['Три смерти.', 'Тени.']:
-            bsar_show_centered_text(story_name + ' ' + part, style=style.bsar_sotp_centered_text_style, transition=dissolve)
+        elif story_name in ["Три смерти.", "Тени."]:
+            bsar_show_centered_text(story_name + " " + part, style=style.bsar_sotp_centered_text_style, transition=dissolve)
             renpy.pause(0.5, hard=True)
             bsar_hide_centered_text(dissolve)
             renpy.pause(0.5, hard=True)
 
-            if story_name == 'Тени.':
+            if story_name == "Тени.":
                 for phrase in phrases:
                     bsar_show_centered_text(phrase, style=style.bsar_sotp_centered_text_style, transition=dissolve)
                     renpy.pause(0.5, hard=True)
                     bsar_hide_centered_text(dissolve)
                     renpy.pause(0.5, hard=True)
 
-        bsar_set_dynamic_cursor('timeofday')
+        bsar_set_dynamic_cursor("timeofday")
         renpy.pause(2, hard=True)
         bsar_onload("unlock")
         renpy.block_rollback()
@@ -652,18 +652,18 @@ init python:
     if persistent.bsar_insomnia_achievements == None:
         persistent.bsar_insomnia_achievements = {}
 
-    persistent.bsar_insomnia_achievements.setdefault('bsar_insomnia_paradise', False)
-    persistent.bsar_insomnia_achievements.setdefault('bsar_insomnia_awakening', False)
-    persistent.bsar_insomnia_achievements.setdefault('bsar_insomnia_murderous_snowball', False)
+    persistent.bsar_insomnia_achievements.setdefault("bsar_insomnia_paradise", False)
+    persistent.bsar_insomnia_achievements.setdefault("bsar_insomnia_awakening", False)
+    persistent.bsar_insomnia_achievements.setdefault("bsar_insomnia_murderous_snowball", False)
 
     if persistent.bsar_sotp_achievements == None:
         persistent.bsar_sotp_achievements = {}
 
-    persistent.bsar_sotp_achievements.setdefault('bsar_sotp_begining_and_end', False)
-    persistent.bsar_sotp_achievements.setdefault('bsar_sotp_better', False)
+    persistent.bsar_sotp_achievements.setdefault("bsar_sotp_begining_and_end", False)
+    persistent.bsar_sotp_achievements.setdefault("bsar_sotp_better", False)
 
     if persistent.bsar_current_story == None:
-        persistent.bsar_current_story = 'insomnia'
+        persistent.bsar_current_story = "insomnia"
 
     def bsar_show_achievement(achievement_name):
         renpy.play(sfx_achievement)
@@ -703,39 +703,39 @@ init:
     $ bsar_heart_monitor_transition = ImageDissolve(bsar_gui_path + "effects/heart_monitor/bsar_hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
     $ bsar_flash = Fade(0.45, 1.0, 0.45, color="#ffff")
 
-    $ bsar_titles_text = '''Спасибо за прочтение! Вот уже прошло практически два года как мы начали делать модификации и именно этот проект является важной вехой нашей деятельности, ибо с него всё и начиналось.
+#     $ bsar_titles_text = '''Спасибо за прочтение! Вот уже прошло практически два года как мы начали делать модификации и именно этот проект является важной вехой нашей деятельности, ибо с него всё и начиналось.
 
-Искренне надеемся, что ремейк Бессонницы вам понравился.
+# Искренне надеемся, что ремейк Бессонницы вам понравился.
 
-Над модом работали:
-СЦЕНАРИЙ
-Ева Миронова
+# Над модом работали:
+# СЦЕНАРИЙ
+# Ева Миронова
 
-КОД
-Андрей Катаев
+# КОД
+# Андрей Катаев
 
-ВИЗУАЛЬНАЯ СОСТАВЛЯЮЩАЯ
-Егор Бобков
-Лиза Степанцова
-Егор Козаченко
-Anna Monster
-Семён Персунов
-Александр Ларин
+# ВИЗУАЛЬНАЯ СОСТАВЛЯЮЩАЯ
+# Егор Бобков
+# Лиза Степанцова
+# Егор Козаченко
+# Anna Monster
+# Семён Персунов
+# Александр Ларин
 
-МУЗЫКАЛЬНОЕ СОПРОВОЖДЕНИЕ
-Дмитрий Таранов
-Алан Кокоев
+# МУЗЫКАЛЬНОЕ СОПРОВОЖДЕНИЕ
+# Дмитрий Таранов
+# Алан Кокоев
 
-ОТДЕЛЬНЫЕ БЛАГОДАРНОСТИ
-Александр Милютин
-Родион Егоров
-Саша Шмелев
-Илья Можайкин
-Женя Двойкин
+# ОТДЕЛЬНЫЕ БЛАГОДАРНОСТИ
+# Александр Милютин
+# Родион Егоров
+# Саша Шмелев
+# Илья Можайкин
+# Женя Двойкин
 
-Спасибо всем за поддержку. Ваши оценки и отзывы очень важны для нас и мотивируют работать дальше! С уважением, команда Zero Impact.
+# Спасибо всем за поддержку. Ваши оценки и отзывы очень важны для нас и мотивируют работать дальше! С уважением, команда Zero Impact.
 
-С новым годом!'''
+# С новым годом!'''
 
     image bsar_titles_final = ParameterizedText(style="bsar_titles_style", size=40, xalign=0.5)
 
@@ -760,7 +760,7 @@ Anna Monster
 
     image bg bsar_int_house_of_mt_day_blurred = im.Blur("images/bg/int_house_of_mt_day.jpg", 1.5)
 
-    image bsar_blank_skip = renpy.display.behavior.ImageButton(Null(1920, 1080), Null(1920, 1080), clicked=[Jump('bsar_after_intro')])
+    image bsar_blank_skip = renpy.display.behavior.ImageButton(Null(1920, 1080), Null(1920, 1080), clicked=[Jump("bsar_after_intro")])
 
     image bsar_snow_layer0_anim:
         contains:
