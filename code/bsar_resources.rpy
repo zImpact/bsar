@@ -209,8 +209,11 @@ init python:
         if state == "timeofday":
             config.overlay_functions.append(bsar_set_timeofday_cursor)
 
-        elif state == "main_menu":
-            config.mouse_displayable = MouseDisplayable(bsar_gui_path + "cursors/main_menu/cursor.png", 0, 0)
+        elif state == "insomnia_main_menu":
+            config.mouse_displayable = MouseDisplayable(bsar_gui_path + "cursors/insomnia_main_menu/cursor.png", 0, 0)
+
+        elif state == "sotp_main_menu":
+            config.mouse_displayable = MouseDisplayable(bsar_gui_path + "cursors/sotp_main_menu/cursor.png", 0, 0)
 
         elif state == "null":
             config.mouse_displayable = MouseDisplayable(Null(0, 0), 0, 0)
@@ -245,7 +248,16 @@ init python:
 
         for i in range(count + 1 + k):
             randow_word = random.choice(list)
-            renpy.show("bsar_words_move_style randow_word", at_list=[bsar_words_move(random.uniform(0.1, 0.5), random.random(), random.random())], tag="text_" + str(i))
+            renpy.show(
+                "bsar_words_move_style randow_word", 
+                at_list=[
+                    bsar_words_move(
+                        random.uniform(0.1, 0.5), 
+                        random.random(), 
+                        random.random())
+                ], 
+                tag="text_" + str(i)
+            )
 
     def bsar_show_centered_text(text, style, transition=None, pause=True):
         renpy.show("text", what=Text(text, slow=True, style=style, xalign=0.5, yalign=0.5))
@@ -260,10 +272,25 @@ init python:
 
     def bsar_show_heart_monitor_phrases(phrase):
         renpy.play(bsar_heart_monitor_sound, "sound")
-        renpy.show("bsar_" + phrase + "_left", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(0)])
+        renpy.show(
+            "bsar_" + phrase + "_left", 
+            behind=["bsar_heart_monitor_frame"],
+            at_list=[bsar_heart_monitor_phrases_position(0)]
+        )
         renpy.with_statement(bsar_heart_monitor_transition)
-        bsar_show_centered_text(bsar_heart_monitor_phrases[phrase][0], transition=bsar_heart_monitor_transition, pause=False, style=style.bsar_centered_text_style_heart_monitor)
-        renpy.show("bsar_" + phrase + "_right", behind=["bsar_heart_monitor_frame"], at_list=[bsar_heart_monitor_phrases_position(bsar_heart_monitor_phrases[phrase][1])])
+        bsar_show_centered_text(
+            bsar_heart_monitor_phrases[phrase][0], 
+            transition=bsar_heart_monitor_transition,
+            pause=False, 
+            style=style.bsar_centered_text_style_heart_monitor
+        )
+        renpy.show(
+            "bsar_" + phrase + "_right", 
+            behind=["bsar_heart_monitor_frame"], 
+            at_list=[
+                bsar_heart_monitor_phrases_position(bsar_heart_monitor_phrases[phrase][1])
+            ]
+        )
         renpy.with_statement(bsar_heart_monitor_transition)
         renpy.pause()
         renpy.hide("bsar_" + phrase + "_left")

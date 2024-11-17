@@ -186,35 +186,52 @@ screen bsar_insomnia_main_menu():
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.35
-            action [SetVariable("bsar_lock_quit_game_main_menu_var", False), Start("bsar_insomnia_day1")]
+            action [
+                SetVariable("bsar_lock_quit_game_main_menu_var", False), 
+                Start("bsar_insomnia_day1")
+            ]
                 
         textbutton ["Загрузить"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.475
-            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_load_main_menu")]
+            action [
+                SetVariable("bsar_main_menu_var", False), 
+                ShowMenu("bsar_load_main_menu")
+            ]
             
         textbutton ["Настройки"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.6
-            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_preferences_main_menu")]
+            action [
+                SetVariable("bsar_main_menu_var", False), 
+                ShowMenu("bsar_preferences_main_menu")
+            ]
 
         textbutton ["Дополнительно"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.725
-            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_extra")]
+            action [
+                SetVariable("bsar_main_menu_var", False), 
+                ShowMenu("bsar_extra")
+            ]
                 
         textbutton ["Выход"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.85
-            action [SetVariable("bsar_main_menu_var", False), Hide("bsar_main_menu"), (Function(bsar_screens_diact)), ShowMenu("main_menu")]
+            action [
+                SetVariable("bsar_main_menu_var", False), 
+                Hide("bsar_main_menu"), 
+                Function(bsar_screens_diact), 
+                ShowMenu("main_menu")
+            ]
             
         imagebutton:
             idle "bsar_logowhite_idle"
@@ -282,7 +299,12 @@ screen bsar_sotp_main_menu():
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.85
-            action [SetVariable("bsar_main_menu_var", False), Hide("bsar_main_menu"), (Function(bsar_screens_diact)), ShowMenu("main_menu")]
+            action [
+                SetVariable("bsar_main_menu_var", False), 
+                Hide("bsar_main_menu"), 
+                Function(bsar_screens_diact), 
+                ShowMenu("main_menu")
+            ]
             
         imagebutton:
             idle "bsar_logowhite_idle"

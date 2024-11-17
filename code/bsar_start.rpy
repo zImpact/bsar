@@ -8,12 +8,20 @@ init python:
         pass
 
 label bsar_start:
-    $ bsar_set_time("night")
-    $ bsar_set_dynamic_cursor("main_menu")
+    $ bsar_set_dynamic_cursor("null")
+    $ renpy.pause(3, hard=True)
     $ bsar_onload("lock")
     $ bsar_screens_save_act()
-    $ renpy.pause(3, hard=True)
-    show bsar_insomnia_intro_logo
+    $ bsar_set_dynamic_cursor(persistent.bsar_current_story + "_main_menu")
+
+    if persistent.bsar_current_story == "insomnia":
+        $ bsar_set_time("winter_night")
+        show bsar_insomnia_intro_logo
+
+    else:
+        $ bsar_set_time("bw")
+        show bsar_sotp_intro_logo
+        
     show bsar_blank_skip
     with Dissolve(3)
     play sound sfx_intro_bus_transition
