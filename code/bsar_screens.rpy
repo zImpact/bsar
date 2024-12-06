@@ -173,11 +173,12 @@ screen bsar_insomnia_main_menu():
     if bsar_main_menu_var:
         add "bsar_main_menu_frame" xalign 0.5 ypos 290
 
-        text "{font=[bsar_diamond_girl_skinny]}Бессонница{/font}":
+        text "Бессонница":
             size 170
-            text_align 0.5
             xalign 0.5
             ypos 40
+            font bsar_diamond_girl_skinny
+            text_align 0.5
             antialias True
             kerning 2
             
@@ -234,8 +235,7 @@ screen bsar_insomnia_main_menu():
             ]
             
         imagebutton:
-            idle "bsar_logowhite_idle"
-            hover "bsar_logowhite_hover"
+            auto "bsar_insomnia_logowhite_%s"
             xpos 1520
             ypos 800
             action OpenURL("https://vk.com/public176281709")
@@ -250,53 +250,59 @@ screen bsar_sotp_main_menu():
     key "K_F1":
         action NullAction()
 
-    # add "bsar_makarov_pistol"
+    add "bsar_sotp_main_menu_bg"
+
+    add "bsar_sotp_main_menu_vingette"
 
     on "show" action Play("music", bsar_master_of_spirits_shadows_main_theme, if_changed=True)
     
     if bsar_main_menu_var:
-        add "bsar_main_menu_frame" xalign 0.5 ypos 290
-
-        text "{font=[bsar_diamond_girl_skinny]}Тени прошлого{/font}":
+        text "Тени прошлого":
             size 170
-            text_align 0.5
             xalign 0.5
             ypos 40
+            font bsar_yanone_kaffeesatz_regular
+            text_align 0.5
             antialias True
             kerning 2
             
-        textbutton ["Начать игру"] at bsar_buttons_atl():
-            style "bsar_main_menu_text_style"
-            text_style "bsar_main_menu_text_style"
+        imagebutton:
+            auto "bsar_sotp_choose_story_%s" 
             xalign 0.5
-            yalign 0.35
+            yalign 0.4
             #action [SetVariable("bsar_lock_quit_game_main_menu_var", False), Start("bsar_insomnia_day1")]
             action ShowMenu("bsar_sotp_choose_story")
                 
-        textbutton ["Загрузить"] at bsar_buttons_atl():
-            style "bsar_main_menu_text_style"
-            text_style "bsar_main_menu_text_style"
+        imagebutton:
+            auto "bsar_sotp_load_%s"
             xalign 0.5
-            yalign 0.475
-            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_load_main_menu")]
+            yalign 0.55
+            action [
+                SetVariable("bsar_main_menu_var", False), 
+                ShowMenu("bsar_load_main_menu")
+            ]
             
-        textbutton ["Настройки"] at bsar_buttons_atl():
-            style "bsar_main_menu_text_style"
-            text_style "bsar_main_menu_text_style"
+        imagebutton:
+            auto "bsar_sotp_preferences_%s"
             xalign 0.5
-            yalign 0.6
-            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_preferences_main_menu")]
+            yalign 0.7
+            action [
+                SetVariable("bsar_main_menu_var", False),
+                ShowMenu("bsar_preferences_main_menu")
+            ]
 
         textbutton ["Дополнительно"] at bsar_buttons_atl():
             style "bsar_main_menu_text_style"
             text_style "bsar_main_menu_text_style"
             xalign 0.5
             yalign 0.725
-            action [SetVariable("bsar_main_menu_var", False), ShowMenu("bsar_extra")]
+            action [
+                SetVariable("bsar_main_menu_var", False), 
+                ShowMenu("bsar_extra")
+            ]
                 
-        textbutton ["Выход"] at bsar_buttons_atl():
-            style "bsar_main_menu_text_style"
-            text_style "bsar_main_menu_text_style"
+        imagebutton:
+            auto "bsar_sotp_quit_%s"
             xalign 0.5
             yalign 0.85
             action [
@@ -307,8 +313,7 @@ screen bsar_sotp_main_menu():
             ]
             
         imagebutton:
-            idle "bsar_logowhite_idle"
-            hover "bsar_logowhite_hover"
+            auto "bsar_sotp_logowhite_%s"
             xpos 1520
             ypos 800
             action OpenURL("https://vk.com/public176281709")

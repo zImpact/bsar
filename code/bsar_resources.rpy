@@ -780,6 +780,7 @@ init:
     image bsar_static_noise_anim = bsar_frame_animation("bsar/images/bg/bsar_static_noise_anim/bsar_static_noise", 5, 0.2, True, Dissolve(0.2))
 
     image bsar_insomnia_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "insomnia_main_menu/bsar_insomnia_main_menu_background.ogv")
+    image bsar_sotp_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "sotp_main_menu/bsar_sotp_main_menu_background.ogv")
 
     image bsar_words_move_style = ParameterizedText(style="settings_link", size = 100, color = "fff")
 

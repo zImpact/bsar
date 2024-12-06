@@ -35,6 +35,7 @@ init -1 python:
     bsar_diamond_girl_skinny = bsar_gui_path + "fonts/diamond_girl_skinny.otf"
     bsar_electronical = bsar_gui_path + "fonts/electronical.otf"
     bsar_yanone_kaffeesatz_light = bsar_gui_path + "fonts/yanone_kaffeesatz_light.ttf"
+    bsar_yanone_kaffeesatz_regular = bsar_gui_path + "fonts/yanone_kaffeesatz_regular.ttf"
     bsar_laptev = bsar_gui_path + "fonts/Laptev_Brush.otf"
 
     style.bsar_titles_style = Style(style.default)
