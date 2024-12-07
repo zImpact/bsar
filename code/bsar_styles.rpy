@@ -37,6 +37,7 @@ init -1 python:
     bsar_yanone_kaffeesatz_light = bsar_gui_path + "fonts/yanone_kaffeesatz_light.ttf"
     bsar_yanone_kaffeesatz_regular = bsar_gui_path + "fonts/yanone_kaffeesatz_regular.ttf"
     bsar_laptev = bsar_gui_path + "fonts/Laptev_Brush.otf"
+    bsar_vela_sans_light = bsar_gui_path + "fonts/VelaSans-Light.ttf"
 
     style.bsar_titles_style = Style(style.default)
     style.bsar_titles_style.font = bsar_flow_ext
@@ -60,24 +61,44 @@ init -1 python:
     style.bsar_text_style.drop_shadow = (2, 2)
     style.bsar_text_style.drop_shadow_color = "#000"
 
-    style.bsar_main_menu_text_style = Style(style.default)
-    style.bsar_main_menu_text_style.font = bsar_flow_ext
-    style.bsar_main_menu_text_style.color = "#ffffff"
-    style.bsar_main_menu_text_style.size = 70
+    style.bsar_insomnia_main_menu_text_style = Style(style.default)
+    style.bsar_insomnia_main_menu_text_style.font = bsar_flow_ext
+    style.bsar_insomnia_main_menu_text_style.color = "#ffffff"
+    style.bsar_insomnia_main_menu_text_style.size = 70
 
-    style.bsar_preferences_main_menu_text_style = Style(style.default)
-    style.bsar_preferences_main_menu_text_style.font = bsar_flow_ext
-    style.bsar_preferences_main_menu_text_style.color = "#b3b3b3"
-    style.bsar_preferences_main_menu_text_style.hover_color = "#ffffff"
-    style.bsar_preferences_main_menu_text_style.selected_color = "#ffffff"
-    style.bsar_preferences_main_menu_text_style.size = 60
+    style.bsar_sotp_main_menu_text_style = Style(style.default)
+    style.bsar_sotp_main_menu_text_style.font = bsar_yanone_kaffeesatz_light
+    style.bsar_sotp_main_menu_text_style.color = "#ffffff"
+    style.bsar_sotp_main_menu_text_style.hover_color = "#dcd168"
+    style.bsar_sotp_main_menu_text_style.size = 70
+
+    style.bsar_insomnia_preferences_main_menu_text_style = Style(style.default)
+    style.bsar_insomnia_preferences_main_menu_text_style.font = bsar_flow_ext
+    style.bsar_insomnia_preferences_main_menu_text_style.color = "#b3b3b3"
+    style.bsar_insomnia_preferences_main_menu_text_style.hover_color = "#ffffff"
+    style.bsar_insomnia_preferences_main_menu_text_style.selected_color = "#ffffff"
+    style.bsar_insomnia_preferences_main_menu_text_style.size = 60
+
+    style.bsar_sotp_preferences_main_menu_text_style = Style(style.default)
+    style.bsar_sotp_preferences_main_menu_text_style.font = bsar_yanone_kaffeesatz_light
+    style.bsar_sotp_preferences_main_menu_text_style.color = "#b3b3b3"
+    style.bsar_sotp_preferences_main_menu_text_style.hover_color = "#ffffff"
+    style.bsar_sotp_preferences_main_menu_text_style.selected_color = "#ffffff"
+    style.bsar_sotp_preferences_main_menu_text_style.size = 60
     
-    style.bsar_preferences_main_menu_text_style_inverse = Style(style.default)
-    style.bsar_preferences_main_menu_text_style_inverse.font = bsar_flow_ext
-    style.bsar_preferences_main_menu_text_style_inverse.color = "#ffffff"
-    style.bsar_preferences_main_menu_text_style_inverse.hover_color = "#ffffff"
-    style.bsar_preferences_main_menu_text_style_inverse.selected_color = "#ffffff"
-    style.bsar_preferences_main_menu_text_style_inverse.size = 60
+    style.bsar_insomnia_preferences_main_menu_text_style_inverse = Style(style.default)
+    style.bsar_insomnia_preferences_main_menu_text_style_inverse.font = bsar_flow_ext
+    style.bsar_insomnia_preferences_main_menu_text_style_inverse.color = "#ffffff"
+    style.bsar_insomnia_preferences_main_menu_text_style_inverse.hover_color = "#ffffff"
+    style.bsar_insomnia_preferences_main_menu_text_style_inverse.selected_color = "#ffffff"
+    style.bsar_insomnia_preferences_main_menu_text_style_inverse.size = 60
+
+    style.bsar_sotp_preferences_main_menu_text_style_inverse = Style(style.default)
+    style.bsar_sotp_preferences_main_menu_text_style_inverse.font = bsar_yanone_kaffeesatz_light
+    style.bsar_sotp_preferences_main_menu_text_style_inverse.color = "#ffffff"
+    style.bsar_sotp_preferences_main_menu_text_style_inverse.hover_color = "#ffffff"
+    style.bsar_sotp_preferences_main_menu_text_style_inverse.selected_color = "#ffffff"
+    style.bsar_sotp_preferences_main_menu_text_style_inverse.size = 60
 
     style.bsar_insomnia_centered_text_style = Style(style.default)
     style.bsar_insomnia_centered_text_style.color = "#ffffff"
@@ -91,6 +112,13 @@ init -1 python:
     style.bsar_sotp_centered_text_style.drop_shadow = (2, 2)
     style.bsar_sotp_centered_text_style.drop_shadow_color = "#000"
     style.bsar_sotp_centered_text_style.size = 60
+
+    style.bsar_sotp_choose_story_text_style = Style(style.default)
+    style.bsar_sotp_choose_story_text_style.font = bsar_yanone_kaffeesatz_light
+    style.bsar_sotp_choose_story_text_style.color = "#ffffff"
+    style.bsar_sotp_choose_story_text_style.hover_color = "#dcd168"
+    style.bsar_sotp_choose_story_text_style.selected_color = "#dcd168"
+    style.bsar_sotp_choose_story_text_style.size = 100
 
     style.bsar_centered_text_style_heart_monitor = Style(style.default)
     style.bsar_centered_text_style_heart_monitor.font = bsar_electronical
@@ -135,12 +163,19 @@ init -1 python:
     style.bsar_text_history.size = 28
     style.bsar_text_history.line_spacing = 2
 
-    style.bsar_save_load_button_main_menu = Style(style.button)
-    style.bsar_save_load_button_main_menu.background = bsar_gui_path + "save_load/main_menu/save_load_button_idle.png"
-    style.bsar_save_load_button_main_menu.hover_background = bsar_gui_path + "save_load/main_menu/save_load_button_hover.png"
-    style.bsar_save_load_button_main_menu.selected_background = bsar_gui_path + "save_load/main_menu/save_load_button_selected.png"
-    style.bsar_save_load_button_main_menu.selected_hover_background = bsar_gui_path + "save_load/main_menu/save_load_button_selected.png"
-    style.bsar_save_load_button_main_menu.selected_idle_background = bsar_gui_path + "save_load/main_menu/save_load_button_selected.png"
+    style.bsar_insomnia_save_load_button_main_menu = Style(style.button)
+    style.bsar_insomnia_save_load_button_main_menu.background = bsar_gui_path + "save_load/insomnia_main_menu/save_load_button_idle.png"
+    style.bsar_insomnia_save_load_button_main_menu.hover_background = bsar_gui_path + "save_load/insomnia_main_menu/save_load_button_hover.png"
+    style.bsar_insomnia_save_load_button_main_menu.selected_background = bsar_gui_path + "save_load/insomnia_main_menu/save_load_button_selected.png"
+    style.bsar_insomnia_save_load_button_main_menu.selected_hover_background = bsar_gui_path + "save_load/insomnia_main_menu/save_load_button_selected.png"
+    style.bsar_insomnia_save_load_button_main_menu.selected_idle_background = bsar_gui_path + "save_load/insomnia_main_menu/save_load_button_selected.png"
+
+    style.bsar_sotp_save_load_button_main_menu = Style(style.button)
+    style.bsar_sotp_save_load_button_main_menu.background = bsar_gui_path + "save_load/sotp_main_menu/save_load_button_idle.png"
+    style.bsar_sotp_save_load_button_main_menu.hover_background = bsar_gui_path + "save_load/sotp_main_menu/save_load_button_hover.png"
+    style.bsar_sotp_save_load_button_main_menu.selected_background = bsar_gui_path + "save_load/sotp_main_menu/save_load_button_selected.png"
+    style.bsar_sotp_save_load_button_main_menu.selected_hover_background = bsar_gui_path + "save_load/sotp_main_menu/save_load_button_selected.png"
+    style.bsar_sotp_save_load_button_main_menu.selected_idle_background = bsar_gui_path + "save_load/sotp_main_menu/save_load_button_selected.png"
 
     style.bsar_save_load_winter_day = Style(style.default)
     style.bsar_save_load_winter_day.font = bsar_flow_ext

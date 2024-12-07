@@ -1,5 +1,5 @@
 init python:
-    mods["bsar_start"] = u"{font=[bsar_diamond_girl_skinny]}{size=45}Между сном и явью{/font}{/size}"
+    mods["bsar_start"] = u"{font=[bsar_vela_sans_light]}{size=45}Между сном и явью{/font}{/size}"
 
     try:
         modsImages["bsar_start"] = ("bsar/images/gui/misc/bsar_tabular_list_preview.png", False)

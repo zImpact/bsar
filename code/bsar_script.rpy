@@ -13,9 +13,10 @@ init python:
                 persistent.timeofday = persistent.bsar_on_save_timeofday[slot][0]
                 persistent.sprite_time = persistent.bsar_on_save_timeofday[slot][1]
                 persistent.font_size = persistent.bsar_on_save_timeofday[slot][2]
-                _preferences.volumes["music"] = persistent.bsar_on_save_timeofday[slot][3]
-                _preferences.volumes["sfx"] = persistent.bsar_on_save_timeofday[slot][4]
-                _preferences.volumes["voice"] = persistent.bsar_on_save_timeofday[slot][5]
+                persistent.bsar_current_story = persistent.bsar_on_save_timeofday[slot][3]
+                _preferences.volumes["music"] = persistent.bsar_on_save_timeofday[slot][4]
+                _preferences.volumes["sfx"] = persistent.bsar_on_save_timeofday[slot][5]
+                _preferences.volumes["voice"] = persistent.bsar_on_save_timeofday[slot][6]
                 bsar_set_dynamic_cursor("timeofday")
     
         except:
@@ -25,7 +26,15 @@ init python:
         if not persistent.bsar_on_save_timeofday:
             persistent.bsar_on_save_timeofday = {}
 
-        persistent.bsar_on_save_timeofday[slot] = (persistent.timeofday, persistent.sprite_time, persistent.font_size, _preferences.volumes["music"], _preferences.volumes["sfx"], _preferences.volumes["voice"])
+        persistent.bsar_on_save_timeofday[slot] = (
+            persistent.timeofday,
+            persistent.sprite_time, 
+            persistent.font_size, 
+            persistent.bsar_current_story,
+            _preferences.volumes["music"],
+            _preferences.volumes["sfx"], 
+            _preferences.volumes["voice"]
+        )
     
     def bsar_screen_save():
         main_menu_screen = "insomnia_main_menu" if persistent.bsar_current_story == "insomnia" else "sotp_main_menu"

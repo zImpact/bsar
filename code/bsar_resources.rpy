@@ -772,7 +772,8 @@ init:
     image bsar_heavy_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png", max_particles=500)
     image bsar_normal_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png")
 
-    $ bsar_main_menu_var = True
+    $ bsar_insomnia_main_menu_var = True
+    $ bsar_sotp_main_menu_var = True
     $ bsar_lock_quit = False
     $ bsar_lock_quick_menu = False
     $ bsar_lock_quit_game_main_menu_var = True
