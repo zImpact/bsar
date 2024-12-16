@@ -168,7 +168,7 @@ screen bsar_insomnia_main_menu():
 
     add "bsar_insomnia_main_menu_bg"
 
-    on "show" action Play("music", bsar_domitori_taranofu_lullaby, if_changed=True)
+    on "show" action Play("music", ["<silence 1.5>", bsar_domitori_taranofu_lullaby], if_changed=True)
     
     if bsar_insomnia_main_menu_var:
         add "bsar_insomnia_main_menu_frame" xalign 0.5 ypos 290
@@ -237,11 +237,13 @@ screen bsar_insomnia_main_menu():
         imagebutton:
             auto "bsar_to_sotp_%s"
             xpos 130
-            ypos 800
+            ypos 810
             action [
                 SetField(persistent, "bsar_current_story", "sotp"),
+                Stop("music", fadeout=1.0),
                 Hide("bsar_insomnia_main_menu"),
-                ShowMenu("bsar_sotp_main_menu")
+                ShowMenu("bsar_sotp_main_menu", _transition=fadehold),
+                Play("music", ["<silence 1.5>", bsar_master_of_spirits_shadows_main_theme], fadein=1.0)
             ]
             
         imagebutton:
@@ -264,7 +266,7 @@ screen bsar_sotp_main_menu():
 
     add "bsar_sotp_main_menu_vingette"
 
-    on "show" action Play("music", bsar_master_of_spirits_shadows_main_theme, if_changed=True)
+    on "show" action Play("music", ["<silence 1.5>", bsar_master_of_spirits_shadows_main_theme], if_changed=True)
     
     if bsar_sotp_main_menu_var:
         text "Тени прошлого":
@@ -314,7 +316,7 @@ screen bsar_sotp_main_menu():
             xalign 0.5
             yalign 0.85
             action [
-                SetVariable("bsar_sotp_main_menu_var", False), 
+                SetVariable("bsar_sotp_main_menu_var", False),
                 Hide("bsar_sotp_main_menu"), 
                 Function(bsar_screens_diact), 
                 ShowMenu("main_menu")
@@ -323,11 +325,13 @@ screen bsar_sotp_main_menu():
         imagebutton:
             auto "bsar_to_insomnia_%s"
             xpos 130
-            ypos 780
+            ypos 755
             action [
                 SetField(persistent, "bsar_current_story", "insomnia"),
+                Stop("music", fadeout=1.0),
                 Hide("bsar_sotp_main_menu"),
-                ShowMenu("bsar_insomnia_main_menu")
+                ShowMenu("bsar_insomnia_main_menu", _transition=bsar_fadehold),
+                Play("music", ["<silence 1.5>", bsar_domitori_taranofu_lullaby], fadein=1.0)
             ]
 
         imagebutton:

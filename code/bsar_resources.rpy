@@ -764,6 +764,8 @@ init:
 
 # С новым годом!'''
 
+    $ bsar_fadehold = Fade(1.5, 1.0, 1.5)
+
     image bsar_titles_final = ParameterizedText(style="bsar_titles_style", size=40, xalign=0.5)
 
     image bsar_heavy_snow_day = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_day.png", max_particles=500)
