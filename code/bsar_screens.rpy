@@ -237,7 +237,7 @@ screen bsar_insomnia_main_menu():
         imagebutton:
             auto "bsar_to_sotp_%s"
             xpos 130
-            ypos 810
+            ypos 755
             action [
                 SetField(persistent, "bsar_current_story", "sotp"),
                 Stop("music", fadeout=1.0),
