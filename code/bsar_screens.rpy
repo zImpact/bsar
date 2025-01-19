@@ -36,6 +36,10 @@ init python:
     bsar_qte_true_button_pl = []
     bsar_qte_score = 0
 
+    def bsar_toggle_main_menu():
+        renpy.display.screen.screens[("main_menu", None)] = renpy.display.screen.screens[("bsar_" + persistent.bsar_current_story + "_main_menu", None)]
+        bsar_set_dynamic_cursor(persistent.bsar_current_story + "_main_menu")
+
     def bsar_qte_clear():
         global bsar_qte_score
 
@@ -242,6 +246,7 @@ screen bsar_insomnia_main_menu():
                 SetField(persistent, "bsar_current_story", "sotp"),
                 Stop("music", fadeout=1.0),
                 Hide("bsar_insomnia_main_menu"),
+                Function(bsar_toggle_main_menu),
                 ShowMenu("bsar_sotp_main_menu", _transition=fadehold),
                 Play("music", ["<silence 1.5>", bsar_master_of_spirits_shadows_main_theme], fadein=1.0)
             ]
@@ -330,6 +335,7 @@ screen bsar_sotp_main_menu():
                 SetField(persistent, "bsar_current_story", "insomnia"),
                 Stop("music", fadeout=1.0),
                 Hide("bsar_sotp_main_menu"),
+                Function(bsar_toggle_main_menu),
                 ShowMenu("bsar_insomnia_main_menu", _transition=bsar_fadehold),
                 Play("music", ["<silence 1.5>", bsar_domitori_taranofu_lullaby], fadein=1.0)
             ]

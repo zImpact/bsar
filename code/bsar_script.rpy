@@ -37,9 +37,6 @@ init python:
         )
     
     def bsar_screen_save():
-        main_menu_screen = "insomnia_main_menu" if persistent.bsar_current_story == "insomnia" else "sotp_main_menu"
-        renpy.display.screen.screens[("bsar_old_" + main_menu_screen, None)] = renpy.display.screen.screens[("main_menu", None)]
-
         for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[("bsar_old_" + screen_name, None)] = renpy.display.screen.screens[(screen_name, None)]
     
@@ -64,17 +61,14 @@ init python:
         config.name = "Everlasting_Summer"
         config.version = "1.2"
 
-        main_menu_screen = "insomnia_main_menu" if persistent.bsar_current_story == "insomnia" else "sotp_main_menu"
-        renpy.display.screen.screens[("main_menu", None)] = renpy.display.screen.screens[("bsar_old_" + main_menu_screen), None]
-
-        for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
+        for screen_name in ["main_menu", "quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[(screen_name, None)] = renpy.display.screen.screens[("bsar_old_" + screen_name, None)]
 
         layout.LOADING = "Загрузка приведёт к потере несохранённых данных.\nВы уверены, что хотите сделать это?"
         renpy.free_memory()
         persistent.timeofday = "day"
         config.mouse_displayable = MouseDisplayable("images/misc/mouse/1.png", 0, 0)
-        config.main_menu_music = "sound/music/blow_with_the_fires.ogg"
+        config.main_menu_music = music_list["blow_with_the_fires"]
 
         persistent._file_page = 1
 

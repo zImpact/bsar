@@ -311,6 +311,11 @@ init python:
         
         return anim.TransitionAnimation(*anim_args, **properties)
 
+    def bsar_save_original_main_menu():
+        renpy.display.screen.screens[("bsar_old_main_menu", None)] = renpy.display.screen.screens[("main_menu", None)]
+
+    bsar_save_original_main_menu()
+
     def bsar_new_chapter(story_name, part, phrases=[]):
         global save_name
 
