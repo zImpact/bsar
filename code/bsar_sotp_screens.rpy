@@ -1,3 +1,25 @@
+init python:
+    bsar_sotp_gallery = Gallery()
+    bsar_sotp_gallery_page = 0
+    bsar_sotp_gallery.transition = fade
+    bsar_sotp_gallery.locked_button = bsar_gui_path + "misc/sotp_gallery_locked_button.png"
+    bsar_sotp_gallery.navigation = False
+
+    bsar_sotp_gallery_bg_list = [
+        "ext_lane", "ext_living_buildings", "ext_living_buildings_fence",
+        "ext_prosecutor_office", "ext_roof", "ext_winter_park",
+        "ext_winter_street", "form", "int_abandoned_workshop",
+        "int_alcotable", "int_cammunal", "int_float",
+        "int_kitchen_bw", "int_od_cabinet", "int_protagonist_room",
+        "int_tish_interrogation", "makarov_pistol", "medical_room_celling",
+        "skazaev_prosecutor_office", "thermal_power_plant"
+    ]
+
+    for bg in bsar_sotp_gallery_bg_list:
+        bsar_sotp_gallery.button(bg)
+        bsar_sotp_gallery.image(im.Crop("bsar/images/bg/" + bg + ".png", (0, 0, 1920, 1080)))
+        bsar_sotp_gallery.unlock("bg " + bsar_prefix + bg)
+
 screen bsar_sotp_main_menu():
     tag menu 
     modal True
@@ -10,7 +32,7 @@ screen bsar_sotp_main_menu():
 
     add "bsar_sotp_main_menu_bg"
 
-    add "bsar_sotp_main_menu_vingette"
+    add bsar_gui_path + "sotp_main_menu/main_menu_vingette.png"
 
     on "show" action Play("music", ["<silence 1.5>", bsar_master_of_spirits_shadows_main_theme], if_changed=True)
     
@@ -25,13 +47,13 @@ screen bsar_sotp_main_menu():
             kerning 2
             
         imagebutton:
-            auto "bsar_sotp_choose_story_%s" 
+            auto bsar_gui_path + "sotp_main_menu/buttons/choose_story_%s.png" 
             xalign 0.5
             yalign 0.35
             action ShowMenu("bsar_sotp_choose_story")
                 
         imagebutton:
-            auto "bsar_sotp_load_%s"
+            auto bsar_gui_path + "sotp_main_menu/buttons/load_%s.png"
             xalign 0.5
             yalign 0.475
             action [
@@ -40,7 +62,7 @@ screen bsar_sotp_main_menu():
             ]
             
         imagebutton:
-            auto "bsar_sotp_preferences_%s"
+            auto bsar_gui_path + "sotp_main_menu/buttons/preferences_%s.png"
             xalign 0.5
             yalign 0.6
             action [
@@ -49,7 +71,7 @@ screen bsar_sotp_main_menu():
             ]
 
         imagebutton:
-            auto "bsar_sotp_extra_%s"
+            auto bsar_gui_path + "sotp_main_menu/buttons/extra_%s.png"
             xalign 0.5
             yalign 0.725
             action [
@@ -58,7 +80,7 @@ screen bsar_sotp_main_menu():
             ]
                 
         imagebutton:
-            auto "bsar_sotp_quit_%s"
+            auto bsar_gui_path + "sotp_main_menu/buttons/quit_%s.png"
             xalign 0.5
             yalign 0.85
             action [
@@ -69,7 +91,7 @@ screen bsar_sotp_main_menu():
             ]
 
         imagebutton:
-            auto "bsar_to_insomnia_%s"
+            auto bsar_gui_path + "sotp_main_menu/to_insomnia_%s.png"
             xpos 130
             ypos 755
             action [
@@ -82,7 +104,7 @@ screen bsar_sotp_main_menu():
             ]
 
         imagebutton:
-            auto "bsar_sotp_logowhite_%s"
+            auto bsar_gui_path + "sotp_main_menu/logowhite_%s.png"
             xpos 1520
             ypos 800
             action OpenURL("https://vk.com/public176281709")
@@ -97,10 +119,10 @@ screen bsar_sotp_choose_story():
     key "K_F1":
         action NullAction()
 
-    add "bsar_sotp_main_menu_choice_stories"
-    add "bsar_sotp_main_menu_choice_stories_desc_substrate" ypos 499
-    add "bsar_sotp_three_deaths_desc" xpos 47 ypos 525
-    add "bsar_sotp_shadows_desc" xpos 1206 ypos 525
+    add bsar_gui_path + "sotp_main_menu/main_menu_choice_stories.png"
+    add bsar_gui_path + "sotp_main_menu/main_menu_choice_stories_desc_substrate.png" ypos 499
+    add bsar_gui_path + "sotp_main_menu/three_deaths_desc.png" xpos 47 ypos 525
+    add bsar_gui_path + "sotp_main_menu/shadows_desc.png" xpos 1206 ypos 525
 
     textbutton "Три смерти":
         style "bsar_sotp_choose_story_text_style"
@@ -117,7 +139,7 @@ screen bsar_sotp_choose_story():
         action Start("bsar_sotp_shadows")
 
     imagebutton:
-        auto "bsar_sotp_back_%s"
+        auto bsar_gui_path + "sotp_main_menu/back_%s.png"
         xpos 80
         ypos 980
         action [
@@ -307,9 +329,9 @@ screen bsar_sotp_preferences_main_menu():
             ypos 820
         bar:
             value Preference("music volume")
-            right_bar bsar_gui_path + "/preferences/sotp_main_menu/bsar_bar_null.png"
-            left_bar bsar_gui_path + "/preferences/sotp_main_menu/bsar_bar_full.png"
-            thumb bsar_gui_path + "/preferences/sotp_main_menu/bsar_vthumb.png"
+            right_bar bsar_gui_path + "preferences/sotp_main_menu/bar_null.png"
+            left_bar bsar_gui_path + "preferences/sotp_main_menu/bar_full.png"
+            thumb bsar_gui_path + "preferences/sotp_main_menu/vthumb.png"
             xpos 975
             ypos 827
             xmaximum 400
@@ -325,3 +347,158 @@ screen bsar_sotp_preferences_main_menu():
                 Hide("bsar_sotp_preferences_main_menu"),
                 ShowMenu("bsar_sotp_main_menu")
             ]
+
+screen bsar_sotp_extra():
+    modal True
+
+    key "K_F1":
+        action NullAction()
+    
+    if not bsar_sotp_main_menu_var:
+        text "Дополнительно":
+            font bsar_yanone_kaffeesatz_regular
+            size 150
+            text_align 0.5
+            xalign 0.5
+            ypos 40
+            antialias True
+            kerning 2
+
+        textbutton "Музыка":
+            style "bsar_button_none"
+            text_style "bsar_sotp_main_menu_text_style" 
+            xalign 0.5
+            yalign 0.35
+            action [
+                Hide("bsar_sotp_extra"),
+                ShowMenu("bsar_sotp_music_room")
+            ]
+
+        textbutton "Галерея":
+            style "bsar_button_none" 
+            text_style "bsar_sotp_main_menu_text_style" 
+            xalign 0.5
+            yalign 0.5
+            action [
+                Hide("bsar_sotp_extra"),
+                ShowMenu("bsar_sotp_background_gallery")
+            ]
+
+        textbutton "Достижения":
+            style "bsar_button_none" 
+            text_style "bsar_sotp_main_menu_text_style" 
+            xalign 0.5
+            yalign 0.65
+            action [
+                Hide("bsar_sotp_extra"),
+                ShowMenu("bsar_sotp_achievements")
+            ]
+
+        textbutton "Назад":
+            style "bsar_button_none" 
+            text_style "bsar_sotp_main_menu_text_style" 
+            xalign 0.5
+            yalign 0.85
+            action [
+                SetVariable("bsar_sotp_main_menu_var", True),
+                Hide("bsar_sotp_extra"), 
+                ShowMenu("bsar_sotp_main_menu")
+            ]
+
+screen bsar_sotp_background_gallery():
+    modal True
+
+    if not bsar_sotp_main_menu_var:
+        $ bsar_sotp_gallery_table = bsar_sotp_gallery_bg_list
+        $ bsar_sotp_len_table = len(bsar_sotp_gallery_bg_list)
+
+        text "Галерея":
+            font bsar_yanone_kaffeesatz_regular
+            size 150
+            xalign 0.5
+            ypos 5
+            antialias True
+            kerning 2
+
+        textbutton "Назад":
+            style "bsar_button_none" 
+            text_style "bsar_sotp_main_menu_text_style" 
+            xalign 0.5
+            ypos 970
+            action [
+                Hide("bsar_sotp_background_gallery"),
+                ShowMenu("bsar_sotp_extra")
+            ]
+
+        grid bsar_gallery_rows bsar_gallery_cols xpos 0.09 ypos 0.18:
+            $ bsar_sotp_gallery_bg_displayed = 0
+            $ bsar_sotp_gallery_next_page = bsar_sotp_gallery_page + 1
+
+            if bsar_sotp_gallery_next_page > int(bsar_sotp_len_table / bsar_gallery_cells):
+                $ bsar_sotp_gallery_next_page = 0
+
+            for n in range(bsar_sotp_len_table):
+                if n < (bsar_sotp_gallery_page + 1) * bsar_gallery_cells and n >= bsar_sotp_gallery_page * bsar_gallery_cells:
+                    $ _bsar_t = im.Crop(
+                        "bsar/images/bg/" + bsar_sotp_gallery_table[n] + ".png",
+                        (0, 0, 1920, 1080)
+                    )
+                            
+                    $ _bsar_img_scaled = im.Scale(_bsar_t, 320, 180)
+
+                    $ bsar_img = im.Composite(
+                        (336, 196),
+                        (8, 8),
+                        im.Alpha(_bsar_img_scaled, 0.9),
+                        (0, 0),
+                        im.Image(bsar_gui_path + "save_load/sotp_main_menu/save_load_button_idle.png")
+                    )
+
+                    $ bsar_imgh = im.Composite(
+                        (336, 196),
+                        (8, 8),
+                        _bsar_img_scaled,
+                        (0, 0),
+                        im.Image(bsar_gui_path + "save_load/sotp_main_menu/save_load_button_hover.png")
+                    )
+
+                    add bsar_sotp_gallery.make_button(
+                        bsar_sotp_gallery_table[n], 
+                        get_image("gui/gallery/blank.png"), 
+                        None,
+                        bsar_imgh,
+                        bsar_img,
+                        style="blank_button",
+                        bottom_margin=50,
+                        right_margin=50
+                    )
+
+                    $ bsar_sotp_gallery_bg_displayed += 1
+
+                    if n + 1 == bsar_sotp_len_table:
+                        $ bsar_sotp_gallery_next_page = 0
+
+            for j in range(0, bsar_gallery_cells - bsar_sotp_gallery_bg_displayed):
+                null
+
+        if bsar_sotp_gallery_page != 0:
+            imagebutton:
+                idle bsar_gui_path + "dialogue_box/backward_idle.png"
+                hover bsar_gui_path + "dialogue_box/bw/backward_hover.png"
+                yalign 0.5 
+                xalign 0.01 
+                action [
+                    SetVariable("bsar_sotp_gallery_page", bsar_sotp_gallery_page - 1),
+                    ShowMenu("bsar_sotp_background_gallery")
+                ]
+
+        if bsar_sotp_gallery_page != int(bsar_gallery_page_counter(bsar_sotp_len_table, bsar_gallery_cells)) - 1:
+            imagebutton: 
+                idle bsar_gui_path + "dialogue_box/forward_idle.png"
+                hover bsar_gui_path + "dialogue_box/bw/forward_hover.png"
+                yalign 0.5 
+                xalign 0.99 
+                action [
+                    SetVariable("bsar_sotp_gallery_page", bsar_sotp_gallery_next_page), 
+                    ShowMenu("bsar_sotp_background_gallery")
+                ]

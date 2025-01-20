@@ -1,8 +1,17 @@
-init python:
-    bsar_g_rows = 4
-    bsar_g_cols = 3
-    bsar_g_cells = bsar_g_rows * bsar_g_cols
-    
+init -1 python:
+    bsar_gallery_rows = 4
+    bsar_gallery_cols = 3
+    bsar_gallery_cells = bsar_gallery_rows * bsar_gallery_cols
+
+    def bsar_gallery_page_counter(n, k):
+        l = float(n) / float(k)
+        
+        if l - int(l) > 0:
+            return int(l) + 1
+
+        else:
+            return l
+
     bsar_qte_buttons_dict = {
         "↑": "K_UP",
         "↓": "K_DOWN",
@@ -207,9 +216,9 @@ screen bsar_preferences():
         ypos 665
     bar:
         value Preference("music volume")
-        right_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_bar_null.png"
-        left_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_bar_full.png"
-        thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_thumb.png"
+        right_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bar_null.png"
+        left_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bar_full.png"
+        thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/thumb.png"
         xpos 975
         ypos 670
         xmaximum 400
@@ -688,7 +697,12 @@ screen bsar_text_history():
                     text_hover_color bsar_text_history_color[persistent.timeofday]                    
                     action RollbackToIdentifier(h.rollback_identifier) 
         
-        vbar value YScrollValue("bsar_text_history_screen") bottom_bar "images/misc/none.png" top_bar "images/misc/none.png" thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_thumb.png" xoffset 1700  
+        vbar:
+            value YScrollValue("bsar_text_history_screen")
+            bottom_bar "images/misc/none.png"
+            top_bar "images/misc/none.png"
+            thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/thumb.png"
+            xoffset 1700  
 
 screen bsar_choice(items):
     modal True

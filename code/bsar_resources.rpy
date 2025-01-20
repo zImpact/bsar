@@ -1,4 +1,4 @@
-init python:
+init -1 python:
     from os import path, environ
     import random
     import time
@@ -12,9 +12,6 @@ init python:
 
             if file_name.startswith("bsar/images/bg/"):
                 renpy.image("bg " + bsar_prefix + file_path, file_name)
-
-            # elif file_name.startswith("bsar/images/gui/"):
-            #     renpy.image(bsar_prefix + file_path, file_name)
 
             elif file_name.startswith("bsar/images/sprites/"):
                 renpy.image(bsar_prefix + file_path, ConditionSwitch("persistent.sprite_time == 'night'", im.MatrixColor(file_name, im.matrix.tint(0.63, 0.78, 0.82)), True, file_name))
@@ -189,15 +186,6 @@ init python:
 
     bsar_reload_names()
 
-    def bsar_page_counter(n, k):
-        l = float(n) / float(k)
-        
-        if l - int(l) > 0:
-            return int(l) + 1
-
-        else:
-            return l
-
     def bsar_heartbeat_animation(image_name, power, zoom2, transition=None):
         renpy.show(image_name, at_list=[bsar_heartbeat_anim(image_name, power, zoom2)], tag=image_name + "_2")
         renpy.with_statement(transition)
@@ -335,7 +323,7 @@ init python:
 
         if story_name == "Бессонница.":
             insomnia_day_number = insomnia_days.get(part)
-            renpy.movie_cutscene(bsar_gui_path + "days_transitions/bsar_insomnia_day{}.ogv".format(insomnia_day_number))
+            renpy.movie_cutscene(bsar_gui_path + "days_transitions/insomnia_day{}.ogv".format(insomnia_day_number))
             renpy.pause(0.5, hard=True)
 
         elif story_name in ["Три смерти.", "Тени."]:
@@ -781,16 +769,22 @@ init:
     image bsar_heavy_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png", max_particles=500)
     image bsar_normal_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png")
 
+    image bsar_phone = bsar_gui_path + "effects/phone.png"
+    image bsar_hanged_man = bsar_gui_path + "effects/hanged_main.png"
+
     $ bsar_insomnia_main_menu_var = True
     $ bsar_sotp_main_menu_var = True
     $ bsar_lock_quit = False
     $ bsar_lock_quick_menu = False
     $ bsar_lock_quit_game_main_menu_var = True
 
-    image bsar_static_noise_anim = bsar_frame_animation("bsar/images/bg/bsar_static_noise_anim/bsar_static_noise", 5, 0.2, True, Dissolve(0.2))
+    image bsar_static_noise_anim = bsar_frame_animation("bsar/images/bg/static_noise_anim/static_noise", 5, 0.2, True, Dissolve(0.2))
 
     image bsar_insomnia_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "insomnia_main_menu/main_menu_background.ogv")
-    image bsar_sotp_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "sotp_main_menu/sotp_main_menu_background.ogv")
+    image bsar_sotp_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "sotp_main_menu/main_menu_background.ogv")
+
+    image bsar_insomnia_intro_logo = bsar_gui_path + "misc/insomnia_intro_logo.png"
+    image bsar_sotp_intro_logo = bsar_gui_path + "misc/sotp_intro_logo.png"
 
     image bsar_words_move_style = ParameterizedText(style="settings_link", size=100, color="fff")
 
@@ -802,139 +796,139 @@ init:
 
     image bsar_snow_layer0_anim:
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(8, 0.0, -0.05)
 
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(8, 0.25, -0.05)
 
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(8, 0.5, -0.05)
 
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(8, 0.75, -0.05)
 
     image bsar_snow_layer1_anim:
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(10, 0.0, 0.05, pause_time=0.5)
 
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(10, 0.25, 0.05, pause_time=0.5)
 
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(10, 0.5, 0.05, pause_time=0.5)
 
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(10, 0.75, 0.05, pause_time=0.5)
 
 
     image bsar_snow_layer2_anim:
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(15, 0.0, -0.05, pause_time=1.0)
 
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(15, 0.25, -0.05, pause_time=1.0)
 
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(15, 0.5, -0.05, pause_time=1.0)
 
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(15, 0.75, -0.05, pause_time=1.0)
 
     image bsar_snow_layer3_anim:
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(20, 0.0, 0.07)
 
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(20, 0.25, 0.07)
 
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(20, 0.5, 0.07)
 
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(20, 0.75, 0.07)
 
     image bsar_snow_layer0_anim_quick:
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(3, 0.0, -0.03)
 
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(3, 0.25, -0.03)
 
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(3, 0.5, -0.03)
 
         contains:
-            "bsar_snow_layer0_img"
+            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
             bsar_snow_move(3, 0.75, -0.03)
 
     image bsar_snow_layer1_anim_quick:
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(4, 0.0, 0.05)
 
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(4, 0.25, 0.05)
 
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(4, 0.5, 0.05)
 
         contains:
-            "bsar_snow_layer1_img"
+            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
             bsar_snow_move(4, 0.75, 0.05)
 
     image bsar_snow_layer2_anim_quick:
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(5, 0.0, -0.05)
 
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(5, 0.25, -0.05)
 
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(5, 0.5, -0.05)
 
         contains:
-            "bsar_snow_layer2_img"
+            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
             bsar_snow_move(5, 0.75, -0.05)
 
     image bsar_snow_layer3_anim_quick:
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(5, 0.0, 0.03)
 
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(5, 0.25, 0.03)
 
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(5, 0.5, 0.03)
             
         contains:
-            "bsar_snow_layer3_img"
+            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
             bsar_snow_move(5, 0.75, 0.03)
 
     transform bsar_buttons_atl():
@@ -978,40 +972,6 @@ init:
     transform bsar_heart_monitor_phrases_position(x):
         xpos x
         ypos 264
-
-    transform bsar_full_rotate_repeat(l, z, x, y):
-        parallel:
-            zoom z
-            xalign x
-            yalign y 
-            rotate_pad True
-            rotate 0
-            linear l rotate 360
-            repeat
-
-    transform bsar_zoom_in_center():
-        xalign 0.5 yalign 0.5 zoom 1.0
-        pause 2.0
-        linear 20 zoom 2.0 xalign 0.5 yalign 0.5
-
-    transform bsar_name_header_pos():
-        xalign 0.5
-        yalign 0.045
-
-    transform bsar_loading_text_pos():
-        xalign 0.5 ypos 840
-
-    transform bsar_first_dot_pos():
-        xpos 1140
-        ypos 843
-
-    transform bsar_second_dot_pos():
-        xpos 1150
-        ypos 843
-
-    transform bsar_third_dot_pos():
-        xpos 1160
-        ypos 843
 
     transform bsar_heartbeat_anim(image_name, power, zoom2):
         contains:

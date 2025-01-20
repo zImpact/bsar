@@ -28,7 +28,7 @@ style bsar_qte_text:
     color "#ffffff"
     outlines [(2, "#002b74", absolute(0), absolute(0))]
 
-init -1 python:
+init -10 python:
     bsar_gui_path = "bsar/images/gui/"
     bsar_verdana = bsar_gui_path + "fonts/Verdana.ttf"
     bsar_flow_ext = bsar_gui_path + "fonts/flow_ext.otf"

@@ -135,7 +135,7 @@ label bsar_sotp_three_deaths:
     stop ambience fadeout 3
     scene bg black with Dissolve(3)
     $ bsar_new_chapter("Три смерти.", "АКТ 2. Как я работал.")
-    scene bg bsar_prosecutor_office
+    scene bg bsar_ext_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
     show bsar_lis normal
@@ -201,7 +201,7 @@ label bsar_sotp_three_deaths:
     stop music fadeout 2
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
-    scene bg bsar_prosecutor_office
+    scene bg bsar_ext_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
     show bsar_phone
@@ -242,7 +242,7 @@ label bsar_sotp_three_deaths:
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
     scene bg bsar_int_abandoned_workshop
-    show bsar_int_hanged_man
+    show bsar_hanged_man
     show bsar_lis normal
     show bsar_static_noise_anim
     with Dissolve(2)
@@ -378,7 +378,7 @@ label bsar_sotp_three_deaths:
     stop music fadeout 2
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
-    scene bg bsar_roof
+    scene bg bsar_ext_roof
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
     show bsar_snow_layer1_anim
@@ -447,7 +447,7 @@ label bsar_sotp_three_deaths:
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
-    scene bg bsar_lane
+    scene bg bsar_ext_lane
     show bsar_lis normal
     show bsar_static_noise_anim
     with Dissolve(2)
@@ -708,7 +708,7 @@ label bsar_sotp_shadows:
     stop music fadeout 2
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
-    scene bg bsar_cammunal
+    scene bg bsar_int_cammunal
     show bsar_static_noise_anim 
     with Dissolve(2)
     play music bsar_master_of_spirits_patience fadein 2
@@ -758,7 +758,7 @@ label bsar_sotp_shadows:
     scene bg black with Dissolve(3)
     $ bsar_set_mode_adv()
     $ bsar_new_chapter("Тени.", "АКТ 3. Тайна.")
-    scene bg bsar_prosecutor_office
+    scene bg bsar_ext_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
     show bsar_static_noise_anim

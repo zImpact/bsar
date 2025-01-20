@@ -1,23 +1,25 @@
 init python:
-    bsar_insomnia_g = Gallery()
-    bsar_insomnia_g_page = 0
-    bsar_insomnia_g.transition = fade
-    bsar_insomnia_g.locked_button = bsar_gui_path + "save_load/main_menu/save_load_button_idle.png"
-    bsar_insomnia_g.navigation = False
+    bsar_insomnia_gallery = Gallery()
+    bsar_insomnia_gallery_page = 0
+    bsar_insomnia_gallery.transition = fade
+    bsar_insomnia_gallery.locked_button = bsar_gui_path + "misc/insomnia_gallery_locked_button.png"
+    bsar_insomnia_gallery.navigation = False
 
-    bsar_insomnia_g_bg_list = [
-    "bsar_ext_camp_entrance_winter_day", "bsar_ext_camp_entrance_winter_night", "bsar_ext_clubs_winter_night", "bsar_ext_dining_hall_away_winter_day", "bsar_ext_dining_hall_near_winter_day",
-    "bsar_ext_house_of_mt_fog", "bsar_ext_house_of_mt_winter_night2", "bsar_ext_houses_winter_day", "bsar_ext_houses_winter_night", "bsar_ext_houst_of_mt_winter_day",
-    "bsar_ext_library_winter_day", "bsar_ext_musclub_winter_night", "bsar_ext_old_building_fog", "bsar_ext_path2_fog", "bsar_ext_road_winter_day",
-    "bsar_ext_road_winter_night", "bsar_ext_square_fog", "bsar_ext_square_winter_day", "bsar_ext_square_winter_night", "bsar_ext_winter_park", "bsar_ext_winter_street",
-    "bsar_form", "bsar_int_kitchen_bw", "bsar_int_old_building_night_edited", "bsar_lane", "bsar_makarov_pistol", "bsar_medical_room_celling", "bsar_prosecutor_office",
-    "bsar_roof", "bsar_ext_winter_forest", "bsar_us_dv_confrontation"
+    bsar_insomnia_gallery_bg_list = [
+    "ext_camp_entrance_winter_day", "ext_camp_entrance_winter_night", "ext_clubs_winter_night",
+    "ext_dining_hall_away_winter_day", "ext_dining_hall_near_winter_day", "ext_house_of_mt_fog", 
+    "ext_house_of_mt_winter_night2", "ext_houses_winter_day", "ext_houses_winter_night", 
+    "ext_houst_of_mt_winter_day", "ext_library_winter_day", "ext_musclub_winter_night", 
+    "ext_old_building_fog", "ext_path2_fog", "ext_road_winter_day", "ext_square_fog", "ext_square_winter_day",
+    "ext_square_winter_night", "int_old_building_night_edited", 
+    "ext_winter_forest", 
+    "us_dv_confrontation"
     ]
 
-    for bg in bsar_insomnia_g_bg_list:
-        bsar_insomnia_g.button(bg)
-        bsar_insomnia_g.image(im.Crop("bsar/images/bg/" + bg + ".png", (0, 0, 1920, 1080)))
-        bsar_insomnia_g.unlock("bg " + bg)
+    for bg in bsar_insomnia_gallery_bg_list:
+        bsar_insomnia_gallery.button(bg)
+        bsar_insomnia_gallery.image(im.Crop("bsar/images/bg/" + bg + ".png", (0, 0, 1920, 1080)))
+        bsar_insomnia_gallery.unlock("bg " + bsar_prefix + bg)
 
 screen bsar_insomnia_main_menu():
     tag menu 
@@ -34,7 +36,7 @@ screen bsar_insomnia_main_menu():
     on "show" action Play("music", ["<silence 1.5>", bsar_domitori_taranofu_lullaby], if_changed=True)
     
     if bsar_insomnia_main_menu_var:
-        add bsar_gui_path + "insomnia_main_menu/main_menu_frame" xalign 0.5 ypos 290
+        add bsar_gui_path + "insomnia_main_menu/main_menu_frame.png" xalign 0.5 ypos 290
 
         text "Бессонница":
             size 170
@@ -228,9 +230,9 @@ screen bsar_insomnia_preferences_main_menu():
             ypos 820
         bar:
             value Preference("music volume")
-            right_bar bsar_gui_path + "/preferences/main_menu/bsar_bar_null.png"
-            left_bar bsar_gui_path + "/preferences/main_menu/bsar_bar_full.png"
-            thumb bsar_gui_path + "/preferences/main_menu/bsar_vthumb.png"
+            right_bar bsar_gui_path + "preferences/insomnia_main_menu/bar_null.png"
+            left_bar bsar_gui_path + "preferences/insomnia_main_menu/bar_full.png"
+            thumb bsar_gui_path + "preferences/insomnia_main_menu/vthumb.png"
             xpos 975
             ypos 827
             xmaximum 400
@@ -309,7 +311,7 @@ screen bsar_insomnia_load_main_menu():
                         action SetVariable("selected_slot", i)
                         xfill False
                         yfill False
-                        style "bsar_save_load_button_main_menu"
+                        style "bsar_insomnia_save_load_button_main_menu"
 
                         fixed:
                             text ("%s." % i + FileTime(i, format=" %d.%m.%y, %H:%M", empty= " Пусто") + "\n" + FileSaveName(i)):
@@ -324,7 +326,7 @@ screen bsar_insomnia_extra():
         action NullAction()
     
     if not bsar_insomnia_main_menu_var:
-        add "bsar_insomnia_main_menu_frame" xalign 0.5 ypos 290
+        add bsar_gui_path + "insomnia_main_menu/main_menu_frame.png" xalign 0.5 ypos 290
 
         text "Дополнительно":
             size 150
@@ -420,8 +422,8 @@ screen bsar_insomnia_background_gallery():
     modal True
 
     if not bsar_insomnia_main_menu_var:
-        $ bsar_gallery_table = bsar_gallery_bg_list
-        $ bsar_len_table = len(bsar_gallery_bg_list)
+        $ bsar_insomnia_gallery_table = bsar_insomnia_gallery_bg_list
+        $ bsar_insomnia_len_table = len(bsar_insomnia_gallery_bg_list)
 
         text "Галерея":
             font bsar_diamond_girl_skinny
@@ -441,50 +443,75 @@ screen bsar_insomnia_background_gallery():
                 ShowMenu("bsar_insomnia_extra")
             ]
 
-        grid bsar_rows bsar_cols xpos 0.09 ypos 0.18:
-            $ bsar_bg_displayed = 0
-            $ bsar_next_page = bsar_page + 1
+        grid bsar_gallery_rows bsar_gallery_cols xpos 0.09 ypos 0.18:
+            $ bsar_insomnia_gallery_bg_displayed = 0
+            $ bsar_insomnia_gallery_next_page = bsar_insomnia_gallery_page + 1
 
-            if bsar_next_page > int(bsar_len_table / bsar_cells):
-                $ bsar_next_page = 0
+            if bsar_insomnia_gallery_next_page > int(bsar_insomnia_len_table / bsar_gallery_cells):
+                $ bsar_insomnia_gallery_next_page = 0
 
-            for n in range(bsar_len_table):
-                if n < (bsar_page + 1) * bsar_cells and n >= bsar_page * bsar_cells:
-                    $ _bsar_t = im.Crop("bsar/images/bg/" + bsar_gallery_table[n] + ".png", (0, 0, 1920, 1080))
+            for n in range(bsar_insomnia_len_table):
+                if n < (bsar_insomnia_gallery_page + 1) * bsar_gallery_cells and n >= bsar_insomnia_gallery_page * bsar_gallery_cells:
+                    $ _bsar_t = im.Crop(
+                        "bsar/images/bg/" + bsar_insomnia_gallery_table[n] + ".png",
+                        (0, 0, 1920, 1080)
+                    )
                             
                     $ _bsar_img_scaled = im.Scale(_bsar_t, 320, 180)
 
-                    $ bsar_img = im.Composite((336, 196), (8, 8), im.Alpha(_bsar_img_scaled, 0.9), (0, 0), im.Image(bsar_gui_path + "/save_load/main_menu/save_load_button_idle.png"))
-                    $ bsar_imgh = im.Composite((336, 196), (8, 8), _bsar_img_scaled, (0, 0), im.Image(bsar_gui_path + "/save_load/main_menu/save_load_button_hover.png"))
+                    $ bsar_img = im.Composite(
+                        (336, 196),
+                        (8, 8),
+                        im.Alpha(_bsar_img_scaled, 0.9),
+                        (0, 0),
+                        im.Image(bsar_gui_path + "save_load/insomnia_main_menu/save_load_button_idle.png")
+                    )
 
-                    add bsar_g.make_button(bsar_gallery_table[n], get_image("gui/gallery/blank.png"), None, bsar_imgh, bsar_img , style = "blank_button", bottom_margin = 50, right_margin = 50)
+                    $ bsar_imgh = im.Composite(
+                        (336, 196),
+                        (8, 8),
+                        _bsar_img_scaled,
+                        (0, 0),
+                        im.Image(bsar_gui_path + "save_load/insomnia_main_menu/save_load_button_hover.png")
+                    )
 
-                    $ bsar_bg_displayed += 1
+                    add bsar_insomnia_gallery.make_button(
+                        bsar_insomnia_gallery_table[n], 
+                        get_image("gui/gallery/blank.png"), 
+                        None,
+                        bsar_imgh,
+                        bsar_img,
+                        style="blank_button",
+                        bottom_margin=50,
+                        right_margin=50
+                    )
 
-                    if n + 1 == bsar_len_table:
-                        $ bsar_next_page = 0
+                    $ bsar_insomnia_gallery_bg_displayed += 1
 
-            for j in range(0, bsar_cells - bsar_bg_displayed):
+                    if n + 1 == bsar_insomnia_len_table:
+                        $ bsar_insomnia_gallery_next_page = 0
+
+            for j in range(0, bsar_gallery_cells - bsar_insomnia_gallery_bg_displayed):
                 null
 
-        if bsar_page != 0:
+        if bsar_insomnia_gallery_page != 0:
             imagebutton:
-                idle "bsar/images/gui/dialogue_box/backward_idle.png"
-                hover "bsar/images/gui/dialogue_box/winter_night/backward_hover.png"
+                idle bsar_gui_path + "dialogue_box/backward_idle.png"
+                hover bsar_gui_path + "dialogue_box/winter_night/backward_hover.png"
                 yalign 0.5 
                 xalign 0.01 
                 action [
-                    SetVariable("bsar_insomnia_g_page", bsar_insomnia_g_page - 1),
+                    SetVariable("bsar_insomnia_gallery_page", bsar_insomnia_gallery_page - 1),
                     ShowMenu("bsar_insomnia_background_gallery")
                 ]
 
-        if bsar_page != int(bsar_page_counter(bsar_len_table, bsar_cells)) - 1:
+        if bsar_insomnia_gallery_page != int(bsar_gallery_page_counter(bsar_insomnia_len_table, bsar_gallery_cells)) - 1:
             imagebutton: 
-                idle "bsar/images/gui/dialogue_box/forward_idle.png"
-                hover "bsar/images/gui/dialogue_box/winter_night/forward_hover.png"
+                idle bsar_gui_path + "dialogue_box/forward_idle.png"
+                hover bsar_gui_path + "dialogue_box/winter_night/forward_hover.png"
                 yalign 0.5 
                 xalign 0.99 
                 action [
-                    SetVariable("bsar_insomnia_g_page", bsar_next_page), 
+                    SetVariable("bsar_insomnia_gallery_page", bsar_insomnia_gallery_next_page), 
                     ShowMenu("bsar_insomnia_background_gallery")
                 ]
