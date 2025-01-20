@@ -1,3 +1,130 @@
+screen bsar_sotp_main_menu():
+    tag menu 
+    modal True
+
+    key "game_menu":
+        action NullAction()
+        
+    key "K_F1":
+        action NullAction()
+
+    add "bsar_sotp_main_menu_bg"
+
+    add "bsar_sotp_main_menu_vingette"
+
+    on "show" action Play("music", ["<silence 1.5>", bsar_master_of_spirits_shadows_main_theme], if_changed=True)
+    
+    if bsar_sotp_main_menu_var:
+        text "Тени прошлого":
+            size 170
+            xalign 0.5
+            ypos 40
+            font bsar_yanone_kaffeesatz_regular
+            text_align 0.5
+            antialias True
+            kerning 2
+            
+        imagebutton:
+            auto "bsar_sotp_choose_story_%s" 
+            xalign 0.5
+            yalign 0.35
+            action ShowMenu("bsar_sotp_choose_story")
+                
+        imagebutton:
+            auto "bsar_sotp_load_%s"
+            xalign 0.5
+            yalign 0.475
+            action [
+                SetVariable("bsar_sotp_main_menu_var", False), 
+                ShowMenu("bsar_sotp_load_main_menu")
+            ]
+            
+        imagebutton:
+            auto "bsar_sotp_preferences_%s"
+            xalign 0.5
+            yalign 0.6
+            action [
+                SetVariable("bsar_sotp_main_menu_var", False),
+                ShowMenu("bsar_sotp_preferences_main_menu")
+            ]
+
+        imagebutton:
+            auto "bsar_sotp_extra_%s"
+            xalign 0.5
+            yalign 0.725
+            action [
+                SetVariable("bsar_sotp_main_menu_var", False), 
+                ShowMenu("bsar_sotp_extra")
+            ]
+                
+        imagebutton:
+            auto "bsar_sotp_quit_%s"
+            xalign 0.5
+            yalign 0.85
+            action [
+                SetVariable("bsar_sotp_main_menu_var", False),
+                Hide("bsar_sotp_main_menu"), 
+                Function(bsar_screens_diact), 
+                ShowMenu("main_menu")
+            ]
+
+        imagebutton:
+            auto "bsar_to_insomnia_%s"
+            xpos 130
+            ypos 755
+            action [
+                SetField(persistent, "bsar_current_story", "insomnia"),
+                Stop("music", fadeout=1.0),
+                Hide("bsar_sotp_main_menu"),
+                Function(bsar_toggle_main_menu),
+                ShowMenu("bsar_insomnia_main_menu", _transition=bsar_fadehold),
+                Play("music", ["<silence 1.5>", bsar_domitori_taranofu_lullaby], fadein=1.0)
+            ]
+
+        imagebutton:
+            auto "bsar_sotp_logowhite_%s"
+            xpos 1520
+            ypos 800
+            action OpenURL("https://vk.com/public176281709")
+
+screen bsar_sotp_choose_story():
+    tag menu 
+    modal True
+
+    key "game_menu":
+        action NullAction()
+        
+    key "K_F1":
+        action NullAction()
+
+    add "bsar_sotp_main_menu_choice_stories"
+    add "bsar_sotp_main_menu_choice_stories_desc_substrate" ypos 499
+    add "bsar_sotp_three_deaths_desc" xpos 47 ypos 525
+    add "bsar_sotp_shadows_desc" xpos 1206 ypos 525
+
+    textbutton "Три смерти":
+        style "bsar_sotp_choose_story_text_style"
+        text_style "bsar_sotp_choose_story_text_style"
+        xpos 271
+        yalign 0.35
+        action Start("bsar_sotp_three_deaths")
+
+    textbutton "Тени":
+        style "bsar_sotp_choose_story_text_style"
+        text_style "bsar_sotp_choose_story_text_style"
+        xpos 1376
+        yalign 0.35
+        action Start("bsar_sotp_shadows")
+
+    imagebutton:
+        auto "bsar_sotp_back_%s"
+        xpos 80
+        ypos 980
+        action [
+            Hide("bsar_sotp_choose_story"),
+            ShowMenu("bsar_sotp_main_menu")
+        ]
+
 screen bsar_sotp_load_main_menu():
     modal True
     

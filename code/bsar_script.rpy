@@ -37,7 +37,7 @@ init python:
         )
     
     def bsar_screen_save():
-        for screen_name in ["quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
+        for screen_name in ["main_menu", "quit", "say", "nvl", "game_menu_selector", "yesno_prompt", "choice", "help"]:
             renpy.display.screen.screens[("bsar_old_" + screen_name, None)] = renpy.display.screen.screens[(screen_name, None)]
     
     def bsar_screen_act():

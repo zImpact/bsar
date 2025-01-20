@@ -3,21 +3,24 @@ init python:
     import random
     import time
 
+    bsar_mod_name = "bsar"
+    bsar_prefix = bsar_mod_name + "_"
+
     for file_name in renpy.list_files():
-        if "bsar" in file_name:
+        if bsar_mod_name in file_name:
             file_path = path.splitext(path.basename(file_name))[0]
 
             if file_name.startswith("bsar/images/bg/"):
-                renpy.image("bg " + file_path, file_name)
+                renpy.image("bg " + bsar_prefix + file_path, file_name)
 
-            elif file_name.startswith("bsar/images/gui/"):
-                renpy.image(file_path, file_name)
+            # elif file_name.startswith("bsar/images/gui/"):
+            #     renpy.image(bsar_prefix + file_path, file_name)
 
             elif file_name.startswith("bsar/images/sprites/"):
-                renpy.image(file_path, ConditionSwitch("persistent.sprite_time == 'night'", im.MatrixColor(file_name, im.matrix.tint(0.63, 0.78, 0.82)), True, file_name))
+                renpy.image(bsar_prefix + file_path, ConditionSwitch("persistent.sprite_time == 'night'", im.MatrixColor(file_name, im.matrix.tint(0.63, 0.78, 0.82)), True, file_name))
 
             elif file_name.startswith("bsar/sounds/"):
-                globals()[file_path] = file_name
+                globals()[bsar_prefix + file_path] = file_name
 
     bsar_std_set_for_preview = {}
     bsar_std_set = {}
@@ -311,10 +314,9 @@ init python:
         
         return anim.TransitionAnimation(*anim_args, **properties)
 
-    def bsar_save_original_main_menu():
-        renpy.display.screen.screens[("bsar_old_main_menu", None)] = renpy.display.screen.screens[("main_menu", None)]
-
-    bsar_save_original_main_menu()
+    def bsar_toggle_main_menu():
+        renpy.display.screen.screens[("main_menu", None)] = renpy.display.screen.screens[("bsar_" + persistent.bsar_current_story + "_main_menu", None)]
+        bsar_set_dynamic_cursor(persistent.bsar_current_story + "_main_menu")
 
     def bsar_new_chapter(story_name, part, phrases=[]):
         global save_name
@@ -787,10 +789,10 @@ init:
 
     image bsar_static_noise_anim = bsar_frame_animation("bsar/images/bg/bsar_static_noise_anim/bsar_static_noise", 5, 0.2, True, Dissolve(0.2))
 
-    image bsar_insomnia_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "insomnia_main_menu/bsar_insomnia_main_menu_background.ogv")
-    image bsar_sotp_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "sotp_main_menu/bsar_sotp_main_menu_background.ogv")
+    image bsar_insomnia_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "insomnia_main_menu/main_menu_background.ogv")
+    image bsar_sotp_main_menu_bg = Movie(fps=30, play=bsar_gui_path + "sotp_main_menu/sotp_main_menu_background.ogv")
 
-    image bsar_words_move_style = ParameterizedText(style="settings_link", size = 100, color = "fff")
+    image bsar_words_move_style = ParameterizedText(style="settings_link", size=100, color="fff")
 
     image bsar_she_night = im.MatrixColor("bsar/images/sprites/she/bsar_she normal.png", im.matrix.tint(0.63, 0.78, 0.82))
 
