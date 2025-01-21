@@ -770,7 +770,7 @@ init:
     image bsar_normal_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png")
 
     image bsar_phone = bsar_gui_path + "effects/phone.png"
-    image bsar_hanged_man = bsar_gui_path + "effects/hanged_main.png"
+    image bsar_hanged_man = bsar_gui_path + "effects/hanged_man.png"
 
     $ bsar_insomnia_main_menu_var = True
     $ bsar_sotp_main_menu_var = True

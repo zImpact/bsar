@@ -341,7 +341,7 @@ label bsar_insomnia_day1_cleaning:
     $ bsar_set_time("bw", "day")
     stop ambience fadeout 2
     stop music fadeout 2
-    scene bg bsar_roof behind blink
+    scene bg bsar_ext_roof behind blink
     show bsar_snow_layer3_anim_quick
     show bsar_snow_layer2_anim_quick
     show bsar_she normal
@@ -464,7 +464,7 @@ label bsar_insomnia_day1_stroll_failed:
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     $ bsar_set_time("bw", "day")
-    scene bg bsar_roof
+    scene bg bsar_ext_roof
     show bsar_snow_layer3_anim_quick
     show bsar_snow_layer2_anim_quick
     show bsar_she
@@ -776,7 +776,7 @@ label bsar_insomnia_day2:
     stop ambience fadeout 2
     stop music fadeout 2
     $ bsar_set_time("bw", "day")
-    scene bg bsar_prosecutor_office
+    scene bg bsar_ext_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
     show bsar_lis normal
@@ -1001,7 +1001,7 @@ label bsar_insomnia_day2:
 label bsar_insomnia_day3:
     $ bsar_set_time("bw", "day")
     $ bsar_new_chapter("Бессонница.", "День третий.")
-    scene bg bsar_lane
+    scene bg bsar_ext_lane
     show bsar_lis normal
     show bsar_static_noise_anim
     with bsar_flash
@@ -1487,7 +1487,7 @@ label bsar_insomnia_day3_after_dv:
             $ bsar_insomnia_paradise_ending_v += 1 
             stop ambience fadeout 2
             $ bsar_set_time("bw", "day")
-            scene bg bsar_roof
+            scene bg bsar_ext_roof
             play ambience bsar_winter_wind fadein 2
             show bsar_snow_layer3_anim_quick
             show bsar_snow_layer2_anim_quick
