@@ -167,7 +167,7 @@ label bsar_insomnia_day1:
     bsar_protagonist "Всё в порядке. Я просто поскользнулся и упал." 
     bsar_us "Припадочный ты какой-то. Хватит валяться!"
     show bsar_us normal with dspr
-    bsar_narrator "Ульяна улыбалась, но по беспокойному взгляду и едва заметным ноткам волнения в голосе можно понять, что она переживает за меня. Это... мило."
+    bsar_narrator "Ульяна улыбалась, но по беспокойному взгляду и едва заметными нотками волнения в голосе можно понять, что она переживает за меня. Это... мило."
     scene bg bsar_ext_dining_hall_away_winter_day with dissolve 
     bsar_narrator "По мере приближения к столовой вокруг появляется всё больше и больше пионеров, совершающих своё голодное паломничество. Ульяна не стала меня ждать и поспешно ретировалась." 
     scene bg bsar_ext_dining_hall_near_winter_day with dissolve 
@@ -235,7 +235,7 @@ label bsar_insomnia_day1:
     bsar_narrator "Чёрт! Какую же глупость я только что сморозил. Такое нельзя говорить девушке!" 
     bsar_sl "Да-а, наверное, так и есть." 
     bsar_sl "Замоталась в последнее время. Нужно отдохнуть. Я всё же в лагере или где?" 
-    bsar_narrator "Мне показалось, что в её глазах промелькнул блеск, который до этого я видел только у Ульяны, когда она хочет влезть в какую-то авантюру." 
+    bsar_narrator "Мне показалось, что в её глазах промелькнул блеск, который до этого я видел только у Ульяны, когда она хочет влезть в какую-то авантюру." # nolint
     bsar_protagonist "Это славно." 
     bsar_narrator "Я участливо улыбнулся и кивнул." 
     bsar_sl "Ладно. Тогда я пойду. Увидимся!"
@@ -306,7 +306,7 @@ label bsar_insomnia_day1:
             $ bsar_insomnia_day1_stroll = True 
             jump bsar_insomnia_day1_stroll
 
-        "Убраться в домике": 
+        "Убраться в домике": # nolint
             $ bsar_insomnia_paradise_ending_v += 1 
             jump bsar_insomnia_day1_cleaning
 
@@ -372,7 +372,7 @@ label bsar_insomnia_day1_cleaning:
     play ambience ambience_medstation_inside_night fadein 2
     bsar_mt "О, вижу, ты прибрался!"
     bsar_mt "Молодец!"
-    bsar_protagonist "А-а..." 
+    bsar_protagonist "А-а-а..." 
     bsar_protagonist "Да, прибрался. Я же обещал заняться делом." 
     bsar_th "Я заснул... {w}Или это был не сон?" 
     bsar_th "Уф. Откровенно говоря, меня уже воротит от всех этих странных видений."
@@ -416,7 +416,7 @@ label bsar_insomnia_day1_stroll:
     show bg bsar_ext_camp_entrance_winter_night behind bsar_heavy_snow_night with dissolve
     $ renpy.pause(1.5, hard=True)
     bsar_narrator "Ворота."
-    bsar_narrator "Как бы я не пытался не думать об этих странных видениях, они, подобно мерзким осьминогам, тянутся своими отвратительными склизкими щупальцами к моему сознанию, чтобы..."
+    bsar_narrator "Как бы я не пытался не думать об этих странных видениях, они, подобно мерзким осьминогам, тянутся своими отвратительными склизкими щупальцами к моему сознанию, чтобы..." # nolint
     bsar_narrator "Э-эм."
     bsar_narrator "О чём это я? Ах, точно, об осьминогах! Ненавижу осьминогов! Или я не об этом?"
     bsar_narrator "Что-то у меня плохое предчувствие."
@@ -486,8 +486,8 @@ label bsar_insomnia_day1_stroll_failed:
     $ bsar_heartbeat_animation("bsar_static_noise_anim", 1.05, 1.0)
     play sound_loop bsar_heart
     bsar_narrator "Крик? Кто-то кричит? Почему?" 
-    bsar_she "Э-это ч... ровь?!" 
-    bsar_she "Ч-чёр... Зов... жатую!"
+    bsar_she "Э-это ч... ровь?!" # nolint
+    bsar_she "Ч-чёр... Зов... жатую!" # nolint
     play sound bsar_electro
     $ renpy.pause(1, hard=True)
     bsar_voice "Иван Степанович, теряем! ЭЭГ показывает смерть мозга!"
@@ -556,7 +556,7 @@ label bsar_insomnia_day1_stroll_completed:
     play ambience ambience_medstation_inside_night fadein 2
     bsar_she "Эй, ты опять ходишь с таким лицом, что аж смотреть противно!" 
     bsar_he "Очередной завал на работе. Эти ночные смены меня доконают." 
-    bsar_she "Эй, перестань! Ну же, давай улыбнись! Улыбнись, дурак!" 
+    bsar_she "Эй, перестань! Ну же, давай, улыбнись! Улыбнись, дурак!" 
     bsar_he "Нельзя же человека за то, что он устал, называть дураком!" 
     bsar_she "{b}МНЕ{/b} можно! Люблю тебя, дурак." 
     bsar_he "Господи, ты неисправима. {w}За это я тебя и люблю." 
