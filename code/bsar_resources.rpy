@@ -674,11 +674,11 @@ init -1 python:
     if persistent.bsar_achievements == None:
         persistent.bsar_achievements = {}
 
-    persistent.bsar_achievements.setdefault("bsar_insomnia_paradise", False)
-    persistent.bsar_achievements.setdefault("bsar_insomnia_awakening", False)
-    persistent.bsar_achievements.setdefault("bsar_insomnia_murderous_snowball", False)
-    persistent.bsar_achievements.setdefault("bsar_sotp_begining_and_end", False)
-    persistent.bsar_achievements.setdefault("bsar_sotp_better", False)
+    persistent.bsar_achievements.setdefault("insomnia_paradise", False)
+    persistent.bsar_achievements.setdefault("insomnia_awakening", False)
+    persistent.bsar_achievements.setdefault("insomnia_murderous_snowball", False)
+    persistent.bsar_achievements.setdefault("sotp_begining_and_end", False)
+    persistent.bsar_achievements.setdefault("sotp_better", False)
 
     if persistent.bsar_current_story == None:
         persistent.bsar_current_story = "insomnia"

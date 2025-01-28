@@ -390,23 +390,44 @@ screen bsar_insomnia_achievements():
             antialias True
             kerning 2
 
-        if not persistent.bsar_achievements["bsar_murderous_snowball"]:
-            add "bsar_locked" xalign 0.5 ypos 268
+        add bsar_gui_path + "insomnia_main_menu/achievements_frame.png" xpos 90 ypos 190
 
-        else:
-            add "bsar_murderous_snowball" xalign 0.5 ypos 268
+        add bsar_gui_path + "insomnia_main_menu/achievements_frame.png" xpos 697 ypos 190
 
-        if not persistent.bsar_achievements["bsar_awakening"]:
-            add "bsar_locked" xalign 0.5 ypos 507
+        add bsar_gui_path + "insomnia_main_menu/achievements_frame.png" xpos 1304 ypos 190
 
-        else:
-            add "bsar_awakening" xalign 0.5 ypos 507
+        $ insomnia_achievements = {
+            "paradise": {
+                "ach_xpos": 140,
+                "text": "Как бы сладок не\nбыл сон, но за ним\nвсегда следует\nпробуждение.\nВозвращение из\nмира грёз, надежд и\nфантазий в суровую\nреальность...",
+                "text_xpos": 185,
+                "text_ypos": 398
+            },
+            "awakening": {
+                "ach_xpos": 747,
+                "text": "У каждого человека\nесть воспоминание, в\nкотором он бы хотел\nостаться навсегда.\nГрустная правда\nжизни в том, что в\nнашем мире это\nневозможно.",
+                "text_xpos": 767,
+                "text_ypos": 405
+            },
+            "murderous_snowball": {
+                "ach_xpos": 1354,
+                "text": "Тут нет морали или\nжитейской мудрости.\nПросто напоминание\nо том, человек\nсмертен. Проблема в\nтом, что он\nиногда\nвнезапно смертен.",
+                "text_xpos": 1369,
+                "text_ypos": 406
+            }
+        }
 
-        if not persistent.bsar_achievements["bsar_paradise"]:
-            add "bsar_locked" xalign 0.5 ypos 745
+        for achievement, info in insomnia_achievements.items():
+            if persistent.bsar_achievements.get("insomnia_" + achievement, False):
+                add bsar_gui_path + "achievements/insomnia/" + achievement + ".png" xpos info["ach_xpos"] ypos 265
 
-        else:
-            add "bsar_paradise" xalign 0.5 ypos 745
+                text info["text"]:
+                    font bsar_flow_ext
+                    size 40
+                    xpos info["text_xpos"]
+                    ypos info["text_ypos"]
+            else:
+                add bsar_gui_path + "achievements/insomnia/locked.png" xpos info["ach_xpos"] ypos 490
 
         textbutton "Назад" at bsar_buttons_atl():
             style "bsar_button_none" 
