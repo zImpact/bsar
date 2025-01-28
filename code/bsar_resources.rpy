@@ -834,6 +834,8 @@ init:
     image bsar_sleep_that_knows_no_breaking_right = bsar_gui_path + "effects/heart_monitor/sleep_that_knows_no_breaking_right.png"
     image bsar_heart_monitor_frame = bsar_gui_path + "effects/heart_monitor/heart_monitor_frame.png"
 
+    image bsar_us_note = bsar_gui_path + "effects/us_note.png"
+
     image bsar_snow_layer0_anim:
         contains:
             bsar_gui_path + "effects/snow_layer0_img.png"

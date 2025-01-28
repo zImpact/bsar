@@ -1557,8 +1557,8 @@ label bsar_insomnia_awakening_ending:
     scene bg black with dissolve
     stop sound_loop fadeout 2
     $ renpy.pause(1, hard=True)
-    $ insomnia_set_main_menu_cursor()
-    return
+    $ bsar_set_dynamic_cursor("insomnia_main_menu")
+    $ MainMenu(confirm=False)()
 
 label bsar_insomnia_paradise_ending:
     $ bsar_show_heart_monitor_phrases("sleep_that_knows_no_breaking")
@@ -1593,5 +1593,5 @@ label bsar_insomnia_paradise_ending:
     stop music fadeout 2
     stop ambience fadeout 2
     $ renpy.pause(1, hard=True)
-    #$ insomnia_set_main_menu_cursor()
-    #return
+    $ bsar_set_dynamic_cursor("insomnia_main_menu")
+    $ MainMenu(confirm=False)()
