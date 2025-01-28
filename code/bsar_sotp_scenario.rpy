@@ -427,7 +427,7 @@ label bsar_sotp_three_deaths:
     stop ambience fadeout 2
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
-    scene bg int_float_dream_catcher
+    scene bg bsar_int_float_dream_catcher
     show bsar_static_noise_anim
     with Dissolve(2)
     play ambience ambience_medstation_inside_night fadein 2
@@ -567,6 +567,7 @@ label bsar_sotp_three_deaths:
     bsar_narrator "Очень симпатичная, кстати. Огненные, как цветок мака волосы, и голубые глаза, в которых, казалось, можно утонуть. Она невысокого роста, на вид ей лет шестнадцать. "
     bsar_usp "Привет, ты, наверное, только что приехал?"
     bsar_protagonist "Да. Только что."
+    stop sound fadeout 2
     stop ambience fadeout 2
     stop music fadeout 2
     stop sound_loop fadeout 2

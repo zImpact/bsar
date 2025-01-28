@@ -131,7 +131,7 @@ screen bsar_qte(button, count, time):
     if len(bsar_qte_true_button) != 0:
         text (u"x%s" % len(bsar_qte_true_button)) align(.5, .1) style "bsar_qte_text"
 
-        add "circle_full" align (.5, .62)
+        add bsar_gui_path + "circle_full.png" align (.5, .62)
 
         if len(bsar_qte_true_button_pl) != 0:
             text bsar_qte_true_button_pl[0].upper() align(.5, .6) size 84 color "#ffffff" at bsar_zoom_qte_text

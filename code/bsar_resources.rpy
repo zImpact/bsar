@@ -722,7 +722,7 @@ init:
         "sleep_that_knows_no_breaking": ["Сон", 1038]
     }
 
-    $ bsar_heart_monitor_transition = ImageDissolve(bsar_gui_path + "effects/heart_monitor/bsar_hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
+    $ bsar_heart_monitor_transition = ImageDissolve(bsar_gui_path + "effects/heart_monitor/hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
     $ bsar_flash = Fade(0.45, 1.0, 0.45, color="#ffff")
 
 #     $ bsar_titles_text = '''Спасибо за прочтение! Вот уже прошло практически два года как мы начали делать модификации и именно этот проект является важной вехой нашей деятельности, ибо с него всё и начиналось.
@@ -763,11 +763,11 @@ init:
 
     image bsar_titles_final = ParameterizedText(style="bsar_titles_style", size=40, xalign=0.5)
 
-    image bsar_heavy_snow_day = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_day.png", max_particles=500)
-    image bsar_normal_snow_day = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_day.png")
+    image bsar_heavy_snow_day = bsar_snow(bsar_gui_path + "effects/snow_particle_day.png", max_particles=500)
+    image bsar_normal_snow_day = bsar_snow(bsar_gui_path + "effects/snow_particle_day.png")
 
-    image bsar_heavy_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png", max_particles=500)
-    image bsar_normal_snow_night = bsar_snow(bsar_gui_path + "effects/bsar_snow_particle_night.png")
+    image bsar_heavy_snow_night = bsar_snow(bsar_gui_path + "effects/snow_particle_night.png", max_particles=500)
+    image bsar_normal_snow_night = bsar_snow(bsar_gui_path + "effects/snow_particle_night.png")
 
     image bsar_phone = bsar_gui_path + "effects/phone.png"
     image bsar_hanged_man = bsar_gui_path + "effects/hanged_man.png"
@@ -788,11 +788,51 @@ init:
 
     image bsar_words_move_style = ParameterizedText(style="settings_link", size=100, color="fff")
 
-    image bsar_she_night = im.MatrixColor("bsar/images/sprites/she/bsar_she normal.png", im.matrix.tint(0.63, 0.78, 0.82))
+    image bsar_she_night = im.MatrixColor("bsar/images/sprites/she/she normal.png", im.matrix.tint(0.63, 0.78, 0.82))
 
     image bg bsar_int_house_of_mt_day_blurred = im.Blur("images/bg/int_house_of_mt_day.jpg", 1.5)
 
     image bsar_blank_skip = renpy.display.behavior.ImageButton(Null(1920, 1080), Null(1920, 1080), clicked=[Jump("bsar_after_intro")])
+
+    image bsar_0apv4_left = bsar_gui_path + "effects/heart_monitor/0apv4_left.png"
+    image bsar_0apv4_right = bsar_gui_path + "effects/heart_monitor/0apv4_right.png"
+    image bsar_composure_left = bsar_gui_path + "effects/heart_monitor/composure_left.png"
+    image bsar_composure_right = bsar_gui_path + "effects/heart_monitor/composure_right.png"
+    image bsar_doubts_left = bsar_gui_path + "effects/heart_monitor/doubts_left.png"
+    image bsar_doubts_right = bsar_gui_path + "effects/heart_monitor/doubts_right.png"
+    image bsar_drug_trafficking_left = bsar_gui_path + "effects/heart_monitor/drug_trafficking_left.png"
+    image bsar_drug_trafficking_right = bsar_gui_path + "effects/heart_monitor/drug_trafficking_right.png"
+    image bsar_easy_money_left = bsar_gui_path + "effects/heart_monitor/easy_money_left.png"
+    image bsar_easy_money_right = bsar_gui_path + "effects/heart_monitor/easy_money_right.png"
+    image bsar_fox_left = bsar_gui_path + "effects/heart_monitor/fox_left.png"
+    image bsar_fox_right = bsar_gui_path + "effects/heart_monitor/fox_right.png"
+    image bsar_friendship_left = bsar_gui_path + "effects/heart_monitor/friendship_left.png"
+    image bsar_friendship_right = bsar_gui_path + "effects/heart_monitor/friendship_right.png"
+    image bsar_her_death_left = bsar_gui_path + "effects/heart_monitor/her_death_left.png"
+    image bsar_her_death_right = bsar_gui_path + "effects/heart_monitor/her_death_right.png"
+    image bsar_institute_left = bsar_gui_path + "effects/heart_monitor/institute_left.png"
+    image bsar_institute_right = bsar_gui_path + "effects/heart_monitor/institute_right.png"
+    image bsar_love_left = bsar_gui_path + "effects/heart_monitor/love_left.png"
+    image bsar_love_right = bsar_gui_path + "effects/heart_monitor/love_right.png"
+    image bsar_meeting_with_her_left = bsar_gui_path + "effects/heart_monitor/meeting_with_her_left.png"
+    image bsar_meeting_with_her_right = bsar_gui_path + "effects/heart_monitor/meeting_with_her_right.png"
+    image bsar_military_service_left = bsar_gui_path + "effects/heart_monitor/military_service_left.png"
+    image bsar_military_service_right = bsar_gui_path + "effects/heart_monitor/military_service_right.png"
+    image bsar_new_deal_left = bsar_gui_path + "effects/heart_monitor/new_deal_left.png"
+    image bsar_new_deal_right = bsar_gui_path + "effects/heart_monitor/new_deal_right.png"
+    image bsar_nightmares_left = bsar_gui_path + "effects/heart_monitor/nightmares_left.png"
+    image bsar_nightmares_right = bsar_gui_path + "effects/heart_monitor/nightmares_right.png"
+    image bsar_police_work_left = bsar_gui_path + "effects/heart_monitor/police_work_left.png"
+    image bsar_police_work_right = bsar_gui_path + "effects/heart_monitor/police_work_right.png"
+    image bsar_protection_left = bsar_gui_path + "effects/heart_monitor/protection_left.png"
+    image bsar_protection_right = bsar_gui_path + "effects/heart_monitor/protection_right.png"
+    image bsar_rest_left = bsar_gui_path + "effects/heart_monitor/rest_left.png"
+    image bsar_rest_right = bsar_gui_path + "effects/heart_monitor/rest_right.png"
+    image bsar_sisters_death_left = bsar_gui_path + "effects/heart_monitor/sisters_death_left.png"
+    image bsar_sisters_death_right = bsar_gui_path + "effects/heart_monitor/sisters_death_right.png"
+    image bsar_sleep_that_knows_no_breaking_left = bsar_gui_path + "effects/heart_monitor/sleep_that_knows_no_breaking_left.png"
+    image bsar_sleep_that_knows_no_breaking_right = bsar_gui_path + "effects/heart_monitor/sleep_that_knows_no_breaking_right.png"
+    image bsar_heart_monitor_frame = bsar_gui_path + "effects/heart_monitor/heart_monitor_frame.png"
 
     image bsar_snow_layer0_anim:
         contains:
