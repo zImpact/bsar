@@ -671,27 +671,28 @@ init -1 python:
 
     config.custom_text_tags["bsar_scare"] = bsar_scare_tag
 
-    if persistent.bsar_insomnia_achievements == None:
-        persistent.bsar_insomnia_achievements = {}
+    if persistent.bsar_achievements == None:
+        persistent.bsar_achievements = {}
 
-    persistent.bsar_insomnia_achievements.setdefault("bsar_insomnia_paradise", False)
-    persistent.bsar_insomnia_achievements.setdefault("bsar_insomnia_awakening", False)
-    persistent.bsar_insomnia_achievements.setdefault("bsar_insomnia_murderous_snowball", False)
-
-    if persistent.bsar_sotp_achievements == None:
-        persistent.bsar_sotp_achievements = {}
-
-    persistent.bsar_sotp_achievements.setdefault("bsar_sotp_begining_and_end", False)
-    persistent.bsar_sotp_achievements.setdefault("bsar_sotp_better", False)
+    persistent.bsar_achievements.setdefault("bsar_insomnia_paradise", False)
+    persistent.bsar_achievements.setdefault("bsar_insomnia_awakening", False)
+    persistent.bsar_achievements.setdefault("bsar_insomnia_murderous_snowball", False)
+    persistent.bsar_achievements.setdefault("bsar_sotp_begining_and_end", False)
+    persistent.bsar_achievements.setdefault("bsar_sotp_better", False)
 
     if persistent.bsar_current_story == None:
         persistent.bsar_current_story = "insomnia"
 
-    def bsar_show_achievement(achievement_name):
-        renpy.play(sfx_achievement)
-        renpy.show(achievement_name, [bsar_achievement_transform])
-        renpy.pause(4, hard=True)
-        renpy.hide(achievement_name)
+    def bsar_get_achievement(achievement_name):
+        renpy.pause(1, hard=True)
+
+        if not persistent.bsar_achievements[achievement_name]:
+            persistent.bsar_achievements[achievement_name] = True
+            renpy.play(sfx_achievement, channel="sound")
+            renpy.show(achievement_name, [bsar_achievement_transform])
+            renpy.pause(4, hard=True)
+            renpy.hide(achievement_name)
+            renpy.with_statement(dissolve)
 
 init:
     $ bsar_insomnia_paradise_ending_v = 0
