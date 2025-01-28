@@ -796,139 +796,139 @@ init:
 
     image bsar_snow_layer0_anim:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(8, 0.0, -0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(8, 0.25, -0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(8, 0.5, -0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(8, 0.75, -0.05)
 
     image bsar_snow_layer1_anim:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(10, 0.0, 0.05, pause_time=0.5)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(10, 0.25, 0.05, pause_time=0.5)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(10, 0.5, 0.05, pause_time=0.5)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(10, 0.75, 0.05, pause_time=0.5)
 
 
     image bsar_snow_layer2_anim:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(15, 0.0, -0.05, pause_time=1.0)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(15, 0.25, -0.05, pause_time=1.0)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(15, 0.5, -0.05, pause_time=1.0)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(15, 0.75, -0.05, pause_time=1.0)
 
     image bsar_snow_layer3_anim:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(20, 0.0, 0.07)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(20, 0.25, 0.07)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(20, 0.5, 0.07)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(20, 0.75, 0.07)
 
     image bsar_snow_layer0_anim_quick:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(3, 0.0, -0.03)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(3, 0.25, -0.03)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(3, 0.5, -0.03)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer0_img.png"
+            bsar_gui_path + "effects/snow_layer0_img.png"
             bsar_snow_move(3, 0.75, -0.03)
 
     image bsar_snow_layer1_anim_quick:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(4, 0.0, 0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(4, 0.25, 0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(4, 0.5, 0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer1_img.png"
+            bsar_gui_path + "effects/snow_layer1_img.png"
             bsar_snow_move(4, 0.75, 0.05)
 
     image bsar_snow_layer2_anim_quick:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(5, 0.0, -0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(5, 0.25, -0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(5, 0.5, -0.05)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer2_img.png"
+            bsar_gui_path + "effects/snow_layer2_img.png"
             bsar_snow_move(5, 0.75, -0.05)
 
     image bsar_snow_layer3_anim_quick:
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(5, 0.0, 0.03)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(5, 0.25, 0.03)
 
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(5, 0.5, 0.03)
             
         contains:
-            bsar_gui_path + "effects/bsar_snow_layer3_img.png"
+            bsar_gui_path + "effects/snow_layer3_img.png"
             bsar_snow_move(5, 0.75, 0.03)
 
     transform bsar_buttons_atl():

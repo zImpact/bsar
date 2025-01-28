@@ -231,9 +231,9 @@ screen bsar_preferences():
         ypos 779
     bar:
         value Preference("sound volume")
-        right_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_bar_null.png"
-        left_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_bar_full.png"
-        thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_thumb.png"
+        right_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bar_null.png"
+        left_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bar_full.png"
+        thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/thumb.png"
         xpos 975
         ypos 785
         xmaximum 400
@@ -246,9 +246,9 @@ screen bsar_preferences():
         ypos 895
     bar:
         value Preference("voice volume")
-        right_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_bar_null.png"
-        left_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_bar_full.png"
-        thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/bsar_thumb.png"
+        right_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bar_null.png"
+        left_bar bsar_gui_path + "preferences/" + persistent.timeofday + "/bar_full.png"
+        thumb bsar_gui_path + "preferences/" + persistent.timeofday + "/thumb.png"
         xpos 975
         ypos 901
         xmaximum 400
