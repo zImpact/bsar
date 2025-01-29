@@ -405,6 +405,57 @@ screen bsar_sotp_extra():
                 ShowMenu("bsar_sotp_main_menu")
             ]
 
+screen bsar_sotp_achievements():
+    modal True
+
+    if not bsar_sotp_main_menu_var:
+        text "Достижения":
+            font bsar_yanone_kaffeesatz_regular
+            size 150
+            xalign 0.5
+            ypos 5
+            antialias True
+            kerning 2
+
+        add bsar_gui_path + "sotp_main_menu/achievements_frame.png" xpos 310 ypos 190
+
+        add bsar_gui_path + "sotp_main_menu/achievements_frame.png" xpos 1090 ypos 190
+
+        $ sotp_achievements = {
+            "begining_and_end": {
+                "ach_xpos": 372,
+                "text": "У всего есть начало и конец.\nИ очень часто сложно понять,\nгде заканчивается одно и\nначинается другое. Нам\nхочется верить, что всё\nциклично. Что-то должно\nумереть, чтобы проросло\nновое.",
+                "text_xpos": 375
+            },
+            "better": {
+                "ach_xpos": 1152,
+                "text": "Всякий раз оглядываясь назад\nмы надеемся, что там,\nвпереди, нас ждёт что-то\nлучшее. Кто-то делает всё для\nэтого, кто-то лишь\nподстраивается под\nдействительность, но всякий\nверит в то, что всё наладится.",
+                "text_xpos": 1150
+            }
+        }
+
+        for achievement, info in sotp_achievements.items():
+            if persistent.bsar_achievements.get("sotp_" + achievement, False):
+                add bsar_gui_path + "achievements/sotp/" + achievement + ".png" xpos info["ach_xpos"] ypos 265
+
+                text info["text"]:
+                    font bsar_yanone_kaffeesatz_light
+                    size 40
+                    xpos info["text_xpos"]
+                    ypos 405
+            else:
+                add bsar_gui_path + "achievements/sotp/locked.png" xpos info["ach_xpos"] ypos 490
+
+        textbutton "Назад":
+            style "bsar_button_none" 
+            text_style "bsar_sotp_main_menu_text_style" 
+            xalign 0.5
+            ypos 970
+            action [
+                Hide("bsar_sotp_achievements"),
+                ShowMenu("bsar_sotp_extra")
+            ]
+
 screen bsar_sotp_background_gallery():
     modal True
 
