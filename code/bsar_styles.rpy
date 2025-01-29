@@ -70,6 +70,7 @@ init -10 python:
     style.bsar_sotp_main_menu_text_style.font = bsar_yanone_kaffeesatz_light
     style.bsar_sotp_main_menu_text_style.color = "#ffffff"
     style.bsar_sotp_main_menu_text_style.hover_color = "#dcd168"
+    style.bsar_sotp_main_menu_text_style.insensitive_color = "#4f4f4f"
     style.bsar_sotp_main_menu_text_style.size = 70
 
     style.bsar_insomnia_preferences_main_menu_text_style = Style(style.default)

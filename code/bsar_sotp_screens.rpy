@@ -10,7 +10,7 @@ init python:
         "ext_prosecutor_office", "ext_roof", "ext_winter_park",
         "ext_winter_street", "form", "int_abandoned_workshop",
         "int_alcotable", "int_cammunal", "int_float",
-        "int_kitchen_bw", "int_od_cabinet", "int_protagonist_room",
+        "int_kitchen_bw", "int_od_cabinet",
         "int_tish_interrogation", "makarov_pistol", "medical_room_celling",
         "skazaev_prosecutor_office", "thermal_power_plant"
     ]
@@ -19,6 +19,32 @@ init python:
         bsar_sotp_gallery.button(bg)
         bsar_sotp_gallery.image(im.Crop("bsar/images/bg/" + bg + ".png", (0, 0, 1920, 1080)))
         bsar_sotp_gallery.unlock("bg " + bsar_prefix + bg)
+
+    bsar_sotp_music_box = {
+        "Bensound — Sadday": bsar_bensound_sadday,
+        "Lucas King — Hurt": bsar_lucas_king_hurt,
+        "Master of Spirits — Own Shadow": bsar_master_of_spirits_own_shadow,
+        "Maconda — Die Begin": bsar_maconda_die_begin,
+        "DexArts — Death": bsar_death,
+        "OSD — Socialism": bsar_socialism,
+        "Bensound — November": bsar_bensound_november,
+        "Hildur — Defeated Clown": bsar_defeated_clown,
+        "Bensound — Tomorrow": bsar_bensound_tomorrow,
+        "Hildur — Hoyts Office": bsar_hoyts_office,
+        "Death Friend — 1st december": bsar_death_friend_1st_december,
+        "Nightwish — Nemo (Piano Cover)": bsar_nightwish_nemo_piano_cover,
+        "Master of Spirits — It Was Me": bsar_master_of_spirits_it_was_me,
+        "Master of Spirits — Awareness": bsar_master_of_spirits_awareness,
+        "Master of Spirits — The Last Word": bsar_master_of_spirits_the_last_word,
+        "Master of Spirits — Patience": bsar_master_of_spirits_patience,
+        "Master of Spirits — Alien Shadow": bsar_master_of_spirits_alien_shadow,
+        "Master of Spirits — Shadows": bsar_master_of_spirits_shadows_main_theme
+    }
+
+    bsar_sotp_mr = MusicRoom(fadeout=1.0)
+
+    for music_name in bsar_sotp_music_box.values():
+        bsar_sotp_mr.add(music_name)
 
 screen bsar_sotp_main_menu():
     tag menu 
@@ -553,3 +579,54 @@ screen bsar_sotp_background_gallery():
                     SetVariable("bsar_sotp_gallery_page", bsar_sotp_gallery_next_page), 
                     ShowMenu("bsar_sotp_background_gallery")
                 ]
+
+screen bsar_sotp_music_room():
+    modal True
+
+    if not bsar_sotp_main_menu_var:
+        text "Музыка":
+            font bsar_yanone_kaffeesatz_regular
+            size 150
+            xalign 0.5
+            ypos 5
+            antialias True
+            kerning 2
+
+        frame:
+            background None
+
+            side "c r":
+                area (0.5, 0.22, 0.6, 0.75)
+
+                viewport:
+                    id "bsar_sotp_music_box"
+                    draggable True
+                    mousewheel True
+                    scrollbars None
+                    
+                    grid 1 len(bsar_sotp_music_box):
+                        for name, track in sorted(bsar_sotp_music_box.iteritems()):
+                            textbutton name:
+                                style "bsar_button_none"
+                                text_style "bsar_sotp_main_menu_text_style"
+                                xalign 0.5
+                                action bsar_sotp_mr.Play(track)
+
+                vbar:
+                    value YScrollValue("bsar_sotp_music_box")
+                    bottom_bar bsar_gui_path + "sotp_main_menu/main_menu_vbar_null.png"
+                    top_bar bsar_gui_path + "sotp_main_menu/main_menu_vbar_full.png"
+                    thumb None
+                    xmaximum 52
+
+        textbutton "Назад":
+            style "bsar_button_none" 
+            text_style "bsar_sotp_main_menu_text_style" 
+            xalign 0.5
+            ypos 970
+            action [
+                Hide("bsar_sotp_music_room"),
+                ShowMenu("bsar_sotp_extra")
+            ]
+
+        on "replaced" action Play("music", bsar_master_of_spirits_shadows_main_theme)
