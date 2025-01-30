@@ -666,7 +666,8 @@ label bsar_sotp_shadows:
     stop music fadeout 2
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
-    scene bg bsar_thermal_power_plant
+    scene bg bsar_int_cammunal
+    show bsar_anton normal at cright
     show bsar_static_noise_anim
     with Dissolve(2)
     play music bsar_master_of_spirits_the_last_word fadein 2
@@ -707,6 +708,7 @@ label bsar_sotp_shadows:
     bsar_narrator "Спустя пару дней убийца бесов был обнаружен в пригородном посёлке, без документов, ничего не помнящий. Так бы, возможно, и закончилась эта странная, но всё же относительно безобидная история."
     bsar_narrator "Антона Степановича ждало бы просто длительное лечение от алкоголизма. Если бы не одно «но». {w}И этим «но» была Тишкевич Зинаида Петровна, гражданка тридцати восьми лет, жена Тишкевича Антона Степановича."
     nvl clear
+    show bsar_zina normal at cleft behind bsar_static_noise_anim with dissolve
     bsar_narrator "Зинаида Петровна проснулась поздно ночью из-за слишком громких звуков и возгласов мужа, доносившихся с кухни. Голова женщины гудела, глаза слипались. Не хватало ещё из-за Антона проспать утренний будильник."
     bsar_narrator "Сон у Зинаиды был крепкий и проспать будильник ей было проще простого, а пропускать завтра никак нельзя. Только вот на прошлой неделе брала отгул из-за очередной Антоновой пьянки и его отсыпания в вытрезвителе."
     bsar_narrator "Бросила бы она этого алкаша. С превеликой радостью бы бросила! Да какая-то наследственная у неё связь с пьющими, если так можно выразиться."
@@ -714,7 +716,7 @@ label bsar_sotp_shadows:
     stop music fadeout 2
     scene bg black with Dissolve(2)
     $ renpy.pause(1, hard=True)
-    scene bg bsar_int_cammunal
+    scene bg bsar_thermal_power_plant
     show bsar_static_noise_anim 
     with Dissolve(2)
     play music bsar_master_of_spirits_patience fadein 2
