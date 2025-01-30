@@ -468,7 +468,7 @@ label bsar_insomnia_day1_stroll_failed:
     scene bg bsar_ext_roof
     show bsar_snow_layer3_anim_quick
     show bsar_snow_layer2_anim_quick
-    show bsar_she
+    show bsar_she normal
     show bsar_snow_layer1_anim_quick
     show bsar_snow_layer0_anim_quick
     show bsar_static_noise_anim
@@ -492,17 +492,12 @@ label bsar_insomnia_day1_stroll_failed:
     $ renpy.pause(1, hard=True)
     bsar_voice "Иван Степанович, теряем! ЭЭГ показывает смерть мозга!"
     bsar_narrator "Кажется, мне куда-то нужно? {w}Но куда? {w}Ладно... Неважно."
-
-    if not persistent.insomnia_achievements["insomnia_murderous_snowball"]:
-        $ persistent.insomnia_achievements["insomnia_murderous_snowball"] = True
-        $ insomnia_show_achievement("insomnia_murderous_snowball")
-
-    $ renpy.pause(1, hard=True)
+    $ bsar_get_achievement("insomnia_murderous_snowball")
     scene bg black with dissolve
     stop sound_loop fadeout 2
     $ renpy.pause(1, hard=True)
-    #$ insomnia_set_main_menu_cursor()
-    #return     
+    $ bsar_set_dynamic_cursor("insomnia_main_menu")
+    $ MainMenu(confirm=False)() 
 
 label bsar_insomnia_day1_stroll_completed: 
     $ renpy.block_rollback() 
@@ -961,7 +956,7 @@ label bsar_insomnia_day2:
             bsar_narrator "Умею же я портить то, что, как казалось изначально, ещё больше испортить нельзя." 
 
         "Не вмешиваться": 
-            $ bsar_insomnia_paradise_ending_v +=1 
+            $ bsar_insomnia_paradise_ending_v += 1 
             bsar_narrator "Я почему-то ошеломленно замираю, не в силах сделать даже шаг, а девушки продолжают свой разговор на повышенных тонах."
             bsar_us "Алиса, чтоб тебя! Перестань истерить! Я понимаю, насколько важен тебе этот дневник."
             bsar_us "Мы подруги, и я бы никогда не навредила тебе!"
@@ -1547,13 +1542,7 @@ label bsar_insomnia_awakening_ending:
     play sound bsar_heart_stopped
     $ renpy.pause(6, hard=True)
     scene bg white with bsar_flash
-    $ renpy.pause(1, hard=True)
-    
-    if not persistent.insomnia_achievements["insomnia_awakening"]:
-        $ persistent.insomnia_achievements["insomnia_awakening"] = True
-        $ insomnia_show_achievement("insomnia_awakening")
-
-    $ renpy.pause(1, hard=True)
+    $ bsar_get_achievement("insomnia_awakening")
     scene bg black with dissolve
     stop sound_loop fadeout 2
     $ renpy.pause(1, hard=True)
@@ -1578,17 +1567,7 @@ label bsar_insomnia_paradise_ending:
     bsar_narrator "Очень симпатичная, кстати. Огненные, как цветок мака волосы, и голубые глаза, в которых, казалось, можно утонуть. Она невысокого роста, на вид ей лет шестнадцать. " 
     bsar_usp "Привет, ты, наверное, только что приехал?" 
     bsar_protagonist "Да. Только что."
-
-    if not persistent.insomnia_achievements["insomnia_paradise"]:
-        scene bg bsar_titles_bg with Dissolve(1.5)
-        $ persistent.insomnia_achievements["insomnia_paradise"] = True
-
-        show insomnia_titles_final insomnia_titles_text at insomnia_titles_anim
-        $ renpy.pause(38, hard=True)
-
-        $ insomnia_show_achievement("insomnia_paradise")
-
-    $ renpy.pause(1, hard=True)
+    $ bsar_get_achievement("insomnia_paradise")
     scene bg black with dissolve
     stop music fadeout 2
     stop ambience fadeout 2

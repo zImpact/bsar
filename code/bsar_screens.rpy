@@ -158,12 +158,12 @@ screen bsar_preferences():
         size 70
         xalign 0.5
         yalign 0.062
-        font bsar_flow_ext
+        font bsar_vela_sans_light
         antialias True
         kerning 2
         
     text "Режим экрана":
-        font bsar_flow_ext
+        font bsar_vela_sans_light
         size 65
         xalign 0.5
         ypos 190
@@ -190,7 +190,7 @@ screen bsar_preferences():
         action Preference("display", "window")
 
     text "Размер шрифта":
-        font bsar_flow_ext
+        font bsar_vela_sans_light
         size 65
         xalign 0.5
         ypos 395
@@ -271,7 +271,7 @@ screen bsar_save():
         size 70
         xalign 0.5
         yalign 0.062
-        font bsar_flow_ext
+        font bsar_vela_sans_light
         antialias True
         kerning 2
 
@@ -323,7 +323,7 @@ screen bsar_load():
         size 70
         xalign 0.5
         yalign 0.062
-        font bsar_flow_ext
+        font bsar_vela_sans_light
         antialias True
         kerning 2
 
@@ -530,7 +530,8 @@ screen bsar_game_menu_selector():
 
         add bsar_gui_path + "quick_menu/" + persistent.timeofday + "/quick_menu_ground.png" xalign 0.5 yalign 0.5
     
-        text "{font=[bsar_flow_ext]}Пауза{/font}":
+        text "Пауза":
+            font bsar_vela_sans_light
             size 80
             xalign 0.5
             ypos 274
@@ -624,7 +625,7 @@ screen bsar_yesno_prompt(yes_action, message, no_action):
         text_align 0.5 
         yalign 0.46 
         xalign 0.5
-        font bsar_diamond_girl_skinny 
+        font bsar_vela_sans_light 
         size 100
 
     textbutton "Да": 
@@ -749,12 +750,12 @@ screen bsar_help():
     add bsar_gui_path + "save_load_preferences/" + persistent.timeofday + "/save_load_preferences_bg.png"
     
     text "Информация":
-        size 70
+        size 100
         xalign 0.5
         ypos 33
         antialias True
         kerning 2
-        font bsar_diamond_girl_skinny
+        font bsar_vela_sans_light
 
     textbutton "Группа VK":
         style "bsar_button_none"
@@ -784,7 +785,7 @@ screen bsar_help():
         ypos 650
         action OpenURL("https://youtu.be/x2KBAuBKWL8")
 
-    add "bsar_logowhite_hover" xpos 1520 ypos 880
+    add bsar_gui_path + persistent.bsar_current_story + "_main_menu/logowhite_hover" xpos 1520 ypos 880
 
     textbutton "Назад":
         style "bsar_button_none"

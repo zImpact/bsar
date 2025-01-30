@@ -693,6 +693,7 @@ init -1 python:
             renpy.pause(4, hard=True)
             renpy.hide(achievement_name)
             renpy.with_statement(dissolve)
+            renpy.pause(1, hard=True)
 
 init:
     $ bsar_insomnia_paradise_ending_v = 0
@@ -762,6 +763,12 @@ init:
 
     $ bsar_fadehold = Fade(1.5, 1.0, 1.5)
 
+    $ bsar_insomnia_main_menu_var = True
+    $ bsar_sotp_main_menu_var = True
+    $ bsar_lock_quit = False
+    $ bsar_lock_quick_menu = False
+    $ bsar_lock_quit_game_main_menu_var = True
+
     image bsar_titles_final = ParameterizedText(style="bsar_titles_style", size=40, xalign=0.5)
 
     image bsar_heavy_snow_day = bsar_snow("bsar/images/effects/snow_particle_day.png", max_particles=500)
@@ -773,11 +780,11 @@ init:
     image bsar_phone = "bsar/images/effects/phone.png"
     image bsar_hanged_man = "bsar/images/effects/hanged_man.png"
 
-    $ bsar_insomnia_main_menu_var = True
-    $ bsar_sotp_main_menu_var = True
-    $ bsar_lock_quit = False
-    $ bsar_lock_quick_menu = False
-    $ bsar_lock_quit_game_main_menu_var = True
+    image insomnia_paradise = bsar_gui_path + "achievements/insomnia/paradise.png"
+    image insomnia_awakening = bsar_gui_path + "achievements/insomnia/awakening.png"
+    image insomnia_murderous_snowball = bsar_gui_path + "achievements/insomnia/murderous_snowball.png"
+    image sotp_begining_and_end = bsar_gui_path + "achievements/sotp/begining_and_end.png"
+    image sotp_better = bsar_gui_path + "achievements/sotp/better.png"
 
     image bsar_static_noise_anim = bsar_frame_animation("bsar/images/bg/static_noise_anim/static_noise", 5, 0.2, True, Dissolve(0.2))
 

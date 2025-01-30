@@ -40,7 +40,7 @@ init -10 python:
     bsar_vela_sans_light = bsar_gui_path + "fonts/VelaSans-Light.ttf"
 
     style.bsar_titles_style = Style(style.default)
-    style.bsar_titles_style.font = bsar_flow_ext
+    style.bsar_titles_style.font = bsar_vela_sans_light
     style.bsar_titles_style.color = "#fff"
     style.bsar_titles_style.drop_shadow = [(1, 1), (1, 1), (1, 1), (1, 1)]
     style.bsar_titles_style.drop_shadow_color = "#000"
@@ -139,28 +139,28 @@ init -10 python:
     style.bsar_centered_text_style_heart_monitor.size = 80
 
     style.bsar_quick_menu_style_winter_day = Style(style.default)
-    style.bsar_quick_menu_style_winter_day.font = bsar_flow_ext
+    style.bsar_quick_menu_style_winter_day.font = bsar_vela_sans_light
     style.bsar_quick_menu_style_winter_day.size = 60
     style.bsar_quick_menu_style_winter_day.color = "#ffffff"
     style.bsar_quick_menu_style_winter_day.hover_color = "#2171b8"
     style.bsar_quick_menu_style_winter_day.selected_color = "#2171b8"
 
     style.bsar_quick_menu_style_winter_night = Style(style.default)
-    style.bsar_quick_menu_style_winter_night.font = bsar_flow_ext
+    style.bsar_quick_menu_style_winter_night.font = bsar_vela_sans_light
     style.bsar_quick_menu_style_winter_night.size = 60
     style.bsar_quick_menu_style_winter_night.color = "#ffffff"
     style.bsar_quick_menu_style_winter_night.hover_color = "#002b74"
     style.bsar_quick_menu_style_winter_night.selected_color = "#002b74"
 
     style.bsar_quick_menu_style_bw = Style(style.default)
-    style.bsar_quick_menu_style_bw.font = bsar_flow_ext
+    style.bsar_quick_menu_style_bw.font = bsar_vela_sans_light
     style.bsar_quick_menu_style_bw.size = 60
     style.bsar_quick_menu_style_bw.color = "#ffffff"
     style.bsar_quick_menu_style_bw.hover_color = "#dcd168"
     style.bsar_quick_menu_style_bw.selected_color = "#dcd168"
 
     style.bsar_quick_menu_style_fog = Style(style.default)
-    style.bsar_quick_menu_style_fog.font = bsar_flow_ext
+    style.bsar_quick_menu_style_fog.font = bsar_vela_sans_light
     style.bsar_quick_menu_style_fog.size = 60
     style.bsar_quick_menu_style_fog.color = "#ffffff"
     style.bsar_quick_menu_style_fog.hover_color = "#c2dded"
@@ -189,7 +189,7 @@ init -10 python:
     style.bsar_sotp_save_load_button_main_menu.selected_idle_background = bsar_gui_path + "save_load/sotp_main_menu/save_load_button_selected.png"
 
     style.bsar_save_load_winter_day = Style(style.default)
-    style.bsar_save_load_winter_day.font = bsar_flow_ext
+    style.bsar_save_load_winter_day.font = bsar_vela_sans_light
     style.bsar_save_load_winter_day.size = 60
     style.bsar_save_load_winter_day.kerning = 3
     style.bsar_save_load_winter_day.color = "#ffffff"
@@ -200,7 +200,7 @@ init -10 python:
     style.bsar_save_load_winter_day.insensitive_color = "#ffffff"
 
     style.bsar_text_winter_day = Style(style.default)
-    style.bsar_text_winter_day.font = bsar_flow_ext
+    style.bsar_text_winter_day.font = bsar_vela_sans_light
     style.bsar_text_winter_day.size = 60
     style.bsar_text_winter_day.color = "#ffffff"
     style.bsar_text_winter_day.hover_color = "#2171b8"
@@ -217,21 +217,21 @@ init -10 python:
     style.bsar_save_load_button_winter_day.selected_idle_background = bsar_gui_path + "save_load/winter_day/save_load_button_selected.png"
 
     style.bsar_text_preferences_winter_day = Style(style.default)
-    style.bsar_text_preferences_winter_day.font = bsar_flow_ext
+    style.bsar_text_preferences_winter_day.font = bsar_vela_sans_light
     style.bsar_text_preferences_winter_day.size = 60
     style.bsar_text_preferences_winter_day.color = "#ffffff"
     style.bsar_text_preferences_winter_day.hover_color = "#2171b8"
     style.bsar_text_preferences_winter_day.selected_color = "#2171b8"
 
     style.bsar_text_inverse_preferences_winter_day = Style(style.default)
-    style.bsar_text_inverse_preferences_winter_day.font = bsar_flow_ext
+    style.bsar_text_inverse_preferences_winter_day.font = bsar_vela_sans_light
     style.bsar_text_inverse_preferences_winter_day.size = 60
     style.bsar_text_inverse_preferences_winter_day.color = "#2171b8"
     style.bsar_text_inverse_preferences_winter_day.hover_color = "#2171b8"
     style.bsar_text_inverse_preferences_winter_day.selected_color = "#2171b8"
 
     style.bsar_save_load_winter_night = Style(style.default)
-    style.bsar_save_load_winter_night.font = bsar_flow_ext
+    style.bsar_save_load_winter_night.font = bsar_vela_sans_light
     style.bsar_save_load_winter_night.size = 60
     style.bsar_save_load_winter_night.kerning = 3
     style.bsar_save_load_winter_night.color = "#ffffff"
@@ -242,7 +242,7 @@ init -10 python:
     style.bsar_save_load_winter_night.insensitive_color = "#ffffff"
 
     style.bsar_text_winter_night = Style(style.default)
-    style.bsar_text_winter_night.font = bsar_flow_ext
+    style.bsar_text_winter_night.font = bsar_vela_sans_light
     style.bsar_text_winter_night.size = 60
     style.bsar_text_winter_night.color = "#ffffff"
     style.bsar_text_winter_night.hover_color = "#002b74"
@@ -252,14 +252,14 @@ init -10 python:
     style.bsar_text_winter_night.insensitive_color = "#ffffff"
 
     style.bsar_text_preferences_winter_night = Style(style.default)
-    style.bsar_text_preferences_winter_night.font = bsar_flow_ext
+    style.bsar_text_preferences_winter_night.font = bsar_vela_sans_light
     style.bsar_text_preferences_winter_night.size = 60
     style.bsar_text_preferences_winter_night.color = "#ffffff"
     style.bsar_text_preferences_winter_night.hover_color = "#002b74"
     style.bsar_text_preferences_winter_night.selected_color = "#002b74"
 
     style.bsar_text_inverse_preferences_winter_night = Style(style.default)
-    style.bsar_text_inverse_preferences_winter_night.font = bsar_flow_ext
+    style.bsar_text_inverse_preferences_winter_night.font = bsar_vela_sans_light
     style.bsar_text_inverse_preferences_winter_night.size = 60
     style.bsar_text_inverse_preferences_winter_night.color = "#002b74"
     style.bsar_text_inverse_preferences_winter_night.hover_color = "#002b74"
@@ -273,7 +273,7 @@ init -10 python:
     style.bsar_save_load_button_winter_night.selected_idle_background = bsar_gui_path + "save_load/winter_night/save_load_button_selected.png"
 
     style.bsar_save_load_bw = Style(style.default)
-    style.bsar_save_load_bw.font = bsar_flow_ext
+    style.bsar_save_load_bw.font = bsar_vela_sans_light
     style.bsar_save_load_bw.size = 60
     style.bsar_save_load_bw.kerning = 3
     style.bsar_save_load_bw.color = "#ffffff"
@@ -284,7 +284,7 @@ init -10 python:
     style.bsar_save_load_bw.insensitive_color = "#ffffff"
 
     style.bsar_text_bw = Style(style.default)
-    style.bsar_text_bw.font = bsar_flow_ext
+    style.bsar_text_bw.font = bsar_vela_sans_light
     style.bsar_text_bw.size = 60
     style.bsar_text_bw.color = "#ffffff"
     style.bsar_text_bw.hover_color = "#dcd168"
@@ -301,21 +301,21 @@ init -10 python:
     style.bsar_save_load_button_bw.selected_idle_background = bsar_gui_path + "save_load/bw/save_load_button_selected.png"
 
     style.bsar_text_preferences_bw = Style(style.default)
-    style.bsar_text_preferences_bw.font = bsar_flow_ext
+    style.bsar_text_preferences_bw.font = bsar_vela_sans_light
     style.bsar_text_preferences_bw.size = 60
     style.bsar_text_preferences_bw.color = "#ffffff"
     style.bsar_text_preferences_bw.hover_color = "#dcd168"
     style.bsar_text_preferences_bw.selected_color = "#dcd168"
 
     style.bsar_text_inverse_preferences_bw = Style(style.default)
-    style.bsar_text_inverse_preferences_bw.font = bsar_flow_ext
+    style.bsar_text_inverse_preferences_bw.font = bsar_vela_sans_light
     style.bsar_text_inverse_preferences_bw.size = 60
     style.bsar_text_inverse_preferences_bw.color = "#dcd168"
     style.bsar_text_inverse_preferences_bw.hover_color = "#dcd168"
     style.bsar_text_inverse_preferences_bw.selected_color = "#dcd168"
 
     style.bsar_text_fog = Style(style.default)
-    style.bsar_text_fog.font = bsar_flow_ext
+    style.bsar_text_fog.font = bsar_vela_sans_light
     style.bsar_text_fog.size = 60
     style.bsar_text_fog.color = "#ffffff"
     style.bsar_text_fog.hover_color = "#c2dded"
@@ -325,7 +325,7 @@ init -10 python:
     style.bsar_text_fog.insensitive_color = "#ffffff"
 
     style.bsar_save_load_fog = Style(style.default)
-    style.bsar_save_load_fog.font = bsar_flow_ext
+    style.bsar_save_load_fog.font = bsar_vela_sans_light
     style.bsar_save_load_fog.size = 60
     style.bsar_save_load_fog.kerning = 3
     style.bsar_save_load_fog.color = "#ffffff"
@@ -343,14 +343,14 @@ init -10 python:
     style.bsar_save_load_button_fog.selected_idle_background = bsar_gui_path + "save_load/fog/save_load_button_selected.png"
 
     style.bsar_text_preferences_fog = Style(style.default)
-    style.bsar_text_preferences_fog.font = bsar_flow_ext
+    style.bsar_text_preferences_fog.font = bsar_vela_sans_light
     style.bsar_text_preferences_fog.size = 60
     style.bsar_text_preferences_fog.color = "#ffffff"
     style.bsar_text_preferences_fog.hover_color = "#c2dded"
     style.bsar_text_preferences_fog.selected_color = "#c2dded"
 
     style.bsar_text_inverse_preferences_fog = Style(style.default)
-    style.bsar_text_inverse_preferences_fog.font = bsar_flow_ext
+    style.bsar_text_inverse_preferences_fog.font = bsar_vela_sans_light
     style.bsar_text_inverse_preferences_fog.size = 60
     style.bsar_text_inverse_preferences_fog.color = "#c2dded"
     style.bsar_text_inverse_preferences_fog.hover_color = "#c2dded"
