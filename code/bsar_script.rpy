@@ -17,6 +17,7 @@ init python:
                 _preferences.volumes["music"] = persistent.bsar_on_save_timeofday[slot][4]
                 _preferences.volumes["sfx"] = persistent.bsar_on_save_timeofday[slot][5]
                 _preferences.volumes["voice"] = persistent.bsar_on_save_timeofday[slot][6]
+                bsar_toggle_main_menu()
                 bsar_set_dynamic_cursor("timeofday")
     
         except:

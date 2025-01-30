@@ -543,7 +543,10 @@ screen bsar_game_menu_selector():
             text_style "bsar_quick_menu_style_" + persistent.timeofday
             xalign 0.5
             ypos 418
-            action [Function(bsar_set_dynamic_cursor, "main_menu"), MainMenu(confirm=False)]
+            action [
+                Function(bsar_set_dynamic_cursor, persistent.bsar_current_story + "_main_menu"), 
+                MainMenu(confirm=False)
+            ]
             
         textbutton "Сохранить":
             style "bsar_button_none"
@@ -571,7 +574,10 @@ screen bsar_game_menu_selector():
             text_style "bsar_quick_menu_style_" + persistent.timeofday
             xalign 0.5
             ypos 765
-            action [(Function(bsar_screens_diact)), ShowMenu("main_menu")]
+            action [
+                Function(bsar_screens_diact), 
+                ShowMenu("main_menu")
+            ]
 
 screen bsar_quit():
     tag menu
@@ -600,14 +606,20 @@ screen bsar_quit():
             text_style "bsar_text_" + persistent.timeofday
             xalign 0.3
             ypos 650
-            action [(Function(bsar_screens_diact)), ShowMenu("main_menu")]
+            action [
+                Function(bsar_screens_diact),
+                ShowMenu("main_menu")
+            ]
             
         textbutton "Нет":
             style "bsar_button_none"
             text_style "bsar_text_" + persistent.timeofday
             xalign 0.7
             ypos 650
-            action [Hide("bsar_quit"), Return()]
+            action [
+                Hide("bsar_quit"),
+                Return()
+            ]
 
 screen bsar_yesno_prompt(yes_action, message, no_action):
     modal True

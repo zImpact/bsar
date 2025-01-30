@@ -27,8 +27,8 @@ label bsar_start:
     play sound sfx_intro_bus_transition
     $ renpy.pause(5, hard=True)
     scene bg black with Dissolve(2)
-    $ renpy.pause(2, hard=True)
-    $ bsar_onload("unlock")
+    $ renpy.pause(2, hard=True)    
 
     label bsar_after_intro:
+        $ bsar_onload("unlock")
         $ renpy.transition(dissolve)
