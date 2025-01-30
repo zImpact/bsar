@@ -21,6 +21,31 @@ init python:
         bsar_insomnia_gallery.image(im.Crop("bsar/images/bg/" + bg + ".png", (0, 0, 1920, 1080)))
         bsar_insomnia_gallery.unlock("bg " + bsar_prefix + bg)
 
+    bsar_insomnia_music_box = {
+        "Domitori Taranofu — Slow Pulse": bsar_domitori_taranofu_slow_pulse,
+        "Katawa Shoujo OST — Afternoon": bsar_afternoon,
+        "Katawa Shoujo OST — Ease": bsar_ease,
+        "Katawa Shoujo OST — Stride": bsar_stride,
+        "Lucas King — Isolation": bsar_lucas_king_isolation,
+        "Domitori Taranofu — Trouble": bsar_domitori_taranofu_trouble,
+        "Lucius OST — Piano": bsar_lucius_OST_piano,
+        "Katawa Shoujo OST — Everyday Fantasy": bsar_everyday_fantasy,
+        "Over The Time — Sandy Winter": bsar_over_the_time_sandy_winter,
+        "Insomnia — Standing Tail": bsar_standing_tall,
+        "Cyprinid — Floating": bsar_cyprinid_floating,
+        "K.S. OST — Painful History": bsar_painful_history,
+        "Domitori Taranofu — Planet Of Colds": bsar_domitori_taranofu_planet_of_colds,
+        "Katawa Shoujo OST — Fripperies": bsar_fripperies,
+        "Domitori Taranofu — Winter Night": bsar_domitori_taranofu_winter_night,
+        "Insomnia — Dark Shades": bsar_dark_shades,
+        "Domitori Taranofu — Lullaby": bsar_domitori_taranofu_lullaby
+    }
+
+    bsar_insomnia_mr = MusicRoom(fadeout=1.0)
+
+    for music_name in bsar_insomnia_music_box.values():
+        bsar_insomnia_mr.add(music_name)
+
 screen bsar_insomnia_main_menu():
     tag menu 
     modal True
@@ -533,3 +558,54 @@ screen bsar_insomnia_background_gallery():
                     SetVariable("bsar_insomnia_gallery_page", bsar_insomnia_gallery_next_page), 
                     ShowMenu("bsar_insomnia_background_gallery")
                 ]
+
+screen bsar_insomnia_music_room():
+    modal True
+
+    if not bsar_insomnia_main_menu_var:
+        text "Музыка":
+            font bsar_diamond_girl_skinny
+            size 150
+            xalign 0.5
+            ypos 5
+            antialias True
+            kerning 2
+
+        frame:
+            background None
+
+            side "c r":
+                area (0.3, 0.25, 0.65, 0.73)
+
+                viewport:
+                    id "bsar_insomnia_music_box"
+                    draggable True
+                    mousewheel True
+                    scrollbars None
+                    
+                    grid 1 len(bsar_insomnia_music_box):
+                        for name, track in sorted(bsar_insomnia_music_box.iteritems()):
+                            textbutton name:
+                                style "bsar_button_none"
+                                text_style "bsar_insomnia_main_menu_music_text_style"
+                                xalign 0.5
+                                action bsar_insomnia_mr.Play(track)
+
+                vbar:
+                    value YScrollValue("bsar_insomnia_music_box")
+                    bottom_bar bsar_gui_path + "insomnia_main_menu/main_menu_vbar_null.png"
+                    top_bar bsar_gui_path + "insomnia_main_menu/main_menu_vbar_full.png"
+                    thumb None
+                    xmaximum 52
+
+        textbutton "Назад" at bsar_buttons_atl():
+            style "bsar_button_none" 
+            text_style "bsar_insomnia_main_menu_text_style" 
+            xalign 0.5
+            ypos 970
+            action [
+                Hide("bsar_insomnia_music_room"),
+                ShowMenu("bsar_insomnia_extra")
+            ]
+
+        on "replaced" action Play("music", bsar_domitori_taranofu_lullaby)

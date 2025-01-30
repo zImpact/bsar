@@ -64,12 +64,22 @@ init -10 python:
     style.bsar_insomnia_main_menu_text_style = Style(style.default)
     style.bsar_insomnia_main_menu_text_style.font = bsar_flow_ext
     style.bsar_insomnia_main_menu_text_style.color = "#ffffff"
+    style.bsar_insomnia_main_menu_text_style.insensitive_color = "#7a7a7a"
     style.bsar_insomnia_main_menu_text_style.size = 70
+
+    style.bsar_insomnia_main_menu_music_text_style = Style(style.default)
+    style.bsar_insomnia_main_menu_music_text_style.font = bsar_flow_ext
+    style.bsar_insomnia_main_menu_music_text_style.color = "#b3b3b3" 
+    style.bsar_insomnia_main_menu_music_text_style.hover_color = "#ffffff"
+    style.bsar_insomnia_main_menu_music_text_style.selected_color = "#ffffff"
+    style.bsar_insomnia_main_menu_music_text_style.insensitive_color = "#7a7a7a" 
+    style.bsar_insomnia_main_menu_music_text_style.size = 70
 
     style.bsar_sotp_main_menu_text_style = Style(style.default)
     style.bsar_sotp_main_menu_text_style.font = bsar_yanone_kaffeesatz_light
     style.bsar_sotp_main_menu_text_style.color = "#ffffff"
     style.bsar_sotp_main_menu_text_style.hover_color = "#dcd168"
+    style.bsar_sotp_main_menu_text_style.selected_color = "#dcd168"
     style.bsar_sotp_main_menu_text_style.insensitive_color = "#4f4f4f"
     style.bsar_sotp_main_menu_text_style.size = 70
 
