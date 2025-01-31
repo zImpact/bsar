@@ -10,7 +10,7 @@ label bsar_insomnia_day1:
     bsar_narrator "{i}В этом мире есть множество вещей, которые нельзя объяснить. {w}Их невозможно понять, невозможно увидеть и доказать, тем не менее они существуют.{/i}"
     bsar_narrator "{i}Сон — одна из этих вещей.{/i}"
     bsar_narrator "{i}Ещё наши предки считали, что во время сна душа может покидать физическое тело и, пересекая тонкую, невидимую человеческому глазу грань, путешествовать в другие миры.{/i}" 
-    bsar_narrator "{i}Поэтому, никто не может гарантировать Тебе, что вся Твоя жизнь — это не сон. {w}Сон, в котором пленённое тело переживает подобные друг другу дни снова и снова. Бесчисленное число раз...{/i}" 
+    bsar_narrator "{i}Поэтому никто не может гарантировать Тебе, что вся Твоя жизнь — это не сон. {w}Сон, в котором пленённое тело переживает подобные друг другу дни снова и снова. Бесчисленное число раз...{/i}" 
     $ renpy.pause(1, hard=True)
     $ bsar_set_time("bw", "day")
     scene bg bsar_prolog_bw
@@ -86,7 +86,7 @@ label bsar_insomnia_day1:
     bsar_us "Э-эй! Вообще-то человек настроение сам себе делает. Никто, кроме тебя, его тебе не сделает. Как ты сам для себя решил, так и будет!"
     bsar_us "Вот если ты сам для себя решил: «Всё. Мне весело!», — то тебе весело, а если ты решил, что тебе грустно, так и будет."
     bsar_narrator "Голубые глаза девушки горят энтузиазмом, словно она Уоллес, говорящий воодушевляющую речь перед сынами Шотландии. Причём в несвойственной для себя простодушной манере."
-    bsar_narrator "Поэтому, я с неподдельным интересом и заинтересованностью слушаю её наставляющий монолог." 
+    bsar_narrator "Поэтому я с неподдельным интересом и заинтересованностью слушаю её наставляющий монолог." 
     bsar_us "Вроде и старше меня, но до сих пор не понял этого..."
     bsar_us "Улыбнись, дурак!" 
     bsar_narrator "Как ни странно, но от слов этой рыжеволосой энергичной девчонки на сердце стало... {w}Теплее что ли. Эти слова колыхнули фибры души, напоминая о каком-то совсем позабытом чувстве."
@@ -98,7 +98,10 @@ label bsar_insomnia_day1:
     bsar_narrator "Неловкую паузу прервал горн. Пора на обед."
     show bsar_us normal with dspr
     bsar_us "Пошли на обед, дурак. Завтрак, как я понимаю, ты проспал."
-    hide bsar_us with dissolve
+    show bsar_us normal:
+        xcenter 0.5 blur 0 alpha 1
+        ease 1.5 xcenter 1.3 blur 8 alpha 0
+    $ renpy.pause(1.5, hard=True)
     bsar_narrator "Хихикнула она и быстро зашагала в сторону столовой. Мне пришлось поторопиться, чтобы не отставать."
     stop music
     play sound_loop bsar_heart
@@ -365,6 +368,7 @@ label bsar_insomnia_day1_cleaning:
     stop music fadeout 2
     stop ambience fadeout 2
     stop sound_loop fadeout 2
+    scene bg white with flash
     $ bsar_set_time("night")
     scene bg int_house_of_mt_night
     show bsar_mt grin at center
@@ -590,10 +594,13 @@ label bsar_insomnia_day2:
     bsar_th "Что же, всё равно делать мне сегодня нечего. Почему бы и не сходить?" 
     bsar_protagonist "Ладно-ладно. Я приду." 
     bsar_narrator "Прервал я Женю, которая, по всей видимости, уже намеревалась сказать какую-то остроту. Она довольно хмыкнула и встала из-за стола." 
-    show bsar_mz normal2 with dspr 
-    bsar_mz "Вот и славно. Не задерживайся!" 
-    bsar_protagonist "Конечно..." 
-    hide bsar_mz with dissolve
+    show bsar_mz normal2 with dspr
+    bsar_mz "Вот и славно. Не задерживайся!"
+    bsar_protagonist "Конечно..."
+    show bsar_mz normal2:
+        xcenter 0.5 blur 0 alpha 1
+        ease 1.5 xcenter -0.3 blur 8 alpha 0
+    $ renpy.pause(1.5, hard=True)
     bsar_narrator "Господи, сколько раз нужно повторять самому себе, что надо сначала думать, а потом говорить." 
     bsar_narrator "Я же только что сдуру подписал себе смертный приговор." 
     bsar_narrator "Другими словами — больше часа в одном помещении с Женей."
@@ -768,7 +775,10 @@ label bsar_insomnia_day2:
     bsar_dv "Давай-давай, проходи, не задерживайся! И забудь то, что видел!" 
     bsar_protagonist "Да, конечно. {w}Вот-вот уже. {w}Почти. {w}{i}Ещё чуть-чуть...{/i}." 
     bsar_dv "Болван!" 
-    hide bsar_dv with dissolve 
+    show bsar_dv normal:
+        xcenter 0.5 blur 0 alpha 1
+        ease 1.5 xcenter 1.3 blur 8 alpha 0
+    $ renpy.pause(1.5, hard=True)
     bsar_narrator "ДваЧе прошла мимо меня, намеренно задев плечом."
     bsar_narrator "Больше всего я удивляюсь тому факту, что позволяю себе пасовать перед этой девчонкой. {w}Боже, эта Алиса..." 
     stop ambience fadeout 2
@@ -820,7 +830,10 @@ label bsar_insomnia_day2:
     bsar_us "Ладно. Не суть важно. Ты Алису не видел?" 
     bsar_protagonist "Алису? Алису видел, она в библиотеку пошла." 
     bsar_us "Спасибо! Не болей!" 
-    hide bsar_us with dissolve
+    show bsar_us normal:
+        xcenter 0.5 blur 0 alpha 1
+        ease 1.5 xcenter 1.3 blur 8 alpha 0
+    $ renpy.pause(1.5, hard=True)
     bsar_narrator "Ульяна тепло улыбнулась и подмигнула мне, а затем побежала в библиотеку. Странно видеть эту шестнадцатилетнюю егозу такой милой."  
     bsar_narrator "Раньше она постоянно пыталась меня подколоть, а сейчас тишь да гладь." 
 
@@ -1079,12 +1092,12 @@ label bsar_insomnia_day3:
     play ambience bsar_winter_wind fadein 2 
     bsar_mt "К сожалению, осталась всего неделя до окончания смены, но впереди нас ждут предпраздничные хлопоты и масса хорошего настроения!" 
     bsar_mt "Не забудьте, что на завтра запланирован поход в лес."
-    bsar_mt "Надеюсь, по окончанию смены у вас останутся только хорошие воспоминания о нашем «Совёнке»." 
+    bsar_mt "Надеюсь, по окончании смены у вас останутся только хорошие воспоминания о нашем «Совёнке»." 
     bsar_mt "{i}Воспоминания на всю жизнь!{/i}" 
     bsar_mt "Все свободны." 
     hide bsar_mt with dissolve 
     bsar_narrator "Бледное, мелкое солнце светило на лагерь из последних сил. Светило, но ни капельки не грело." 
-    bsar_narrator "{i}Воспоминания на всю жизнь?{/i}" 
+    bsar_narrator "{i}Воспоминания на всю жизнь?{/i}"
     bsar_narrator "А какая меня дальше ждёт жизнь? Бренное существование в окружении мягких стен жёлтого дома и бормочущих всякую чушь чудаков?" 
     bsar_narrator "Или дурдом выглядит иначе?" 
     bsar_narrator "Хотя, почём мне знать, я там никогда не был!"
@@ -1123,8 +1136,12 @@ label bsar_insomnia_day3:
     bsar_protagonist "Извини. Я с радостью возьму этот ловец снов."
     show bsar_us smile behind bsar_normal_snow_day with dspr
     bsar_us "Отличненько! Увидимся на завтраке, там я тебе его и отдам." 
-    hide bsar_us with dissolve 
+    show bsar_us smile:
+        xcenter 0.5 blur 0 alpha 1
+        ease 1.5 xcenter -0.3 blur 8 alpha 0
+    $ renpy.pause(1.5, hard=True)
     bsar_narrator "Ульянка на прощание махнула мне рукой и быстро убежала в сторону домиков. Ловец снов значит? Почему бы, собственно, и нет."
+    stop ambience fadeout 2
     $ bsar_set_time("bw", "day")
     scene bg bsar_int_kitchen_bw
     show bsar_she normal
@@ -1162,7 +1179,7 @@ label bsar_insomnia_day3:
     bsar_narrator "Или, может быть, то и есть реальность, а это — всего лишь дурацкий сон?" 
     bsar_narrator "Бред бьющегося в предсмертных конвульсиях Морфея... {w}Я запнулся." 
     bsar_narrator "Дверь столовой распахнулась, и зашла Ульяна. Её-то я и дожидался. Боялся, что разминулись."
-    stop music fadeout 2
+    stop music fadeout 3
     bsar_narrator "Румяная с улицы, глаза блестят, на плечах снег тает. Сразу меня замечает, берёт поднос и садится напротив."
     show bsar_us normal with dissolve 
     bsar_us "Вот, принесла, как и обещала." 
@@ -1178,14 +1195,18 @@ label bsar_insomnia_day3:
     bsar_us "Ну что ты. Слушай, а возьми, пожалуйста, ещё это..." 
     bsar_narrator "Девушка протягивает мне сложенный вчетверо тетрадный листок." 
     bsar_narrator "Я уже собирался его развернуть, как Ульяна меня остановила." 
-    bsar_us "Подожди. Не читай его сейчас, пожалуйста. Потом. Вечером, когда будешь ложиться спать." 
+    bsar_us "Подожди. Не читай его сейчас, пожалуйста. Потом. Вечером, когда будешь ложиться спать."
+    show bsar_us dontlike with dspr
     bsar_narrator "Она густо краснеет, переводит взгляд вниз, изредка поглядывая на меня смущённым взглядом. К еде она так и не притронулась." 
     bsar_protagonist "Да, конечно. Без проблем." 
     bsar_us "Спасибо. Я пойду." 
     bsar_protagonist "А как же завтрак?" 
     bsar_us "Я не особо голодна. Возьму с собой. Пока." 
     bsar_protagonist "Ага. Увидимся." 
-    hide bsar_us with dissolve
+    show bsar_us dontlike:
+        xcenter 0.5 blur 0 alpha 1
+        ease 1.5 xcenter -0.3 blur 8 alpha 0
+    $ renpy.pause(1.5, hard=True)
     stop sound_loop fadeout 2
     stop ambience fadeout 2
     scene bg black with Dissolve(1) 
@@ -1214,7 +1235,10 @@ label bsar_insomnia_day3:
     bsar_mz "Ты неисправима! Мне пора в библиотеку."
     bsar_protagonist "Удачи."
     bsar_narrator "Женя выпрямилась, слегка откинула голову и свела брови. Со стороны казалось, что она смотрит на ДваЧе сверху вниз, хоть и ниже неё на полголовы."
-    hide bsar_mz with dissolve
+    show bsar_mz out_normal:
+        xalign 0.72 blur 0 alpha 1
+        ease 1.5 xalign 1.3 blur 8 alpha 0
+    $ renpy.pause(1.5, hard=True)
     bsar_narrator "Затем она резко повернулась к нам спиной и быстро засеменила в сторону библиотеки."
     show bsar_dv normal:
         linear 1.0 xalign 0.5

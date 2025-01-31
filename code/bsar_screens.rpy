@@ -259,12 +259,15 @@ screen bsar_preferences():
         text_style "bsar_text_" + persistent.timeofday
         xpos 235
         ypos 970
-        action [Hide("bsar_preferences"), Return()]
+        action [
+            Hide("bsar_preferences"),
+            Return()
+        ]
 
 screen bsar_save():
     tag menu
     modal True
-    
+
     add bsar_gui_path + "save_load_preferences/" + persistent.timeofday + "/save_load_preferences_bg.png"
 
     text "Сохранение":
@@ -287,7 +290,10 @@ screen bsar_save():
         text_style "bsar_save_load_" + persistent.timeofday
         xalign 0.5
         yalign 0.97
-        action (BsarFunctionCallback(bsar_on_save_callback, selected_slot), FileSave(selected_slot))
+        action [
+            BsarFunctionCallback(bsar_on_save_callback, selected_slot),
+            FileSave(selected_slot)
+        ]
 
     textbutton "Удалить": 
         style "bsar_button_none"
@@ -339,7 +345,10 @@ screen bsar_load():
         text_style "bsar_save_load_" + persistent.timeofday
         xalign 0.5
         yalign 0.97
-        action (BsarFunctionCallback(bsar_on_load_callback, selected_slot), FileLoad(selected_slot, confirm=False))
+        action [
+            BsarFunctionCallback(bsar_on_load_callback, selected_slot),
+            FileLoad(selected_slot, confirm=False)
+        ]
     
     textbutton "Удалить":
         style "bsar_button_none"

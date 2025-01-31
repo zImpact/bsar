@@ -36,7 +36,6 @@ label bsar_sotp_three_deaths:
     scene bg bsar_ext_winter_park
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
-    show bsar_she normal
     show bsar_snow_layer1_anim
     show bsar_snow_layer0_anim
     show bsar_static_noise_anim
@@ -49,6 +48,7 @@ label bsar_sotp_three_deaths:
     bsar_th "Настроение паршивое."
     bsar_narrator "Неожиданно в затылок прилетает нечто холодное и мокрое."
     bsar_narrator "С характерным чавканьем снежок разбивается об мою голову и крупинки снега проваливаются за ворот, заставляя вздрогнуть всем телом."
+    show bsar_she normal behind bsar_snow_layer1_anim with dissolve
     bsar_narrator "Я поворачиваюсь на шесть часов, лицом туда, откуда прилетел снежок, и вижу, что к отправке готовится новый снаряд."
     bsar_protagonist "Холодно же! Хватит! Выкинь! Выкинь снежок, кому говорю!"
     bsar_narrator "Она обиженно надувает щёки, потирая мокрой перчаткой красный от мороза нос."
@@ -180,7 +180,7 @@ label bsar_sotp_three_deaths:
     bsar_protagonist "По какому поводу обязан, Олег Дмитриевич?"
     bsar_narrator "Он выжидающе молчал, словно давая мне возможность додуматься самому и озвучить догадку."
     bsar_narrator "Олег Дмитриевич больше походит на кремень, нежели на человека." 
-    bsar_narrator "Постоянно тыкает тебя мордой во все твои промахи, постоянно наблюдая за любыми твоими действиями."
+    bsar_narrator "Постоянно тыкает тебя мордой во все твои промахи, наблюдая за любыми твоими действиями."
     bsar_narrator "Оно, конечно, немудрено. Круговая порука никуда не пропадала."
     bsar_narrator "Хотя, его монолитный казалось бы образ немного надломился в моих глазах."
     bsar_narrator "Как-то давно он позвонил мне в час ночи, позвал, нет, приказал ехать в бар, что находится неподалёку от центра города."
@@ -204,13 +204,16 @@ label bsar_sotp_three_deaths:
     scene bg bsar_ext_prosecutor_office
     show bsar_snow_layer3_anim
     show bsar_snow_layer2_anim
-    show bsar_phone
     show bsar_snow_layer1_anim
     show bsar_snow_layer0_anim
     show bsar_static_noise_anim
     with Dissolve(2)
     play ambience bsar_winter_wind fadein 2
+    $ renpy.pause(0.5, hard=True)
+    play sound_loop bsar_siemens_rington
+    show bsar_phone behind bsar_snow_layer1_anim with dissolve
     bsar_narrator "Стоило мне только выйти из отделения, как назойливой мухой зазвонил телефон."
+    stop sound_loop fadeout 1
     bsar_sister_yellow "Алло?"
     bsar_protagonist "Привет, сестрёнка!"
     bsar_sister_yellow "Привет. Смотри, сегодня вечером я уезжаю. Не будет меня где-то несколько дней."
@@ -230,7 +233,7 @@ label bsar_sotp_three_deaths:
     bsar_fox_orange "Ты как после вчерашнего?"
     bsar_protagonist "Сносно. Меня сегодня ОД вызывал."
     bsar_narrator "Лис удивлённо вскинула брови."
-    bsar_fox_orange "Вызвал? По поводу?"
+    bsar_fox_orange "Вызывал? По поводу?"
     bsar_protagonist "Напомнил про следующее дело. Недвусмысленно намекнув, что в случае провала всё будет очень плохо."
     bsar_fox_orange "Заса-ада. Если он счёл нужным напомнить, то у нас и впрямь всё серьёзно." # nolint
     bsar_narrator "Она на мгновение о чём-то задумалась."
@@ -298,10 +301,13 @@ label bsar_sotp_three_deaths:
     bsar_protagonist "Господи, ты неисправима. {w}За это я тебя и люблю."
     bsar_yana "Неужели только за это?"
     bsar_narrator "Она подмигнула и в то же мгновение поцеловала меня."
+    play sound_loop bsar_siemens_rington
     bsar_narrator "Раздалась звучная мелодия."
     bsar_narrator "Как же не вовремя!"
     bsar_narrator "Как бы я не пытался игнорировать телефон, он назойливо, словно пьяный сосед, продолжает трезвонить."
     show bsar_phone behind bsar_static_noise_anim with dissolve
+    $ renpy.pause(0.5, hard=True)
+    stop sound_loop fadeout 1
     bsar_narrator "Я отстраняюсь от Яны и отвечаю на звонок, мельком глянув на экран. {w}Незнакомый номер."
     play music bsar_socialism fadein 2
     bsar_protagonist "Алло?"
@@ -391,8 +397,10 @@ label bsar_sotp_three_deaths:
     bsar_narrator "Я поднялся на крышу. {w}Прекрасное место, чтобы побыть наедине с городом."
     bsar_narrator "Морозная ночь, тишина и покой. Только ветер тихо и невнятно бормочет."
     bsar_narrator "Я закурил."
+    play sound_loop bsar_siemens_rington
     show bsar_phone behind bsar_snow_layer1_anim with dissolve
     bsar_narrator "Спустя какое-то время зазвонил телефон. Лис."
+    stop sound_loop fadeout 1
     bsar_protagonist "Привет."
     bsar_fox_orange "Привет, извини, что не позвонила раньше. У тебя снова зимняя бессонница, да?.."
     bsar_fox_orange "После того как ты уехал на несколько дней, ОД завалил меня работой за двоих."
@@ -440,7 +448,8 @@ label bsar_sotp_three_deaths:
     bsar_yana "Твои глаза извиняются лучше. {w}Но на самом деле, мне и правда не нравится эта твоя работа. {w}Странная она какая-то."
     bsar_narrator "На её лице отразились тени сомнений."
     bsar_yana "С тобой точно всё будет в порядке?"
-    bsar_narrator "Лис в нетерпении начала жать на гудок автомобиля, недвусмысленно намекая, что мне пора заканчивать прощанье."
+    play sound bsar_car_horn
+    bsar_narrator "Лис в нетерпении нажала на гудок автомобиля, недвусмысленно намекая, что мне пора заканчивать прощанье."
     bsar_narrator "Ладно. Всё равно мы расстаёмся всего на пару дней."
     bsar_protagonist "Да, точно. Спасибо за ловец снов. Люблю тебя!"
     bsar_yana "И я люблю тебя, дурак."
@@ -533,10 +542,10 @@ label bsar_sotp_three_deaths:
     bsar_protagonist "Тебя никто на работе не любил. Везде ты как в бочке затычка."
     bsar_protagonist "Я и поверил, что так же можно, что я тоже из стали. А я слабее оказался."
     bsar_protagonist "Хребет не уберёг и что теперь? {w}Пока меня за ниточки то туда, то сюда, мои близкие умирали. {w}Зато при бабле."
-    bsar_protagonist "Знаешь, сколько мне ОД в конверте сунул? Дохера!"
+    bsar_protagonist "Знаешь, сколько мне ОД в конверте сунул? {b}Дохера!{/b}"
     bsar_protagonist "Но разве стоит этот кулёк жизни Яны? {w}Я же мог остаться с ней и ничего бы не случилось!"
     bsar_narrator "Я сам не заметил, как сжал в руке ловец снов подаренный Яной."
-    bsar_narrator "Ещё один глоток. Горько."
+    bsar_narrator "Ещё один глоток. {w}Горько."
     bsar_protagonist "Прости, пап."
     bsar_protagonist "Перед матерью извиниться не смог. Просто не было сил взять телефон и позвонить."
     bsar_protagonist "Я не справился. {w}Нечего мне тут больше оставаться."
