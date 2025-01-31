@@ -492,6 +492,8 @@ label bsar_insomnia_day1_stroll_failed:
     $ renpy.pause(1, hard=True)
     bsar_voice "Иван Степанович, теряем! ЭЭГ показывает смерть мозга!"
     bsar_narrator "Кажется, мне куда-то нужно? {w}Но куда? {w}Ладно... Неважно."
+    if bsar_check_last_achievement():
+        $ bsar_show_titles()
     $ bsar_get_achievement("insomnia_murderous_snowball")
     scene bg black with dissolve
     stop sound_loop fadeout 2
@@ -1165,19 +1167,14 @@ label bsar_insomnia_day3:
     show bsar_us normal with dissolve 
     bsar_us "Вот, принесла, как и обещала." 
     bsar_narrator "Она протянула мне амулет." 
-    show bsar_dream_catcher at bsar_dream_catcher_anim:
-        xcenter 0.69 ycenter 2.10 zoom 0.1 rotate -90  
-        ease 2 ypos 0.50 zoom 0.7 rotate 3
-        ease 1 zoom 0.6 xcenter 0.50 rotate 0
-    $ renpy.pause(3, hard=True)
+    show bsar_dream_catcher with dissolve
+    $ renpy.pause(1, hard=True)
     bsar_narrator "Красивый."
     bsar_narrator "Не помню, где я это слышал, но всё же."
     bsar_narrator "По древним преданиям плохие сны запутываются в паутине из ниток, а хорошие проскальзывают сквозь отверстие посередине." 
     bsar_protagonist "Спасибо большое, Уль. Это многое для меня значит."
-    show bsar_dream_catcher at bsar_dream_catcher_anim:
-        ease 1 xcenter 0.6 zoom 0.6 rotate 3
-        ease 2 xcenter 0.73 ycenter 2.10 zoom 0.5 rotate -90
-    $ renpy.pause(3, hard=True)
+    hide bsar_dream_catcher with dissolve
+    $ renpy.pause(1, hard=True)
     bsar_us "Ну что ты. Слушай, а возьми, пожалуйста, ещё это..." 
     bsar_narrator "Девушка протягивает мне сложенный вчетверо тетрадный листок." 
     bsar_narrator "Я уже собирался его развернуть, как Ульяна меня остановила." 
@@ -1542,11 +1539,13 @@ label bsar_insomnia_awakening_ending:
     play sound bsar_heart_stopped
     $ renpy.pause(6, hard=True)
     scene bg white with bsar_flash
-    $ insomnia_show_tip = bsar_check_sotp("tip")
+    $ bsar_insomnia_show_tip = bsar_check_sotp("tip")
+    if bsar_check_last_achievement():
+        $ bsar_show_titles()
     $ bsar_get_achievement("insomnia_awakening")
     scene bg black with dissolve
     stop sound_loop fadeout 2
-    if insomnia_show_tip:
+    if bsar_insomnia_show_tip:
         $ bsar_show_tip_to_sotp()
     $ renpy.pause(1, hard=True)
     $ bsar_set_dynamic_cursor("insomnia_main_menu")
@@ -1570,12 +1569,14 @@ label bsar_insomnia_paradise_ending:
     bsar_narrator "Очень симпатичная, кстати. Огненные, как цветок мака волосы, и голубые глаза, в которых, казалось, можно утонуть. Она невысокого роста, на вид ей лет шестнадцать. " 
     bsar_usp "Привет, ты, наверное, только что приехал?" 
     bsar_protagonist "Да. Только что."
-    $ insomnia_show_tip = bsar_check_sotp("tip")
+    $ bsar_insomnia_show_tip = bsar_check_sotp("tip")
+    if bsar_check_last_achievement():
+        $ bsar_show_titles()
     $ bsar_get_achievement("insomnia_paradise")
     scene bg black with dissolve
     stop music fadeout 2
     stop ambience fadeout 2
-    if insomnia_show_tip:
+    if bsar_insomnia_show_tip:
         $ bsar_show_tip_to_sotp()
     $ renpy.pause(1, hard=True)
     $ bsar_set_dynamic_cursor("insomnia_main_menu")

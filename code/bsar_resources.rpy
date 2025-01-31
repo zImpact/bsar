@@ -14,7 +14,10 @@ init -1 python:
                 renpy.image("bg " + bsar_prefix + file_path, file_name)
 
             elif file_name.startswith("bsar/images/sprites/"):
-                renpy.image(bsar_prefix + file_path, ConditionSwitch("persistent.sprite_time == 'night'", im.MatrixColor(file_name, im.matrix.tint(0.63, 0.78, 0.82)), True, file_name))
+                renpy.image(
+                    bsar_prefix + file_path,
+                    ConditionSwitch("persistent.sprite_time == 'night'", im.MatrixColor(file_name, im.matrix.tint(0.63, 0.78, 0.82)), True, file_name)
+                )
 
             elif file_name.startswith("bsar/sounds/"):
                 globals()[bsar_prefix + file_path] = file_name
@@ -692,9 +695,23 @@ init -1 python:
         elif condition == "allow":
             return has_ending
 
+    def bsar_check_last_achievement():
+        total_achievements = len(persistent.bsar_achievements)
+        unlocked_count = sum(1 for value in persistent.bsar_achievements.values() if value)
+        return unlocked_count == total_achievements - 1
+
     def bsar_show_tip_to_sotp():
         bsar_show_centered_text("В левом нижнем углу главного меню доступна кнопка для перехода в следующую историю — «Тени прошлого»", style=style.bsar_titles_style)
         bsar_hide_centered_text(dspr)
+
+    def bsar_show_titles():
+        renpy.show("bsar_titles_frame")
+        renpy.with_statement(dissolve)
+        renpy.show("bsar_titles_final bsar_titles_text", at_list=[bsar_titles_anim])
+        renpy.pause(46)
+        renpy.hide("bsar_titles_final bsar_titles_text")
+        renpy.hide("bsar_titles_frame")
+        renpy.with_statement(dissolve)
 
     def bsar_get_achievement(achievement_name):
         renpy.pause(1, hard=True)
@@ -740,39 +757,38 @@ init:
     $ bsar_heart_monitor_transition = ImageDissolve("bsar/images/effects/heart_monitor/hm_trans.png", 0.6, ramplen=8, reverse=False, alpha=True)
     $ bsar_flash = Fade(0.45, 1.0, 0.45, color="#ffff")
 
-#     $ bsar_titles_text = '''Спасибо за прочтение! Вот уже прошло практически два года как мы начали делать модификации и именно этот проект является важной вехой нашей деятельности, ибо с него всё и начиналось.
+    $ bsar_titles_text = '''Спасибо за прочтение! Теперь эта история обрела свой финальный вид. Спустя долгие шесть лет...
 
-# Искренне надеемся, что ремейк Бессонницы вам понравился.
+Над модификацией работали:
 
-# Над модом работали:
-# СЦЕНАРИЙ
-# Ева Миронова
+СЦЕНАРИЙ
+Даниил Бухичевский
 
-# КОД
-# Андрей Катаев
+КОД
+Андрей Катаев
 
-# ВИЗУАЛЬНАЯ СОСТАВЛЯЮЩАЯ
-# Егор Бобков
-# Лиза Степанцова
-# Егор Козаченко
-# Anna Monster
-# Семён Персунов
-# Александр Ларин
+ВИЗУАЛЬНАЯ СОСТАВЛЯЮЩАЯ
+Егор Бобков
+Лиза Степанцова
+Егор Козаченко
+Anna Monster
+Семён Персунов
+Андрей Катаев
+Александр Ларин
 
-# МУЗЫКАЛЬНОЕ СОПРОВОЖДЕНИЕ
-# Дмитрий Таранов
-# Алан Кокоев
+МУЗЫКАЛЬНОЕ СОПРОВОЖДЕНИЕ
+Дмитрий Таранов
+Алан Кокоев
 
-# ОТДЕЛЬНЫЕ БЛАГОДАРНОСТИ
-# Александр Милютин
-# Родион Егоров
-# Саша Шмелев
-# Илья Можайкин
-# Женя Двойкин
+ОТДЕЛЬНЫЕ БЛАГОДАРНОСТИ
+Илья Можайкин
+Никита Берлов
+Александр Милютин
+Родион Егоров
+Саша Шмелев
+Женя Двойкин
 
-# Спасибо всем за поддержку. Ваши оценки и отзывы очень важны для нас и мотивируют работать дальше! С уважением, команда Zero Impact.
-
-# С новым годом!'''
+Спасибо всем за поддержку. Ваши оценки и отзывы очень важны для нас и мотивируют работать дальше! С уважением, команда Zero Impact.'''
 
     $ bsar_fadehold = Fade(1.5, 1.0, 1.5)
 
@@ -783,6 +799,7 @@ init:
     $ bsar_lock_quit_game_main_menu_var = True
 
     image bsar_titles_final = ParameterizedText(style="bsar_titles_style", size=40, xalign=0.5)
+    image bsar_titles_frame = bsar_gui_path + "misc/titles_frame.png"
 
     image bsar_heavy_snow_day = bsar_snow("bsar/images/effects/snow_particle_day.png", max_particles=500)
     image bsar_normal_snow_day = bsar_snow("bsar/images/effects/snow_particle_day.png")
@@ -792,6 +809,7 @@ init:
 
     image bsar_phone = "bsar/images/effects/phone.png"
     image bsar_hanged_man = "bsar/images/effects/hanged_man.png"
+    image bsar_dream_catcher = "bsar/images/effects/dream_catcher.png"
 
     image insomnia_paradise = bsar_gui_path + "achievements/insomnia/paradise.png"
     image insomnia_awakening = bsar_gui_path + "achievements/insomnia/awakening.png"
@@ -1082,14 +1100,8 @@ init:
 
     transform bsar_titles_anim():
         xalign 0.5
-        ypos 1.1
-        linear 38 ypos -2.0
-
-    transform bsar_dream_catcher_anim():
-        ease 0.4 xoffset -5 rotate -0.4
-        ease 0.4 xoffset 5 rotate 0
-        ease 0.4 xoffset 0 rotate 0.4
-        repeat
+        ypos 1.05
+        linear 50 ypos -2.0
 
     transform bsar_skip_pos():
         xalign 0.5

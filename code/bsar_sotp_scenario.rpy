@@ -567,6 +567,8 @@ label bsar_sotp_three_deaths:
     bsar_narrator "Очень симпатичная, кстати. Огненные, как цветок мака волосы, и голубые глаза, в которых, казалось, можно утонуть. Она невысокого роста, на вид ей лет шестнадцать. "
     bsar_usp "Привет, ты, наверное, только что приехал?"
     bsar_protagonist "Да. Только что."
+    if bsar_check_last_achievement():
+        $ bsar_show_titles()
     $ bsar_get_achievement("sotp_begining_and_end")
     scene bg black with dissolve
     stop sound fadeout 2
@@ -816,6 +818,8 @@ label bsar_sotp_shadows:
     $ renpy.pause()
     $ bsar_hide_centered_text(dissolve)
     $ renpy.pause(0.5, hard=True)
+    if bsar_check_last_achievement():
+        $ bsar_show_titles()
     $ bsar_get_achievement("sotp_better")
     scene bg black with dissolve
     stop ambience fadeout 2

@@ -797,7 +797,7 @@ screen bsar_help():
         ypos 650
         action OpenURL("https://youtu.be/x2KBAuBKWL8")
 
-    add bsar_gui_path + persistent.bsar_current_story + "_main_menu/logowhite_hover" xpos 1520 ypos 880
+    add bsar_gui_path + persistent.bsar_current_story + "_main_menu/logowhite_hover.png" xpos 1520 ypos 880
 
     textbutton "Назад":
         style "bsar_button_none"
