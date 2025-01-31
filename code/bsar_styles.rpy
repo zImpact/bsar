@@ -47,6 +47,7 @@ init -10 python:
     style.bsar_titles_style.italic = False
     style.bsar_titles_style.bold = False
     style.bsar_titles_style.text_align = 0.5
+    style.bsar_titles_style.size = 55
     style.bsar_titles_style.xmaximum = 0.8
     
     style.bsar_button_none = Style(style.button)

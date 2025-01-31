@@ -124,18 +124,19 @@ screen bsar_insomnia_main_menu():
                 ShowMenu("main_menu")
             ]
         
-        imagebutton:
-            auto bsar_gui_path + "insomnia_main_menu/to_sotp_%s.png"
-            xpos 130
-            ypos 755
-            action [
-                SetField(persistent, "bsar_current_story", "sotp"),
-                Stop("music", fadeout=1.0),
-                Hide("bsar_insomnia_main_menu"),
-                Function(bsar_toggle_main_menu),
-                ShowMenu("bsar_sotp_main_menu", _transition=bsar_fadehold),
-                Play("music", ["<silence 1.5>", bsar_master_of_spirits_shadows_main_theme], fadein=1.0)
-            ]
+        if bsar_check_sotp("allow"):
+            imagebutton:
+                auto bsar_gui_path + "insomnia_main_menu/to_sotp_%s.png"
+                xpos 130
+                ypos 755
+                action [
+                    SetField(persistent, "bsar_current_story", "sotp"),
+                    Stop("music", fadeout=1.0),
+                    Hide("bsar_insomnia_main_menu"),
+                    Function(bsar_toggle_main_menu),
+                    ShowMenu("bsar_sotp_main_menu", _transition=bsar_fadehold),
+                    Play("music", ["<silence 1.5>", bsar_master_of_spirits_shadows_main_theme], fadein=1.0)
+                ]
             
         imagebutton:
             auto bsar_gui_path + "insomnia_main_menu/logowhite_%s.png"

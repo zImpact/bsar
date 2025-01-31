@@ -683,6 +683,19 @@ init -1 python:
     if persistent.bsar_current_story == None:
         persistent.bsar_current_story = "insomnia"
 
+    def bsar_check_sotp(condition):
+        has_ending = persistent.bsar_achievements.get("insomnia_paradise", False) or persistent.bsar_achievements.get("insomnia_awakening", False)
+
+        if condition == "tip":
+            return not has_ending
+
+        elif condition == "allow":
+            return has_ending
+
+    def bsar_show_tip_to_sotp():
+        bsar_show_centered_text("В левом нижнем углу главного меню доступна кнопка для перехода в следующую историю — «Тени прошлого»", style=style.bsar_titles_style)
+        bsar_hide_centered_text(dspr)
+
     def bsar_get_achievement(achievement_name):
         renpy.pause(1, hard=True)
 

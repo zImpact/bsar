@@ -190,7 +190,8 @@ screen bsar_sotp_load_main_menu():
 
         textbutton "Назад":
             style "bsar_button_none" 
-            text_style "bsar_sotp_main_menu_text_style" 
+            text_style "bsar_sotp_main_menu_text_style"
+            selected False
             xalign 0.1
             ypos 970
             action [
@@ -365,7 +366,8 @@ screen bsar_sotp_preferences_main_menu():
 
         textbutton "Назад":
             style "bsar_button_none" 
-            text_style "bsar_sotp_main_menu_text_style" 
+            text_style "bsar_sotp_main_menu_text_style"
+            selected False
             xalign 0.5
             ypos 970
             action [
@@ -422,7 +424,8 @@ screen bsar_sotp_extra():
 
         textbutton "Назад":
             style "bsar_button_none" 
-            text_style "bsar_sotp_main_menu_text_style" 
+            text_style "bsar_sotp_main_menu_text_style"
+            selected False
             xalign 0.5
             yalign 0.85
             action [

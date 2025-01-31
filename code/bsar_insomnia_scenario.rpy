@@ -1542,9 +1542,12 @@ label bsar_insomnia_awakening_ending:
     play sound bsar_heart_stopped
     $ renpy.pause(6, hard=True)
     scene bg white with bsar_flash
+    $ insomnia_show_tip = bsar_check_sotp("tip")
     $ bsar_get_achievement("insomnia_awakening")
     scene bg black with dissolve
     stop sound_loop fadeout 2
+    if insomnia_show_tip:
+        $ bsar_show_tip_to_sotp()
     $ renpy.pause(1, hard=True)
     $ bsar_set_dynamic_cursor("insomnia_main_menu")
     $ MainMenu(confirm=False)()
@@ -1567,10 +1570,13 @@ label bsar_insomnia_paradise_ending:
     bsar_narrator "Очень симпатичная, кстати. Огненные, как цветок мака волосы, и голубые глаза, в которых, казалось, можно утонуть. Она невысокого роста, на вид ей лет шестнадцать. " 
     bsar_usp "Привет, ты, наверное, только что приехал?" 
     bsar_protagonist "Да. Только что."
+    $ insomnia_show_tip = bsar_check_sotp("tip")
     $ bsar_get_achievement("insomnia_paradise")
     scene bg black with dissolve
     stop music fadeout 2
     stop ambience fadeout 2
+    if insomnia_show_tip:
+        $ bsar_show_tip_to_sotp()
     $ renpy.pause(1, hard=True)
     $ bsar_set_dynamic_cursor("insomnia_main_menu")
     $ MainMenu(confirm=False)()
